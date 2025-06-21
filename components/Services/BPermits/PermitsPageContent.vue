@@ -67,14 +67,22 @@
 
             <!-- Individual Service Content -->
             <div v-else class="service-content">
-              <div class="service-layout">
+              <!-- Full-width image for Permits section -->
+              <div v-if="showSection3" class="full-width-image">
+                <BPImage />
+              </div>
+              
+              <!-- Content below for Permits section -->
+              <div v-if="showSection3" class="full-width-content">
+                <BPParaLine />
+              </div>
+              
+              <!-- Standard layout for other services -->
+              <div v-if="!showSection3" class="service-layout">
                 <!-- Service Image -->
                 <div class="service-image">
                   <div v-if="showSection2" class="image-wrapper">
                     <AHImage />
-                  </div>
-                  <div v-if="showSection3" class="image-wrapper">
-                    <BPImage />
                   </div>
                   <div v-if="showSection4" class="image-wrapper">
                     <ACImage />
@@ -94,9 +102,6 @@
                 <div class="service-description">
                   <div v-if="showSection2" class="description-content">
                     <AHParaLine />
-                  </div>
-                  <div v-if="showSection3" class="description-content">
-                    <BPParaLine />
                   </div>
                   <div v-if="showSection4" class="description-content">
                     <ACParaLine />
@@ -208,7 +213,7 @@ export default {
         1: ['fas', 'list-alt'],
         2: ['fas', 'truck'],
         3: ['fas', 'file-alt'],
-        4: ['fas', 'gas-station'],
+        4: ['fas', 'gas-pump'],
         5: ['fas', 'utensils'],
         6: ['fas', 'users'],
         7: ['fas', 'hotel']
@@ -359,10 +364,22 @@ export default {
   padding: 2rem;
 }
 
+/* Standard layout for other services */
 .service-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
+}
+
+/* Full-width layout for Permits section */
+.full-width-image {
+  margin-bottom: 2rem;
+  height: 450px;
+}
+
+.full-width-content {
+  padding: 0 1rem;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .service-image {
@@ -405,6 +422,10 @@ export default {
   .content-layout {
     gap: 30px;
   }
+  
+  .full-width-image {
+    height: 400px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -425,6 +446,10 @@ export default {
   .nav-item {
     padding: 0.875rem 1.25rem;
     font-size: 0.9375rem;
+  }
+  
+  .full-width-image {
+    height: 350px;
   }
 }
 
@@ -447,6 +472,10 @@ export default {
   .service-content {
     padding: 1.5rem;
   }
+  
+  .full-width-image {
+    height: 300px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -464,6 +493,10 @@ export default {
   
   .nav-item {
     padding: 0.75rem 1rem;
+  }
+  
+  .full-width-image {
+    height: 250px;
   }
 }
 </style>

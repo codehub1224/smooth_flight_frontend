@@ -72,6 +72,8 @@ export default {
 <style scoped>
 .permits-content {
   padding: 1rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .permits-title {
@@ -82,13 +84,15 @@ export default {
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1rem;
+  text-align: center;
 }
 
 .permits-title::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 80px;
   height: 4px;
   background: #88c607;
@@ -156,6 +160,7 @@ export default {
 
 .cta-container {
   margin-top: 2rem;
+  text-align: center;
 }
 
 .cta-button {
