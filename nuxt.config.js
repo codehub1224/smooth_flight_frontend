@@ -101,7 +101,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/fonts.css'
+    '~/assets/fonts.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -112,9 +113,10 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
     dirs: [
+      '~/components',
       {
         path: '~/components',
-        ignore: ['**/GroundHandlingDescription.vue', '**/CrewPassengerDescription.vue']
+        ignore: ['**/GroundHandlingDescription.vue']
       }
     ]
   },
