@@ -1,9 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  // Target for deployment (static is required for Netlify)
-  target: 'static',
-  
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s | Smooth Flight Support - Aviation Services Sri Lanka',
@@ -104,11 +101,14 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/fonts.css'
+    '~/assets/fonts.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/fontawesome.js'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -127,7 +127,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/fontawesome',
     '@nuxtjs/dotenv',
     // https://github.com/nuxt-community/robots-module
     '@nuxtjs/robots',
@@ -160,13 +159,6 @@ export default {
     UserAgent: '*',
     Allow: '/',
     Sitemap: 'https://smoothflightsupport.lk/sitemap.xml'
-  },
-
-  fontawesome: {
-    icons: {
-      solid: true, // Include solid icons
-      brands: true, // Include brand icons
-    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -292,6 +284,9 @@ export default {
     continuous: true
   },
 
+  // Target for deployment
+  target: 'static',
+
   // Server configuration for development
   server: {
     port: 3000,
@@ -301,5 +296,19 @@ export default {
   // Environment variables
   env: {
     baseUrl: process.env.BASE_URL || 'https://smoothflightsupport.lk'
+  },
+
+  // PWA configuration (if you want to add PWA features later)
+  pwa: {
+    meta: {
+      theme_color: '#183862'
+    },
+    manifest: {
+      name: 'Smooth Flight Support',
+      short_name: 'SFS',
+      description: 'Premier Aviation Services in Sri Lanka',
+      background_color: '#ffffff',
+      theme_color: '#183862'
+    }
   }
 }
