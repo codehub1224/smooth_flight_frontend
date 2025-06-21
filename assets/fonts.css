@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'Style Script';
+    src: url('../assets/fonts/StyleScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Domaine Disp Nar';
+    src: url('../assets/fonts/DomaineDispNar-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  } 
+  
+  
+  @font-face {
+    font-family: 'Noto Serif';
+    src: url('../assets/fonts/NotoSerif-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  } 
+  
+  
+  
+  @font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  } 
+  
+  @font-face {
+    font-family: 'Ubuntu';
+    src: url('../assets/fonts/Ubuntu.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Barlow-Regular';
+    src: url('../assets/fonts/Barlow-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Barlow-Bold';
+    src: url('../assets/fonts/Barlow-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Barlow-ExtraBold';
+    src: url('../assets/fonts/Barlow-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* 
+  @font-face {
+    font-family: 'Pacifico';
+    src: url('Pacifico-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  } */
+
+  @font-face {
+    font-family: 'SourceSansPro-Regular';
+    src: url('../assets/fonts/SourceSansPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
