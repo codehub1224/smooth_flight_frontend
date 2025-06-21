@@ -78,13 +78,6 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Background Elements -->
-        <div class="bg-elements">
-            <div class="bg-shape shape-1"></div>
-            <div class="bg-shape shape-2"></div>
-            <div class="bg-pattern"></div>
-        </div>
     </div>
 </template>
 
@@ -133,7 +126,7 @@ export default {
 
 .why-choose-section {
     position: relative;
-    padding: 120px 0;
+    padding: 80px 0;
     background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
     overflow: hidden;
 }
@@ -390,50 +383,6 @@ export default {
     letter-spacing: 0.5px;
 }
 
-/* Background Elements */
-.bg-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.bg-shape {
-    position: absolute;
-    border-radius: 50%;
-}
-
-.shape-1 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(136, 198, 7, 0.2) 0%, rgba(136, 198, 7, 0) 70%);
-    top: -200px;
-    left: -200px;
-}
-
-.shape-2 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-    bottom: -150px;
-    right: -150px;
-}
-
-.bg-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/HomePage/WhyChUs/BackgroundImgB.png');
-    background-position: center;
-    background-size: cover;
-    opacity: 0.1;
-}
-
 /* Animations */
 @keyframes slideInLeft {
     from {
@@ -471,7 +420,7 @@ export default {
 
 @media (max-width: 992px) {
     .why-choose-section {
-        padding: 80px 0;
+        padding: 60px 0;
     }
     
     .content-grid {
@@ -519,7 +468,7 @@ export default {
 
 @media (max-width: 480px) {
     .why-choose-section {
-        padding: 60px 0;
+        padding: 40px 0;
     }
     
     .container {
