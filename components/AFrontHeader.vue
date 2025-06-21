@@ -54,9 +54,16 @@
                 <span class="mdi mdi-chevron-down dropdown-icon"></span>
               </button>
               <div class="dropdown-menu">
-                <NuxtLink class="dropdown-item" to="/company/overview">Overview</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/company/careers">Careers</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/company/overview">
+                  <span class="mdi mdi-information-outline dropdown-icon"></span>
+                  Overview
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/company/careers">
+                  <span class="mdi mdi-account-group dropdown-icon"></span>
+                  Careers
+                </NuxtLink>
                 <a class="dropdown-item" href="https://blog.smoothflightsupport.lk/category/csr/" target="_blank">
+                  <span class="mdi mdi-heart dropdown-icon"></span>
                   Corporate Social Responsibility
                 </a>
               </div>
@@ -68,12 +75,30 @@
                 <span class="mdi mdi-chevron-down dropdown-icon"></span>
               </button>
               <div class="dropdown-menu">
-                <NuxtLink class="dropdown-item" to="/services/permitsA">Permits</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/services/groundHandling">Ground Handling</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/services/aircraftFueling">Aircraft Fueling</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/services/catering">Catering</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/services/crewpassengerservice">Crew & Passenger Service</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/services/hotelReservationTransportation">Hotel Reservation & Transportation</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/permitsA">
+                  <span class="mdi mdi-file-document dropdown-icon"></span>
+                  Permits
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/groundHandling">
+                  <span class="mdi mdi-truck dropdown-icon"></span>
+                  Ground Handling
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/aircraftFueling">
+                  <span class="mdi mdi-gas-station dropdown-icon"></span>
+                  Aircraft Fueling
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/catering">
+                  <span class="mdi mdi-silverware dropdown-icon"></span>
+                  Catering
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/crewpassengerservice">
+                  <span class="mdi mdi-account-multiple dropdown-icon"></span>
+                  Crew & Passenger Service
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/hotelReservationTransportation">
+                  <span class="mdi mdi-hotel dropdown-icon"></span>
+                  HOTAC
+                </NuxtLink>
               </div>
             </div>
 
@@ -83,9 +108,18 @@
                 <span class="mdi mdi-chevron-down dropdown-icon"></span>
               </button>
               <div class="dropdown-menu">
-                <NuxtLink class="dropdown-item" to="/apermit/applypermit">Apply Permits</NuxtLink>
-                <NuxtLink class="dropdown-item" to="/eServices/getTripCostEstimate">Get Trip Cost Estimate</NuxtLink>
-                <a class="dropdown-item" href="https://eta.gov.lk/slvisa/" target="_blank">Apply e visa</a>
+                <NuxtLink class="dropdown-item" to="/apermit/applypermit">
+                  <span class="mdi mdi-file-plus dropdown-icon"></span>
+                  Apply Permits
+                </NuxtLink>
+                <NuxtLink class="dropdown-item" to="/eServices/getTripCostEstimate">
+                  <span class="mdi mdi-calculator dropdown-icon"></span>
+                  Get Trip Cost Estimate
+                </NuxtLink>
+                <a class="dropdown-item" href="https://eta.gov.lk/slvisa/" target="_blank">
+                  <span class="mdi mdi-passport dropdown-icon"></span>
+                  Apply e visa
+                </a>
               </div>
             </div>
 
@@ -133,7 +167,7 @@ export default {
 .header-container {
   width: 100%;
   background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   position: relative;
   z-index: 1000;
 }
@@ -147,7 +181,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
   background: white;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -174,15 +208,15 @@ export default {
 .contact-info {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding-right: 2rem;
+  gap: 0.75rem;
+  padding-right: 2.5rem;
   border-right: 2px solid #e5e7eb;
 }
 
@@ -219,21 +253,21 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 1.75rem;
   background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 0.875rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(136, 198, 7, 0.3);
+  box-shadow: 0 4px 12px rgba(136, 198, 7, 0.3);
 }
 
 .cta-button:hover {
   background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(24, 56, 98, 0.4);
+  box-shadow: 0 6px 20px rgba(24, 56, 98, 0.4);
 }
 
 .cta-icon {
@@ -248,6 +282,7 @@ export default {
 .main-navigation {
   background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
   position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .main-navigation::before {
@@ -258,7 +293,7 @@ export default {
   right: 0;
   bottom: 0;
   background: url('/HomePage/WhyChUs/BackgroundImgB.png') center/cover;
-  opacity: 0.1;
+  opacity: 0.05;
   pointer-events: none;
 }
 
@@ -274,17 +309,18 @@ export default {
 .nav-link {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 1.25rem 1rem;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem; /* Increased padding for better spacing */
   color: white;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
   border: none;
   background: none;
   cursor: pointer;
   position: relative;
+  margin: 0 0.25rem; /* Added margin between menu items */
 }
 
 .nav-link::after {
@@ -294,9 +330,10 @@ export default {
   left: 50%;
   width: 0;
   height: 3px;
-  background: #88c607;
+  background: linear-gradient(90deg, #88c607, #9dd409);
   transition: all 0.3s ease;
   transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .nav-link:hover::after {
@@ -306,6 +343,8 @@ export default {
 .nav-link:hover {
   color: #88c607;
   transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }
 
 .dropdown {
@@ -315,7 +354,7 @@ export default {
 .dropdown-trigger {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .dropdown-icon {
@@ -331,16 +370,17 @@ export default {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 280px;
+  min-width: 320px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transform: translateY(-15px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
   border: 1px solid #e5e7eb;
+  overflow: hidden;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -350,35 +390,62 @@ export default {
 }
 
 .dropdown-item {
-  display: block;
-  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
   color: #374151;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
   border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  overflow: hidden;
 }
 
 .dropdown-item:last-child {
   border-bottom: none;
-  border-radius: 0 0 12px 12px;
 }
 
-.dropdown-item:first-child {
-  border-radius: 12px 12px 0 0;
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.dropdown-item:hover::before {
+  left: 0;
 }
 
 .dropdown-item:hover {
-  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
   color: white;
   transform: translateX(8px);
+  background: transparent;
+}
+
+.dropdown-item .dropdown-icon {
+  font-size: 1.1rem;
+  color: #88c607;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover .dropdown-icon {
+  color: white;
+  transform: scale(1.1);
 }
 
 .social-links {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   margin-left: 2rem;
 }
 
@@ -386,36 +453,43 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   text-decoration: none;
   border-radius: 50%;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .social-link:hover {
-  background: #88c607;
+  background: linear-gradient(135deg, #88c607, #9dd409);
   transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 8px 20px rgba(136, 198, 7, 0.4);
+  box-shadow: 0 8px 25px rgba(136, 198, 7, 0.4);
+  border-color: transparent;
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
   .contact-info {
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .contact-item {
-    padding-right: 1rem;
+    padding-right: 1.5rem;
+  }
+  
+  .nav-link {
+    padding: 1.25rem 1.5rem;
+    margin: 0 0.125rem;
   }
 }
 
 @media (max-width: 1024px) {
   .top-bar {
-    padding: 0.75rem 1rem;
+    padding: 1rem;
   }
   
   .nav-container {
@@ -423,7 +497,7 @@ export default {
   }
   
   .contact-info {
-    gap: 0.75rem;
+    gap: 1rem;
   }
   
   .contact-label,
@@ -433,6 +507,11 @@ export default {
   
   .social-links {
     margin-left: 1rem;
+  }
+  
+  .nav-link {
+    padding: 1.25rem 1.25rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -449,7 +528,7 @@ export default {
 @media (max-width: 640px) {
   .contact-info {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
     align-items: flex-start;
   }
   
