@@ -1,19 +1,15 @@
 import Vue from 'vue'
 import { library, config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons'
-
-
-
 import { 
   faPhoneAlt, 
-  faCloudArrowUp,
   faPhone,
   faUpload,
   faArrowRight,
   faArrowRightLong,
   faFilePlus,
   faEye,
+  faEyeLowVision,
   faPeopleGroup,
   faCheck,
   faChevronLeft,
@@ -47,11 +43,16 @@ import {
   faHeart,
   faUser,
   faUsers,
-  faListAlt
+  faListAlt,
+  faUtensils,
+  faHotel,
+  faTruck,
+  faGasStation
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faFacebookF,
   faTwitter,
+  faXTwitter,
   faInstagram,
   faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons'
@@ -63,13 +64,13 @@ config.autoAddCss = false
 // can add other styles or just individual icons.
 library.add(
   faPhoneAlt,
-  faCloudArrowUp,
   faPhone,
   faUpload,
   faArrowRight,
   faArrowRightLong,
   faFilePlus,
   faEye,
+  faEyeLowVision,
   faPeopleGroup,
   faCheck,
   faChevronLeft,
@@ -77,6 +78,7 @@ library.add(
   faChevronDown,
   faFacebookF,
   faTwitter,
+  faXTwitter,
   faInstagram,
   faLinkedinIn,
   faBuilding,
@@ -107,58 +109,12 @@ library.add(
   faHeart,
   faUser,
   faUsers,
-  faListAlt
+  faListAlt,
+  faUtensils,
+  faHotel,
+  faTruck,
+  faGasStation
 )
 
 // Register the component globally
 Vue.component('FontAwesomeIcon', FontAwesomeIcon)
-
-
-console.log({
-  faPhoneAlt,
-  faCloudArrowUp,
-  faPhone,
-  faUpload,
-  faArrowRight,
-  faArrowRightLong,
-  faFilePlus,
-  faEye,
-  faPeopleGroup,
-  faCheck,
-  faChevronLeft,
-  faChevronRight,
-  faChevronDown,
-  faFacebookF,
-  faTwitter,
-  faInstagram,
-  faLinkedinIn,
-  faBuilding,
-  faEnvelope,
-  faMobileAlt,
-  faUserShield,
-  faBell,
-  faPlane,
-  faSyncAlt,
-  faHeadset,
-  faCertificate,
-  faPaperPlane,
-  faHandshake,
-  faFileAlt,
-  faTimes,
-  faChartLine,
-  faGlobe,
-  faBalanceScale,
-  faMapMarkerAlt,
-  faStar,
-  faBriefcase,
-  faBullseye,
-  faAward,
-  faShieldAlt,
-  faHardHat,
-  faLightbulb,
-  faClock,
-  faHeart,
-  faUser,
-  faUsers,
-  faListAlt
-})
