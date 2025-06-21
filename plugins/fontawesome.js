@@ -3,14 +3,13 @@ import { library, config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { 
   faPhoneAlt, 
-  faCloudUploadAlt,
+  faCloudArrowUp,
   faPhone,
   faUpload,
   faArrowRight,
   faArrowRightLong,
   faFilePlus,
   faEye,
-  faEyeLowVision,
   faPeopleGroup,
   faCheck,
   faChevronLeft,
@@ -61,14 +60,13 @@ config.autoAddCss = false
 // can add other styles or just individual icons.
 library.add(
   faPhoneAlt,
-  faCloudUploadAlt,
+  faCloudArrowUp,
   faPhone,
   faUpload,
   faArrowRight,
   faArrowRightLong,
   faFilePlus,
   faEye,
-  faEyeLowVision,
   faPeopleGroup,
   faCheck,
   faChevronLeft,
