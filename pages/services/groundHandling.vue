@@ -1,75 +1,53 @@
 <template>
-    <div>
-  
-      <div style="margin: 0%;">
-        <AFrontHeader />
-      </div>
-
-      <div>
-        <div class="Desktop">
-          <GrHa />
-        </div>
-      </div>
-      
-      <div class="Mobile">
-        <div>
-          <MGrHa />
-        </div>
-      </div>
-
-
-      <div>
-        <ZFooter />
-      </div>
-      
-  
-  
+  <div>
+    <div style="margin: 0%;">
+      <AFrontHeader />
     </div>
-    
-  </template>
-  
-  <script>
-  // import AFrontHeader from '~/components/AFrontHeader.vue'
-  import GrHa from '~/components/Services/AGroundHandling/GrHa.vue'
-  import MGrHa from '~/components/Services/AGroundHandling/MGrHa.vue'
 
-  export default {
-    name: 'Services',
-    components: {
-      // AFrontHeader,
-      GrHa,
-      MGrHa,
-    },
-    
+    <div>
+      <GroundHandlingPageContent />
+    </div>
+
+    <div>
+      <ZFooter />
+    </div>
+  </div>
+</template>
+
+<script>
+import GroundHandlingPageContent from '~/components/Services/AGroundHandling/GroundHandlingPageContent.vue'
+
+export default {
+  name: 'GroundHandlingPage',
+  components: {
+    GroundHandlingPageContent,
+  },
+  head() {
+    return {
+      title: 'Ground Handling Services',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Professional ground handling services in Sri Lanka for commercial and business jet operations. Quality service with cost-effective solutions for all aircraft types.'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'ground handling, aircraft handling, ramp services, baggage handling, passenger handling, aircraft cleaning, aviation services sri lanka, ground support'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Ground Handling Services | Smooth Flight Support'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Professional ground handling services in Sri Lanka for commercial and business jet operations. Quality service with cost-effective solutions.'
+        }
+      ]
+    }
   }
-  </script>
-  
-  <style>
-
-
-.Desktop{
-  display: block;
 }
-
-.Mobile{
-  display: none;
-}
-
-
-@media only screen and (max-width: 500px) {
-
-.Desktop{
-  display: none;
-}
-
-.Mobile{
-  display: block;
-}
-
-}
-
-
-
-
-</style>
-  
+</script>
