@@ -6,10 +6,12 @@ import {
   faPhone,
   faUpload,
   faArrowRight,
+  faArrowLeft,
   faArrowRightLong,
   faEye,
   faPeopleGroup,
   faCheck,
+  faCheckCircle,
   faChevronLeft,
   faChevronRight,
   faChevronDown,
@@ -44,9 +46,11 @@ import {
   faListAlt,
   faUtensils,
   faHotel,
-  faTruck
-  // faFilePlus, // Removed: does not exist
-  // faGasStation // Removed: does not exist
+  faTruck,
+  faCalculator,
+  faInfoCircle,
+  faPlus,
+  faGasPump
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faFacebookF,
@@ -66,10 +70,12 @@ library.add(
   faPhone,
   faUpload,
   faArrowRight,
+  faArrowLeft,
   faArrowRightLong,
   faEye,
   faPeopleGroup,
   faCheck,
+  faCheckCircle,
   faChevronLeft,
   faChevronRight,
   faChevronDown,
@@ -109,9 +115,11 @@ library.add(
   faListAlt,
   faUtensils,
   faHotel,
-  faTruck
-  // faFilePlus, // Removed
-  // faGasStation // Removed
+  faTruck,
+  faCalculator,
+  faInfoCircle,
+  faPlus,
+  faGasPump
 )
 
 // Register the component globally
