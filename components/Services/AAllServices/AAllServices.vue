@@ -106,27 +106,21 @@
 import AllSeTopicLine from '~/components/Services/AAllServices/SubAllService/AllSeTopicLine.vue'
 import AllSeImageItems from '~/components/Services/AAllServices/SubAllService/AllSeImageItems.vue'
 
-import AHTopicLine from '~/components/Services/AGroundHandling/SubAG/AHTopicLine.vue'
 import AHParaLine from '~/components/Services/AGroundHandling/SubAG/AHParaLine.vue'
 import AHImage from '~/components/Services/AGroundHandling/SubAG/AHImage.vue'
 
-import BPTopicLine from '~/components/Services/BPermits/SubBP/BPTopicLine.vue'
 import BPParaLine from '~/components/Services/BPermits/SubBP/BPParaLine.vue'
 import BPImage from '~/components/Services/BPermits/SubBP/BPImage.vue'
 
-import ACTopicLine from '~/components/Services/CAircraftFueling/SubAF/ACTopicLine.vue'
 import ACParaLine from '~/components/Services/CAircraftFueling/SubAF/ACParaLine.vue'
 import ACImage from '~/components/Services/CAircraftFueling/SubAF/ACImage.vue'
 
-import DCTopicLine from '~/components/Services/DCatering/SubDC/DCTopicLine.vue'
 import DCParaLine from '~/components/Services/DCatering/SubDC/DCParaLine.vue'
 import DCImage from '~/components/Services/DCatering/SubDC/DCImage.vue'
 
-import ESTopicLine from '~/components/Services/ECPService/SubES/ESTopicLine.vue'
 import ESParaLine from '~/components/Services/ECPService/SubES/ESParaLine.vue'
 import ESImage from '~/components/Services/ECPService/SubES/ESImage.vue'
 
-import FTTopicLine from '~/components/Services/FHRTransportation/SubFT/FTTopicLine.vue'
 import FTParaLine from '~/components/Services/FHRTransportation/SubFT/FTParaLine.vue'
 import FTImage from '~/components/Services/FHRTransportation/SubFT/FTImage.vue'
 
@@ -134,22 +128,16 @@ export default {
   components: {
     AllSeTopicLine,
     AllSeImageItems,
-    AHTopicLine,
     AHParaLine,
     AHImage,
-    BPTopicLine,
     BPParaLine,
     BPImage,
-    ACTopicLine,
     ACParaLine,
     ACImage,
-    DCTopicLine,
     DCParaLine,
     DCImage,
-    ESTopicLine,
     ESParaLine,
     ESImage,
-    FTTopicLine,
     FTParaLine,
     FTImage,
   },
