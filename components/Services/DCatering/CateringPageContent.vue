@@ -1,119 +1,159 @@
 <template>
-  <div class="catering-page">
+  <div class="service-page">
     <!-- Page Header -->
-    <div v-if="showSection1" class="page-header">
-      <AllSeTopicLine />
-    </div>
-
-    <div v-if="showSection2" class="page-header">
-      <AHTopicLine />
-    </div>
-
-    <div v-if="showSection3" class="page-header">
-      <BPTopicLine />
-    </div>
-
-    <div v-if="showSection4" class="page-header">
-      <ACTopicLine />
-    </div>
-
-    <div v-if="showSection5" class="page-header">
-      <CateringHeader />
-    </div>
-
-    <div v-if="showSection6" class="page-header">
-      <ESTopicLine />
-    </div>
-
-    <div v-if="showSection7" class="page-header">
-      <FTTopicLine />
+    <div class="page-header">
+      <div class="header-content">
+        <h1 class="page-title">In-Flight Catering</h1>
+        <div class="breadcrumb-container">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item active">Smooth Flight Support</li>
+            <li class="breadcrumb-item">Services</li>
+            <li class="breadcrumb-item">In-Flight Catering</li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-background"></div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
       <div class="container">
-        <div class="content-layout">
-          <!-- Services Navigation Sidebar -->
-          <aside class="services-sidebar">
-            <div class="sidebar-header">
-              <h2 class="sidebar-title">Our Services</h2>
+        <!-- Service Image Section -->
+        <div class="service-image-section">
+          <div class="image-container">
+            <img src="/ServicesImg/CateringI/Catering.jpg" alt="In-Flight Catering Services" class="service-image">
+            <div class="image-overlay">
+              <div class="overlay-badge">
+                <font-awesome-icon :icon="['fas', 'utensils']" class="badge-icon" />
+                <span>In-Flight Catering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Content Section -->
+        <div class="service-content-section">
+          <div class="service-content">
+            <h2 class="content-title">In-Flight Catering Services</h2>
+            
+            <div class="content-description">
+              <p>
+                Today's private jet and commercial operators seek to ensure that in-flight catering
+                meets high standards in terms of service. The Food & Beverages experience on a journey
+                is as important as the comfortable ambience created by the crew on board a private
+                and commercial jet.
+              </p>
+              
+              <p>
+                At Smooth Flight Support, we are committed to sharing our client's goal of securing
+                the best experience with the highest standards and most convenient price. Let us take
+                care of your in-flight catering needs, rest assured and feel the difference.
+              </p>
+              
+              <p>
+                We ensure your flight meals and beverages are supplied according to your requirements
+                and are of the best quality and hygiene. Smooth Flight Support can arrange for food and
+                beverage services and ensure that your VIPs receive the level of service they deserve.
+              </p>
             </div>
             
-            <nav class="services-nav">
-              <button 
-                v-for="section in sections" 
-                :key="section.id" 
-                class="nav-item" 
-                :class="{ active: section.active }"
-                @click="toggleSection(section.id)"
-              >
-                <span class="nav-icon">
-                  <font-awesome-icon :icon="getServiceIcon(section.id)" />
-                </span>
-                <span class="nav-label">{{ section.label }}</span>
-                <span class="nav-arrow">
-                  <font-awesome-icon :icon="['fas', 'chevron-right']" />
-                </span>
-              </button>
-            </nav>
-          </aside>
-
-          <!-- Content Area -->
-          <main class="content-area">
-            <!-- All Services Grid -->
-            <div v-if="showSection1" class="services-grid">
-              <AllSeImageItems />
-            </div>
-
-            <!-- Individual Service Content -->
-            <div v-else class="service-content">
-              <div class="service-layout">
-                <!-- Service Image -->
-                <div class="service-image">
-                  <div v-if="showSection2" class="image-wrapper">
-                    <AHImage />
+            <div class="service-features">
+              <h3 class="features-title">Our Catering Services Include:</h3>
+              
+              <div class="features-grid">
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <font-awesome-icon :icon="['fas', 'check']" />
                   </div>
-                  <div v-if="showSection3" class="image-wrapper">
-                    <BPImage />
-                  </div>
-                  <div v-if="showSection4" class="image-wrapper">
-                    <ACImage />
-                  </div>
-                  <div v-if="showSection5" class="image-wrapper">
-                    <CateringImage />
-                  </div>
-                  <div v-if="showSection6" class="image-wrapper">
-                    <ESImage />
-                  </div>
-                  <div v-if="showSection7" class="image-wrapper">
-                    <FTImage />
-                  </div>
+                  <div class="feature-text">Customized Menu Options</div>
                 </div>
-
-                <!-- Service Description -->
-                <div class="service-description">
-                  <div v-if="showSection2" class="description-content">
-                    <AHParaLine />
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <font-awesome-icon :icon="['fas', 'check']" />
                   </div>
-                  <div v-if="showSection3" class="description-content">
-                    <BPParaLine />
+                  <div class="feature-text">Special Dietary Requirements</div>
+                </div>
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <font-awesome-icon :icon="['fas', 'check']" />
                   </div>
-                  <div v-if="showSection4" class="description-content">
-                    <ACParaLine />
+                  <div class="feature-text">Premium Beverage Selection</div>
+                </div>
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <font-awesome-icon :icon="['fas', 'check']" />
                   </div>
-                  <div v-if="showSection5" class="description-content">
-                    <CateringDescription />
+                  <div class="feature-text">Highest Hygiene Standards</div>
+                </div>
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <font-awesome-icon :icon="['fas', 'check']" />
                   </div>
-                  <div v-if="showSection6" class="description-content">
-                    <ESParaLine />
+                  <div class="feature-text">Local & International Cuisine</div>
+                </div>
+                
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <font-awesome-icon :icon="['fas', 'check']" />
                   </div>
-                  <div v-if="showSection7" class="description-content">
-                    <FTParaLine />
-                  </div>
+                  <div class="feature-text">VIP Catering Services</div>
                 </div>
               </div>
             </div>
-          </main>
+            
+            <div class="service-cta">
+              <NuxtLink to="/eServices/getTripCostEstimate" class="cta-button">
+                <span>Request Catering</span>
+                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Services Section -->
+        <div class="other-services-section">
+          <h3 class="section-title">Explore Our Other Services</h3>
+          
+          <div class="services-grid">
+            <NuxtLink to="/services/permitsA" class="service-link">
+              <div class="service-icon">
+                <font-awesome-icon :icon="['fas', 'file-alt']" />
+              </div>
+              <span>Permits</span>
+            </NuxtLink>
+            
+            <NuxtLink to="/services/groundHandling" class="service-link">
+              <div class="service-icon">
+                <font-awesome-icon :icon="['fas', 'truck']" />
+              </div>
+              <span>Ground Handling</span>
+            </NuxtLink>
+            
+            <NuxtLink to="/services/aircraftFueling" class="service-link">
+              <div class="service-icon">
+                <font-awesome-icon :icon="['fas', 'gas-pump']" />
+              </div>
+              <span>Aircraft Fueling</span>
+            </NuxtLink>
+            
+            <NuxtLink to="/services/crewpassengerservice" class="service-link">
+              <div class="service-icon">
+                <font-awesome-icon :icon="['fas', 'users']" />
+              </div>
+              <span>Crew & Passenger Service</span>
+            </NuxtLink>
+            
+            <NuxtLink to="/services/hotelReservationTransportation" class="service-link">
+              <div class="service-icon">
+                <font-awesome-icon :icon="['fas', 'hotel']" />
+              </div>
+              <span>HOTAC</span>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
@@ -121,349 +161,514 @@
 </template>
 
 <script>
-import AllSeTopicLine from '~/components/Services/AAllServices/SubAllService/AllSeTopicLine.vue'
-import AllSeImageItems from '~/components/Services/AAllServices/SubAllService/AllSeImageItems.vue'
-
-import AHTopicLine from '~/components/Services/AGroundHandling/SubAG/AHTopicLine.vue'
-import AHParaLine from '~/components/Services/AGroundHandling/SubAG/AHParaLine.vue'
-import AHImage from '~/components/Services/AGroundHandling/SubAG/AHImage.vue'
-
-import BPTopicLine from '~/components/Services/BPermits/SubBP/BPTopicLine.vue'
-import BPParaLine from '~/components/Services/BPermits/SubBP/BPParaLine.vue'
-import BPImage from '~/components/Services/BPermits/SubBP/BPImage.vue'
-
-import ACTopicLine from '~/components/Services/CAircraftFueling/SubAF/ACTopicLine.vue'
-import ACParaLine from '~/components/Services/CAircraftFueling/SubAF/ACParaLine.vue'
-import ACImage from '~/components/Services/CAircraftFueling/SubAF/ACImage.vue'
-
-import CateringHeader from '~/components/Services/DCatering/SubDC/CateringHeader.vue'
-import CateringDescription from '~/components/Services/DCatering/SubDC/CateringDescription.vue'
-import CateringImage from '~/components/Services/DCatering/SubDC/CateringImage.vue'
-
-import ESTopicLine from '~/components/Services/ECPService/SubES/ESTopicLine.vue'
-import ESParaLine from '~/components/Services/ECPService/SubES/ESParaLine.vue'
-import ESImage from '~/components/Services/ECPService/SubES/ESImage.vue'
-
-import FTTopicLine from '~/components/Services/FHRTransportation/SubFT/FTTopicLine.vue'
-import FTParaLine from '~/components/Services/FHRTransportation/SubFT/FTParaLine.vue'
-import FTImage from '~/components/Services/FHRTransportation/SubFT/FTImage.vue'
-
 export default {
-  components: {
-    AllSeTopicLine,
-    AllSeImageItems,
-    AHTopicLine,
-    AHParaLine,
-    AHImage,
-    BPTopicLine,
-    BPParaLine,
-    BPImage,
-    ACTopicLine,
-    ACParaLine,
-    ACImage,
-    CateringHeader,
-    CateringDescription,
-    CateringImage,
-    ESTopicLine,
-    ESParaLine,
-    ESImage,
-    FTTopicLine,
-    FTParaLine,
-    FTImage,
-  },
-  data: () => ({
-    sections: [
-      { id: 1, label: 'All Services', active: false },
-      { id: 2, label: 'Ground Handling', active: false },
-      { id: 3, label: 'Permits', active: false },
-      { id: 4, label: 'Aircraft Fueling', active: false },
-      { id: 5, label: 'Catering', active: true },
-      { id: 6, label: 'Crew & Passenger Service', active: false },
-      { id: 7, label: 'HOTAC', active: false },
-    ],
-    showSection1: false,
-    showSection2: false,
-    showSection3: false,
-    showSection4: false,
-    showSection5: true,
-    showSection6: false,
-    showSection7: false,
-  }),
-  methods: {
-    toggleSection(sectionId) {
-      this.sections.forEach((section) => {
-        section.active = section.id === sectionId;
-      });
-
-      this.showSection1 = sectionId === 1;
-      this.showSection2 = sectionId === 2;
-      this.showSection3 = sectionId === 3;
-      this.showSection4 = sectionId === 4;
-      this.showSection5 = sectionId === 5;
-      this.showSection6 = sectionId === 6;
-      this.showSection7 = sectionId === 7;
-    },
-    getServiceIcon(sectionId) {
-      const icons = {
-        1: ['fas', 'list-alt'],
-        2: ['fas', 'truck'],
-        3: ['fas', 'file-alt'],
-        4: ['fas', 'gas-station'],
-        5: ['fas', 'utensils'],
-        6: ['fas', 'users'],
-        7: ['fas', 'hotel']
-      };
-      return icons[sectionId] || ['fas', 'check'];
-    }
-  },
-};
+  name: 'CateringPage'
+}
 </script>
 
 <style scoped>
 @import '../../../assets/fonts.css';
 
-.catering-page {
+.service-page {
   background-color: #f8fafc;
   min-height: 100vh;
-  animation: fadeIn 0.8s ease-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.content-layout {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
-  padding: 60px 0;
-}
-
-/* Services Sidebar */
-.services-sidebar {
-  position: sticky;
-  top: 100px;
-  height: fit-content;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+/* Page Header */
+.page-header {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
-.sidebar-header {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
-  color: white;
+.header-content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 5% 40px;
 }
 
-.sidebar-title {
+.page-title {
   font-family: 'Barlow-ExtraBold', sans-serif;
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  margin: 0;
+  color: #183862;
+  margin-bottom: 20px;
+  text-transform: uppercase;
   position: relative;
 }
 
-.sidebar-title::after {
+.page-title::after {
   content: '';
   position: absolute;
   bottom: -10px;
   left: 0;
-  width: 50px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   background: #88c607;
   border-radius: 2px;
 }
 
-.services-nav {
-  padding: 1rem 0;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: none;
-  border: none;
-  text-align: left;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  font-size: 1rem;
-  color: #64748b;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-left: 3px solid transparent;
-}
-
-.nav-item:hover {
-  background-color: #f1f5f9;
-  color: #183862;
-  transform: translateX(5px);
-}
-
-.nav-item.active {
-  background-color: #f1f5f9;
-  color: #183862;
-  font-weight: 600;
-  border-left: 3px solid #88c607;
-}
-
-.nav-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
-  color: #88c607;
-}
-
-.nav-label {
-  flex: 1;
-}
-
-.nav-arrow {
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s ease;
-}
-
-.nav-item:hover .nav-arrow,
-.nav-item.active .nav-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Content Area */
-.content-area {
+.breadcrumb-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 0;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
 }
 
-/* Service Content */
-.service-content {
-  padding: 2rem;
+.breadcrumb-item {
+  color: #183862;
+  position: relative;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
 }
 
-.service-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+.breadcrumb-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent #e5e7eb;
+}
+
+.breadcrumb-item.active {
+  font-weight: 600;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f0f0f0;
+  z-index: 1;
+}
+
+/* Main Content */
+.main-content {
+  padding: 60px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Service Image Section */
+.service-image-section {
+  margin-bottom: 40px;
+}
+
+.image-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  height: 450px;
 }
 
 .service-image {
-  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
-.image-wrapper {
+.image-container:hover .service-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  align-items: flex-end;
+}
+
+.overlay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(136, 198, 7, 0.9);
+  color: white;
+  border-radius: 50px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.badge-icon {
+  font-size: 1.25rem;
+}
+
+/* Service Content Section */
+.service-content-section {
+  margin-bottom: 60px;
+}
+
+.service-content {
+  background: white;
   border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.content-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #183862;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.content-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #88c607;
+  border-radius: 2px;
+}
+
+.content-description p {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Service Features */
+.service-features {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.features-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #183862;
+  margin-bottom: 25px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-color: #88c607;
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #88c607;
+  color: white;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Service CTA */
+.service-cta {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 30px;
+  background: #88c607;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(136, 198, 7, 0.2);
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #183862;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.cta-button:hover {
+  box-shadow: 0 15px 30px rgba(24, 56, 98, 0.2);
+}
+
+/* Other Services Section */
+.other-services-section {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #183862;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.service-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 20px;
+  background: white;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #334155;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.service-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: #88c607;
+  color: #183862;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #183862;
   transition: all 0.3s ease;
 }
 
-.image-wrapper:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.service-description {
-  padding: 1rem 0;
-}
-
-.description-content {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.service-link:hover .service-icon {
+  background: #88c607;
+  color: white;
+  transform: scale(1.1);
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .content-layout {
-    gap: 30px;
-  }
-}
-
-@media (max-width: 992px) {
-  .content-layout {
-    grid-template-columns: 250px 1fr;
-    gap: 20px;
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 2.5rem;
   }
   
-  .service-layout {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .header-content {
+    padding: 60px 5% 30px;
   }
   
-  .sidebar-title {
-    font-size: 1.25rem;
+  .image-container {
+    height: 400px;
   }
   
-  .nav-item {
-    padding: 0.875rem 1.25rem;
-    font-size: 0.9375rem;
+  .content-title {
+    font-size: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .content-layout {
-    grid-template-columns: 1fr;
-    padding: 30px 0;
+  .main-content {
+    padding: 40px 0;
   }
   
-  .services-sidebar {
-    position: relative;
-    top: 0;
-    margin-bottom: 30px;
+  .page-title {
+    font-size: 2rem;
   }
   
-  .sidebar-header {
-    padding: 1.25rem;
+  .breadcrumb-item {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .image-container {
+    height: 350px;
   }
   
   .service-content {
-    padding: 1.5rem;
+    padding: 30px;
+  }
+  
+  .content-title {
+    font-size: 1.75rem;
+  }
+  
+  .content-description p {
+    font-size: 1rem;
+  }
+  
+  .features-title {
+    font-size: 1.25rem;
+  }
+  
+  .other-services-section {
+    padding: 30px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 
 @media (max-width: 576px) {
-  .container {
-    padding: 0 1rem;
+  .main-content {
+    padding: 30px 0;
   }
   
-  .content-layout {
-    padding: 20px 0;
+  .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .header-content {
+    padding: 40px 5% 20px;
+  }
+  
+  .breadcrumb-container {
+    display: none;
+  }
+  
+  .image-container {
+    height: 250px;
+  }
+  
+  .overlay-badge {
+    padding: 8px 16px;
+    font-size: 1rem;
   }
   
   .service-content {
-    padding: 1rem;
+    padding: 25px;
   }
   
-  .nav-item {
-    padding: 0.75rem 1rem;
+  .content-title {
+    font-size: 1.5rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .other-services-section {
+    padding: 25px;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .service-link {
+    padding: 15px;
+  }
+  
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .cta-button {
+    width: 100%;
+    justify-content: center;
   }
 }
 </style>
