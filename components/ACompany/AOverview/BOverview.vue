@@ -10,27 +10,31 @@
               About Our Company
             </div>
             
-            <h2 class="section-title">About Us</h2>
+            <h2 class="section-title">Our Story</h2>
             
             <div class="section-text">
               <p>
-                Smooth Flight Support, a premier flight support services company based in Sri Lanka, was established in 2019. Since our inception, we have experienced remarkable growth, a testament to our unwavering commitment to professionalism and excellence in the aviation industry.
+                Founded in 2019, Smooth Flight Support has rapidly established itself as Sri Lanka's premier aviation services provider. Our ISO 9001:2015 certification reflects our commitment to excellence and international standards.
               </p>
               <p>
-                Our reputation is built on our dedication to serving as your trusted local handling agent, meticulously managing all aspects of your flight arrangements. This allows you to devote more attention to your crew, passengers, and ensuring a smooth flight experience. Our core objective revolves around delivering exceptional service quality and prioritizing the wellbeing of all our clients.
+                As your trusted local handling agent, we meticulously manage all aspects of your flight arrangements, allowing you to focus on your crew, passengers, and ensuring a seamless flight experience. Our core mission is delivering exceptional service quality while prioritizing the wellbeing of our clients.
               </p>
               <p>
-                We are committed to providing top-notch services, guaranteeing a seamless, enjoyable travel experience for everyone involved. Our team, available around the clock, every day of the year, is dedicated to fulfilling your flight requirements with efficiency and expertise. Whether it's permit facilitation, ground handling, or refueling, we cover all facets of flight support to ensure your operations are hassle-free.
+                Our 24/7 team is dedicated to fulfilling your flight requirements with efficiency and expertise. From permit facilitation to ground handling and refueling, we cover all facets of flight support to ensure your operations remain hassle-free.
               </p>
-              <p>
-                Trust Smooth Flight Support to elevate your flight experience with our exceptional service and commitment to customer satisfaction.
-              </p>
+            </div>
+            
+            <div class="cta-container">
+              <a href="/services/allServices" class="cta-button">
+                <span>Explore Our Services</span>
+                <font-awesome-icon :icon="['fas', 'arrow-right-long']" />
+              </a>
             </div>
           </div>
           
           <div class="image-content">
             <div class="image-container">
-              <img src="/CompanyI/Overview/Aboutus.jpg" alt="About Smooth Flight Support" class="about-image">
+              <img src="/HomePage/RequestQQ/3.jpg" alt="About Smooth Flight Support" class="about-image">
               <div class="image-overlay"></div>
             </div>
             
@@ -54,6 +58,7 @@
           <div class="message-grid">
             <div class="director-image">
               <img src="/CompanyI/Overview/CEO.jpeg" alt="Director" class="director-photo">
+              <div class="image-overlay"></div>
             </div>
             
             <div class="message-content">
@@ -61,19 +66,13 @@
               
               <div class="message-text">
                 <p>
-                  Welcome to Smooth Flight Support, where excellence meets efficiency in ground handling services. It is an honor to lead a team dedicated to delivering unparalleled support for your aviation needs. At Smooth Flight Support, we understand that time is the most precious commodity in aviation, and our mission is to ensure every second counts.
+                  Welcome to Smooth Flight Support, where excellence meets efficiency in aviation services. It's my privilege to lead a team dedicated to providing unparalleled support for your aviation needs.
                 </p>
                 <p>
-                  Our commitment to excellence is reflected in our comprehensive range of services, from passenger handling and baggage assistance to refueling and aircraft maintenance. We take pride in our ability to provide tailored solutions that meet the unique demands of each client, ensuring seamless operations and exceptional customer experiences.
+                  At Smooth Flight Support, we understand that time is precious in aviation, and our mission is to ensure every second counts. Our comprehensive services range from passenger handling to aircraft maintenance, all delivered with precision and care.
                 </p>
                 <p>
-                  The aviation industry thrives on precision, safety, and reliability, and we uphold these values in everything we do. Our team of highly trained professionals is equipped with the latest technology and industry knowledge to support your operations, whether you're managing commercial flights, private jets, or cargo aircraft.
-                </p>
-                <p>
-                  Smooth Flight Support is more than a service provider; we are your trusted partner in achieving operational success. Our dedication to continuous improvement and innovation drives us to exceed expectations and set new standards in ground support services.
-                </p>
-                <p>
-                  Thank you for choosing Smooth Flight Support. We look forward to soaring to new heights together and ensuring that every journey with us is smooth and memorable.
+                  The aviation industry demands precision, safety, and reliability—values we uphold in everything we do. Our team of professionals is equipped with the latest technology to support your operations, whether you're managing commercial flights, private jets, or cargo aircraft.
                 </p>
                 <p class="signature">
                   Safe travels,<br>
@@ -90,6 +89,13 @@
     <section class="vision-mission-section">
       <div class="container">
         <div class="vm-grid">
+          <div class="image-content">
+            <div class="image-container">
+              <img src="/HomePage/SmoothFS/ManWPlane.jpg" alt="Vision and Mission" class="vm-image">
+              <div class="image-overlay"></div>
+            </div>
+          </div>
+          
           <div class="text-content">
             <div class="vm-cards">
               <div class="vm-card vision-card">
@@ -118,17 +124,10 @@
             </div>
             
             <div class="cta-container">
-              <a href="/services/allServices" class="cta-button">
-                <span>READ MORE</span>
+              <a href="/contactUs" class="cta-button">
+                <span>Contact Us Today</span>
                 <font-awesome-icon :icon="['fas', 'arrow-right-long']" />
               </a>
-            </div>
-          </div>
-          
-          <div class="image-content">
-            <div class="image-container">
-              <img src="/CompanyI/Overview/Our vision  mision.jpg" alt="Vision and Mission" class="vm-image">
-              <div class="image-overlay"></div>
             </div>
           </div>
         </div>
@@ -158,39 +157,6 @@
             </div>
             <h3 class="value-title">{{ value.title }}</h3>
             <p class="value-description">{{ value.description }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Team Section -->
-    <section class="team-section">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge">
-            <span class="badge-icon">
-              <font-awesome-icon :icon="['fas', 'users']" />
-            </span>
-            Our People
-          </div>
-          <h2 class="section-title">Expert Team</h2>
-          <p class="section-description">
-            Our dedicated team of aviation professionals brings years of industry experience to deliver exceptional service.
-          </p>
-        </div>
-        
-        <div class="team-grid">
-          <div class="team-member" v-for="(member, index) in teamMembers" :key="index">
-            <div class="member-photo-container">
-              <div class="member-photo-placeholder">
-                <font-awesome-icon :icon="['fas', 'user']" />
-              </div>
-            </div>
-            <div class="member-info">
-              <h3 class="member-name">{{ member.name }}</h3>
-              <p class="member-position">{{ member.position }}</p>
-              <p class="member-description">{{ member.description }}</p>
-            </div>
           </div>
         </div>
       </div>
@@ -233,28 +199,6 @@ export default {
           title: "Customer Focus",
           description: "We place our customers at the center of everything we do, tailoring our services to meet their unique needs.",
           icon: ['fas', 'heart']
-        }
-      ],
-      teamMembers: [
-        {
-          name: "Operations Director",
-          position: "Flight Operations",
-          description: "Oversees all flight operations and ensures seamless coordination of services."
-        },
-        {
-          name: "Ground Handling Manager",
-          position: "Ground Services",
-          description: "Manages ground handling operations with precision and efficiency."
-        },
-        {
-          name: "Permits Specialist",
-          position: "Regulatory Affairs",
-          description: "Expert in securing flight permits and navigating regulatory requirements."
-        },
-        {
-          name: "Customer Relations Lead",
-          position: "Client Services",
-          description: "Dedicated to ensuring exceptional client experiences and satisfaction."
         }
       ]
     }
@@ -395,6 +339,48 @@ section {
   font-size: 1rem;
 }
 
+.cta-container {
+  margin-top: 2rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: #88c607;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(136, 198, 7, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #183862;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 /* Director Message Section Styles */
 .director-section {
   background: #f1f5f9;
@@ -415,6 +401,7 @@ section {
 
 .director-image {
   height: 100%;
+  position: relative;
 }
 
 .director-photo {
@@ -539,47 +526,6 @@ section {
   margin: 0;
 }
 
-.cta-container {
-  margin-top: 2rem;
-}
-
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: #88c607;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.cta-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #183862;
-  z-index: -1;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.cta-button:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
 /* Core Values Section Styles */
 .values-section {
   background: #f1f5f9;
@@ -649,79 +595,6 @@ section {
 }
 
 .value-description {
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  font-size: 1rem;
-  color: #64748b;
-  line-height: 1.6;
-}
-
-/* Team Section Styles */
-.team-section {
-  background: white;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.team-member {
-  background: #f8fafc;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.team-member:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-  border-color: rgba(136, 198, 7, 0.3);
-}
-
-.member-photo-container {
-  height: 200px;
-  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.member-photo-placeholder {
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-}
-
-.member-info {
-  padding: 2rem;
-}
-
-.member-name {
-  font-family: 'Barlow-ExtraBold', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #183862;
-  margin-bottom: 0.5rem;
-}
-
-.member-position {
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  font-size: 1rem;
-  color: #88c607;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.member-description {
   font-family: 'SourceSansPro-Regular', sans-serif;
   font-size: 1rem;
   color: #64748b;
