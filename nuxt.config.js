@@ -114,7 +114,7 @@ export default {
     dirs: [
       {
         path: '~/components',
-        ignore: ['**/GroundHandlingDescription.vue']
+        ignore: ['**/GroundHandlingDescription.vue', '**/CrewPassengerDescription.vue']
       }
     ]
   },
