@@ -187,7 +187,7 @@
                     
                     <div class="bottom-links">
                         <a href="/Quality-Policy.pdf" target="_blank" class="bottom-link">Quality Policy</a>
-                        <NuxtLink to="/privacypolicy" class="bottom-link">Privacy Policy</a>
+                        <NuxtLink to="/privacypolicy" class="bottom-link">Privacy Policy</NuxtLink>
                     </div>
                     
                     <div class="credits">
