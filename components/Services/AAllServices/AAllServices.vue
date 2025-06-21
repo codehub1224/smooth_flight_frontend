@@ -1,108 +1,103 @@
 <template>
-  <div class="classM">
-    <div>
-      <div v-if="showSection1" class="Card cardA">
-        <AllSeTopicLine />
-      </div>
-
-      <div v-if="showSection2" class="Card cardA">
-        <AHTopicLine />
-      </div>
-
-      <div v-if="showSection3" class="Card cardA">
-        <BPTopicLine />
-      </div>
-
-      <div v-if="showSection4" class="Card cardA">
-        <ACTopicLine />
-      </div>
-
-      <div v-if="showSection5" class="Card cardA">
-        <DCTopicLine />
-      </div>
-
-      <div v-if="showSection6" class="Card cardA">
-        <ESTopicLine />
-      </div>
-
-      <div v-if="showSection7" class="Card cardA">
-        <FTTopicLine />
-      </div>
+  <div class="services-page">
+    <!-- Page Header -->
+    <div class="page-header">
+      <AllSeTopicLine />
     </div>
-    <div class="THClass">
-      <div class="leftItem">
-        <div class="topic">Our Services</div>
-        <div style="height: 100%;">
-          <button v-for="section in sections" :key="section.id" class="lSqItem" :class="{ activeSe: section.active }"
-            @click="toggleSection(section.id)">
-            {{ section.label }}
-          </button>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <div class="content-layout">
+          <!-- Services Navigation Sidebar -->
+          <aside class="services-sidebar">
+            <div class="sidebar-header">
+              <h2 class="sidebar-title">Our Services</h2>
+            </div>
+            
+            <nav class="services-nav">
+              <button 
+                v-for="section in sections" 
+                :key="section.id" 
+                class="nav-item" 
+                :class="{ active: section.active }"
+                @click="toggleSection(section.id)"
+              >
+                <span class="nav-icon">
+                  <font-awesome-icon :icon="getServiceIcon(section.id)" />
+                </span>
+                <span class="nav-label">{{ section.label }}</span>
+                <span class="nav-arrow">
+                  <font-awesome-icon :icon="['fas', 'chevron-right']" />
+                </span>
+              </button>
+            </nav>
+          </aside>
+
+          <!-- Content Area -->
+          <main class="content-area">
+            <!-- All Services Grid -->
+            <div v-if="showSection1" class="services-container">
+              <div class="services-intro">
+                <h2 class="intro-title">Comprehensive Aviation Services</h2>
+                <p class="intro-text">
+                  Smooth Flight Support offers a complete range of aviation services designed to meet all your flight support needs with excellence and reliability. Our expert team delivers professional solutions across every aspect of ground operations.
+                </p>
+              </div>
+              <AllSeImageItems />
+            </div>
+
+            <!-- Individual Service Content -->
+            <div v-else class="service-content">
+              <div class="service-layout">
+                <!-- Service Image -->
+                <div class="service-image">
+                  <div v-if="showSection2" class="image-wrapper">
+                    <AHImage />
+                  </div>
+                  <div v-if="showSection3" class="image-wrapper">
+                    <BPImage />
+                  </div>
+                  <div v-if="showSection4" class="image-wrapper">
+                    <ACImage />
+                  </div>
+                  <div v-if="showSection5" class="image-wrapper">
+                    <DCImage />
+                  </div>
+                  <div v-if="showSection6" class="image-wrapper">
+                    <ESImage />
+                  </div>
+                  <div v-if="showSection7" class="image-wrapper">
+                    <FTImage />
+                  </div>
+                </div>
+
+                <!-- Service Description -->
+                <div class="service-description">
+                  <div v-if="showSection2" class="description-content">
+                    <AHParaLine />
+                  </div>
+                  <div v-if="showSection3" class="description-content">
+                    <BPParaLine />
+                  </div>
+                  <div v-if="showSection4" class="description-content">
+                    <ACParaLine />
+                  </div>
+                  <div v-if="showSection5" class="description-content">
+                    <DCParaLine />
+                  </div>
+                  <div v-if="showSection6" class="description-content">
+                    <ESParaLine />
+                  </div>
+                  <div v-if="showSection7" class="description-content">
+                    <FTParaLine />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
         </div>
       </div>
-
-      <div class="RightItemB">
-
-        <div v-if="showSection2" class="Card cardA">
-          <AHImage />
-        </div>
-
-        <div v-if="showSection3" class="Card cardA">
-          <BPImage />
-        </div>
-
-        <div v-if="showSection4" class="Card cardA">
-          <ACImage />
-        </div>
-
-        <div v-if="showSection5" class="Card cardA">
-          <DCImage />
-        </div>
-
-        <div v-if="showSection6" class="Card cardA">
-          <ESImage />
-        </div>
-
-        <div v-if="showSection7" class="Card cardA">
-          <FTImage />
-        </div>
-
-      </div>
-
-      <div class="RightItemA">
-
-        <div v-if="showSection2" class="Card cardA">
-          <AHParaLine />
-        </div>
-
-        <div v-if="showSection3" class="Card cardA">
-          <BPParaLine />
-        </div>
-
-        <div v-if="showSection4" class="Card cardA">
-          <ACParaLine />
-        </div>
-
-        <div v-if="showSection5" class="Card cardA">
-          <DCParaLine />
-        </div>
-
-        <div v-if="showSection6" class="Card cardA">
-          <ESParaLine />
-        </div>
-
-        <div v-if="showSection7" class="Card cardA">
-          <FTParaLine />
-        </div>
-      </div>
-
-
-      <div>
-        <div v-if="showSection1" class="Card cardA">
-          <AllSeImageItems />
-        </div>
-
-      </div>
-
     </div>
   </div>
 </template>
@@ -137,48 +132,40 @@ import FTImage from '~/components/Services/FHRTransportation/SubFT/FTImage.vue'
 
 export default {
   components: {
-
     AllSeTopicLine,
     AllSeImageItems,
-
     AHTopicLine,
     AHParaLine,
     AHImage,
-
     BPTopicLine,
     BPParaLine,
     BPImage,
-
     ACTopicLine,
     ACParaLine,
     ACImage,
-
     DCTopicLine,
     DCParaLine,
     DCImage,
-
     ESTopicLine,
     ESParaLine,
     ESImage,
-
     FTTopicLine,
     FTParaLine,
     FTImage,
-
   },
   data: () => ({
     sections: [
       { id: 1, label: 'All Services', active: true },
-      { id: 3, label: 'Permits', active: false },
       { id: 2, label: 'Ground Handling', active: false },
+      { id: 3, label: 'Permits', active: false },
       { id: 4, label: 'Aircraft Fueling', active: false },
       { id: 5, label: 'Catering', active: false },
       { id: 6, label: 'Crew & Passenger Service', active: false },
       { id: 7, label: 'HOTAC', active: false },
     ],
     showSection1: true,
-    showSection3: false,
     showSection2: false,
+    showSection3: false,
     showSection4: false,
     showSection5: false,
     showSection6: false,
@@ -198,206 +185,329 @@ export default {
       this.showSection6 = sectionId === 6;
       this.showSection7 = sectionId === 7;
     },
+    getServiceIcon(sectionId) {
+      const icons = {
+        1: ['fas', 'list-alt'],
+        2: ['fas', 'truck'],
+        3: ['fas', 'file-alt'],
+        4: ['fas', 'gas-station'],
+        5: ['fas', 'utensils'],
+        6: ['fas', 'users'],
+        7: ['fas', 'hotel']
+      };
+      return icons[sectionId] || ['fas', 'check'];
+    }
   },
 };
 </script>
 
 <style scoped>
-/* .a {
-  text-decoration: none;
-  color: #aaaaaa !important;
-} */
+@import '../../../assets/fonts.css';
 
-
-.THClass {
-  width: 100%;
-  display: flex;
-  padding-top: 5%;
-  padding-left: 7.5%;
-  padding-right: 7.5%;
-  padding-bottom: 2.5%;
-  animation: fade 1.5s 1.5s both;
+.services-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  animation: fadeIn 0.8s ease-out;
 }
 
-@keyframes fade {
-  0% {
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transform: translate(0, 4rem);
   }
-
-  100% {
+  to {
     opacity: 1;
-    transform: translate(0, 0);
   }
 }
 
-.leftItem {
-  width: 15%;
-  background-color: rgb(255, 255, 255);
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.RightItemA {
-  width: 40%;
-  background-color: rgb(255, 255, 255);
-  padding: 0px 10px 20px 20px;
-  margin-top: 0%;
-  animation: fade 1.5s 1.5s both;
+.content-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  padding: 60px 0;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: translate(0, 4rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+/* Services Sidebar */
+.services-sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.RightItemB {
-  width: 45%;
-  background-color: rgb(255, 255, 255);
-  margin-left: 12%;
-  animation: fade 1.5s 1.5s both;
+.sidebar-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
+  color: white;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: translate(0, 4rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-
+.sidebar-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  position: relative;
 }
 
-.topic {
-  text-align: left;
-  font-size: 27px;
-  font-weight: 900;
-  padding-bottom: 30px;
+.sidebar-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #88c607;
+  border-radius: 2px;
 }
 
-.lSqItem {
-  width: 300px;
-  padding: 15px 10px;
-  margin-bottom: 2px !important;
-  background-color: #f0f0f0;
+.services-nav {
+  padding: 1rem 0;
+}
+
+.nav-item {
   display: flex;
   align-items: center;
-  font-size: 16px;
-  font-weight: 700;
-  color: #aaaaaa !important;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 1rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
 }
 
-.activeSe {
-  background-color: #88c607;
-  color: white !important;
+.nav-item:hover {
+  background-color: #f1f5f9;
+  color: #183862;
+  transform: translateX(5px);
 }
 
-/* .paraLine {
-  text-align: justify;
-  font-size: 16px;
-  color: #aaaaaa;
-} */
-
-h4 {
-  color: #aaaaaa;
+.nav-item.active {
+  background-color: #f1f5f9;
+  color: #183862;
+  font-weight: 600;
+  border-left: 3px solid #88c607;
 }
 
-@media only screen and (max-width: 500px) {
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  color: #88c607;
+}
 
-  .classM {
-    display: block;
+.nav-label {
+  flex: 1;
+}
+
+.nav-arrow {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover .nav-arrow,
+.nav-item.active .nav-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Content Area */
+.content-area {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Services Container */
+.services-container {
+  padding: 2rem;
+}
+
+.services-intro {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.intro-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #183862;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.intro-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #88c607;
+  border-radius: 2px;
+}
+
+.intro-text {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Service Content */
+.service-content {
+  padding: 2rem;
+}
+
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.service-image {
+  position: relative;
+}
+
+.image-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.image-wrapper:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-description {
+  padding: 1rem 0;
+}
+
+.description-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .topic {
-    display: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .THClass {
-    width: 100%;
-    display: block;
-    padding-top: 5%;
-    padding-left: 7.5%;
-    padding-right: 7.5%;
-    padding-bottom: 2.5%;
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .content-layout {
+    gap: 30px;
   }
+}
 
-  .leftItem {
-    width: 100%;
+@media (max-width: 992px) {
+  .content-layout {
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
   }
-
-  .RightItemA {
-    width: 100%;
+  
+  .service-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
-
-  .RightItemB {
-    width: 100%;
-    background-color: rgb(255, 255, 255);
+  
+  .sidebar-title {
+    font-size: 1.25rem;
   }
-
-
-  .lSqItem {
-    display: none;
+  
+  .nav-item {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
   }
-
-  .topic {
-    display: none;
-
+  
+  .intro-title {
+    font-size: 1.75rem;
   }
-
-  @media only screen and (min-width: 768px) and (max-width: 1280px) {
-    .lSqItem {
-      width: 300px;
-      padding: 15px 10px;
-      margin-bottom: 2px !important;
-      background-color: #f0f0f0;
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: #aaaaaa !important;
-    }
-
-    .activeSe {
-      background-color: #88c607;
-      color: white !important;
-    }
+  
+  .intro-text {
+    font-size: 1rem;
   }
+}
 
-  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media (max-width: 768px) {
+  .content-layout {
+    grid-template-columns: 1fr;
+    padding: 30px 0;
+  }
+  
+  .services-sidebar {
+    position: relative;
+    top: 0;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar-header {
+    padding: 1.25rem;
+  }
+  
+  .services-container,
+  .service-content {
+    padding: 1.5rem;
+  }
+}
 
-
-
-    .topic {
-      text-align: left;
-      font-size: 22px;
-      font-weight: 900;
-      padding-bottom: 30px;
-    }
-
-    .lSqItem {
-      width: 300px;
-      padding: 15px 10px;
-      margin-bottom: 2px !important;
-      background-color: #f0f0f0;
-      display: flex;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: #aaaaaa !important;
-    }
-
-    .activeSe {
-      background-color: #88c607;
-      color: white !important;
-    }
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .content-layout {
+    padding: 20px 0;
+  }
+  
+  .services-container,
+  .service-content {
+    padding: 1rem;
+  }
+  
+  .nav-item {
+    padding: 0.75rem 1rem;
+  }
+  
+  .intro-title {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  .intro-title::after {
+    width: 60px;
+    height: 3px;
   }
 }
 </style>
