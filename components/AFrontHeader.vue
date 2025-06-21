@@ -1,757 +1,462 @@
 <template>
-  <div class="f" cols="12" xs="12" sm="12" md="12">
-    <div class="Mobile">
+  <div class="header-container" cols="12" xs="12" sm="12" md="12">
+    <div class="mobile-header">
       <BFrontHeader />
     </div>
-    <div class="Desktop" style="background-color:#183862; height: 200px !important;">
-      <div class="classM">
-
-
-        <div class="classB"></div>
-        <div class="whiteClass">
-          <div class="logoClass">
-            <NuxtLink class="nlink" to="/">
-              <img class="pngLogo" src="/Header/smoothLogo.png" alt="Smooth LOGO">
+    <div class="desktop-header">
+      <div class="header-wrapper">
+        <div class="top-bar">
+          <div class="logo-section">
+            <NuxtLink class="logo-link" to="/">
+              <img class="logo" src="/Header/smoothLogo.png" alt="Smooth Flight Support - Aviation Services Sri Lanka">
             </NuxtLink>
           </div>
-          <div class="headerDetails">
-
-            <div class="hDetails">
-
-              <div class="headLine LineA" style="display: flex;">
-                <span class="mdi mdi-phone Icons"></span>
-                <div class="outlineClass ouClassA" style="display: inline-block !important;">
-                  <div>Call Us Anytime</div>
-                  <div class="seOuClass">(+94) 314354400</div>
-                </div>
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="mdi mdi-phone contact-icon"></span>
+              <div class="contact-details">
+                <div class="contact-label">Call Us Anytime</div>
+                <div class="contact-value">(+94) 314354400</div>
               </div>
-
-              <div class="headLine LineB" style="display: flex;">
-                <span class="mdi mdi-timer-outline Icons"></span>
-                <div class="outlineClass ouClassB" style="display: inline-block;">
-                  <div>Openning Time</div>
-                  <div class="seOuClass">24 Hrs</div>
-                </div>
-              </div>
-
-              <div class="headLine LineC" style="display: flex;">
-                <span class="mdi mdi-email-multiple-outline Icons"></span>
-                <div class="outlineClass" style="display: inline-block;">
-                  <div>Email Us</div>
-                  <div class="seOuClass">info@smoothflightsupport.lk</div>
-                </div>
-              </div>
-
-              <a href="/apermit/applypermit" class="headLine btn">
-
-                <button>
-                  <!-- mdi-whatsapp -->
-                  <span class="mdi">Apply Permit<font-awesome-icon style="padding-left: 5px; font-size: 13px;"
-                      :icon="['fas', 'arrow-right-long']" /></span>
-                </button>
-              </a>
             </div>
 
-          </div>
-
-
-          <div class="outerBody">
-
-            <div class="body">
-              <nav>
-                <div class="dropbtn bmLine">
-                  <NuxtLink class="mainLine a" to="/">Home</NuxtLink>
-                </div>
-                <!-- <a href="javascript:void(0)" class="dropbtn mainLine">Company</a>
-    <a href="javascript:void(0)" class="dropbtn mainLine">Services</a> -->
-                <div class="dropdown">
-                  <div class="dropbtn drpBtn bmLine">Company <span class="mdi mdi-menu-down"></span></div>
-                  <div class="dropdown-content">
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/company/overview">Overview</NuxtLink>
-                    </div>
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/company/careers">Careers</NuxtLink>
-                    </div>
-
-                    <div class="classA"><a href="https://blog.smoothflightsupport.lk/category/csr/" class="a dropText"
-                        target="_blank">Corporate Social Responsibility</a></div>
-
-
-                    <!-- <div class="classA">
-                      <NuxtLink class="a dropText" to="https://blog.smoothflightsupport.lk/category/csr/" target="_blank">Corporate Social Responsibility</NuxtLink>
-                    </div> -->
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <div class="dropbtn drpBtn bmLine">Services<span class="mdi mdi-menu-down menu"></span></div>
-                  <div class="dropdown-content">
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/services/permitsA">Permits</NuxtLink>
-                    </div>
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/services/groundHandling">Ground Handling</NuxtLink>
-                    </div>
-
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/services/aircraftFueling">Aircraft Fueling</NuxtLink>
-                    </div>
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/services/catering">Catering</NuxtLink>
-                    </div>
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/services/crewpassengerservice">Crew & Passenger Service
-                      </NuxtLink>
-                    </div>
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/services/hotelReservationTransportation">Hotel Reservation &
-                        Transportation</NuxtLink>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <div class="dropbtn drpBtn bmLine">e Services<span class="mdi mdi-menu-down menu"></span></div>
-                  <div class="dropdown-content">
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/apermit/applypermit">Apply Permits</NuxtLink>
-                    </div>
-                    
-                    <div class="classA">
-                      <NuxtLink class="a dropText" to="/eServices/getTripCostEstimate">Get Trip Cost Estimate</NuxtLink>
-                    </div>
-                    <div class="classA"><a href="https://eta.gov.lk/slvisa/" class="a dropText" target="_blank">Apply e
-                        visa</a></div>
-                  </div>
-                </div>
-                <div class="dropbtn bmLine">
-                  <a href="https://blog.smoothflightsupport.lk" target="_blank" class="mainLine a">Blog</a>
-                </div>
-
-                <!-- <div class="dropbtn bmLine">
-                  <NuxtLink class="mainLine a" to="/privacypolicy">Privacy Policy</NuxtLink>
-                </div> -->
-                <div class="dropbtn bmLine">
-                  <NuxtLink class="mainLine a" to="/contactUs">Contact Us</NuxtLink>
-                </div>
-
-                <div class="faIconList dropbtn" style="display: flex; z-index: 2; padding-left: 30%;">
-                  <a class="iconA" href="https://www.facebook.com/SmoothflightCmb" target="_blank">
-                    <div class="Fcn fontFA"><font-awesome-icon class="fAIcon" :icon="['fab', 'facebook-f']" /></div>
-                  </a>
-                  <a class="iconA" href="https://twitter.com/flight_smooth" target="_blank">
-                    <div class="Fcn fontFA"><font-awesome-icon class="fAIcon" :icon="['fab', 'x-twitter']" /></div>
-                  </a>
-                  <!-- <div class="Fcn fontFA"><font-awesome-icon class="fAIcon" :icon="['fab', 'twitter']"/></div> -->
-                  <a class="iconA" href="https://www.instagram.com/smoothflightsupport/" target="_blank">
-                    <div class="Fcn fontFA"><font-awesome-icon class="fAIcon" :icon="['fab', 'instagram']" /></div>
-                  </a>
-                  <a class="iconA" href="https://www.linkedin.com/company/smooth-flight-support-pvt-ltd"
-                    target="_blank">
-                    <div class="Fcn fontFA"><font-awesome-icon class="fAIcon" :icon="['fab', 'linkedin-in']" /></div>
-                  </a>
-                </div>
-
-              </nav>
-              <!-- Your other content goes here -->
+            <div class="contact-item">
+              <span class="mdi mdi-timer-outline contact-icon"></span>
+              <div class="contact-details">
+                <div class="contact-label">Opening Time</div>
+                <div class="contact-value">24 Hrs</div>
+              </div>
             </div>
+
+            <div class="contact-item">
+              <span class="mdi mdi-email-multiple-outline contact-icon"></span>
+              <div class="contact-details">
+                <div class="contact-label">Email Us</div>
+                <div class="contact-value">info@smoothflightsupport.lk</div>
+              </div>
+            </div>
+
+            <NuxtLink to="/apermit/applypermit" class="cta-button">
+              Apply Permit
+              <font-awesome-icon class="cta-icon" :icon="['fas', 'arrow-right-long']" />
+            </NuxtLink>
           </div>
         </div>
+
+        <nav class="main-navigation">
+          <div class="nav-container">
+            <NuxtLink class="nav-link" to="/">Home</NuxtLink>
+            
+            <div class="dropdown">
+              <button class="nav-link dropdown-trigger">
+                Company 
+                <span class="mdi mdi-chevron-down dropdown-icon"></span>
+              </button>
+              <div class="dropdown-menu">
+                <NuxtLink class="dropdown-item" to="/company/overview">Overview</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/company/careers">Careers</NuxtLink>
+                <a class="dropdown-item" href="https://blog.smoothflightsupport.lk/category/csr/" target="_blank">
+                  Corporate Social Responsibility
+                </a>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <button class="nav-link dropdown-trigger">
+                Services
+                <span class="mdi mdi-chevron-down dropdown-icon"></span>
+              </button>
+              <div class="dropdown-menu">
+                <NuxtLink class="dropdown-item" to="/services/permitsA">Permits</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/groundHandling">Ground Handling</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/aircraftFueling">Aircraft Fueling</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/catering">Catering</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/crewpassengerservice">Crew & Passenger Service</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/services/hotelReservationTransportation">Hotel Reservation & Transportation</NuxtLink>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <button class="nav-link dropdown-trigger">
+                e Services
+                <span class="mdi mdi-chevron-down dropdown-icon"></span>
+              </button>
+              <div class="dropdown-menu">
+                <NuxtLink class="dropdown-item" to="/apermit/applypermit">Apply Permits</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/eServices/getTripCostEstimate">Get Trip Cost Estimate</NuxtLink>
+                <a class="dropdown-item" href="https://eta.gov.lk/slvisa/" target="_blank">Apply e visa</a>
+              </div>
+            </div>
+
+            <a href="https://blog.smoothflightsupport.lk" target="_blank" class="nav-link">Blog</a>
+            <NuxtLink class="nav-link" to="/contactUs">Contact Us</NuxtLink>
+
+            <div class="social-links">
+              <a class="social-link" href="https://www.facebook.com/SmoothflightCmb" target="_blank" aria-label="Facebook">
+                <font-awesome-icon :icon="['fab', 'facebook-f']" />
+              </a>
+              <a class="social-link" href="https://twitter.com/flight_smooth" target="_blank" aria-label="Twitter">
+                <font-awesome-icon :icon="['fab', 'x-twitter']" />
+              </a>
+              <a class="social-link" href="https://www.instagram.com/smoothflightsupport/" target="_blank" aria-label="Instagram">
+                <font-awesome-icon :icon="['fab', 'instagram']" />
+              </a>
+              <a class="social-link" href="https://www.linkedin.com/company/smooth-flight-support-pvt-ltd" target="_blank" aria-label="LinkedIn">
+                <font-awesome-icon :icon="['fab', 'linkedin-in']" />
+              </a>
+            </div>
+          </div>
+        </nav>
       </div>
-
     </div>
-
-    <div>
-
-
-
-    </div>
-
-
-
   </div>
 </template>
 
 <script>
-
-// const btn = Document.querySelector('.btn');
-// btn.onmousemove = function (e) {
-//   const x = e.pageX - btn.offsetLeft;
-//   const y = e.pageY - btn.offsetTop;
-//   btn.style.setProperty('--x', x + 'px');
-//   btn.style.setProperty('--y', y + 'px');
-// }
+export default {
+  name: 'AFrontHeader'
+}
 </script>
 
 <style scoped>
 @import '../assets/fonts.css';
 
-.Mobile {
+.mobile-header {
   display: none;
 }
 
-/* .btnLink{
-
-} */
-.menu {
-  padding-left: 5px;
+.desktop-header {
+  display: block;
 }
 
-.classM {
+.header-container {
   width: 100%;
-  height: 170px !important;
-}
-
-.classB {
-  width: 100%;
-  height: 30px;
-  /* background-color: #1f425d; */
-  /* background-color: #081729; */
-  background-color: #183862;
-}
-
-.whiteClass {
-  background-color: rgb(255, 196, 0);
-  display: flex;
-  width: 100%;
-  height: 150px !important;
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 
-.logoClass {
-  width: 25%;
-  height: 100%;
-  background-color: rgb(255, 255, 255);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  padding-bottom: 0.6%;
+.header-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.pngLogo {
-  width: 60%;
-  height: 80%;
-}
-
-
-/* .faIconList{
-
-} */
-
-.headerDetails {
-  height: 70%;
-  width: 75%;
-  background-color: rgb(255, 255, 255) !important;
-  float: right;
-  padding: 10px;
-  display: flex;
-}
-
-.hDetails {
-  right: 0;
+.top-bar {
   display: flex;
   align-items: center;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.headLine {
-  text-wrap: nowrap;
-  padding-right: 2% !important;
+.logo-section {
+  flex-shrink: 0;
 }
 
-.ouClassA,
-.ouClassB {
-  border-right: 2px solid black;
+.logo-link {
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.seOuClass {
-  font-weight: 700;
+.logo-link:hover {
+  transform: scale(1.05);
 }
 
-.outlineClass {
-  padding-right: 20px;
-  padding-left: 10px;
-  font-size: 15px;
-  font-family: 'Roboto';
+.logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
-
-.btn {
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 15px;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
-  padding-left: 4.5%;
-  padding-right: 4.5% !important;
-  margin-left: 15%;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  background: #88c607;
-  color: white;
-  z-index: 1;
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.btn::after {
-  border-radius: 6px;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #183862;
-  z-index: -1;
-  transform: scale(0);
-  transform-origin: bottom right;
-  transition: transform 200ms ease-in;
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 2rem;
+  border-right: 2px solid #e5e7eb;
 }
 
-.btn:hover::after {
-  transform: scale(1);
-  transform-origin: top left;
+.contact-item:last-of-type {
+  border-right: none;
+  padding-right: 0;
 }
 
-
-.Icons {
-  font-size: 22px;
+.contact-icon {
+  font-size: 1.25rem;
   color: #88c607;
+  flex-shrink: 0;
 }
 
-.iconA {
-  color: #081729;
-  text-decoration: none;
-}
-
-.outerBody {
-  height: 10dvh !important;
-  width: 100%;
-  position: absolute;
-  top: 70%;
-}
-
-
-.fontFA {
-  font-size: 22px;
-  /* padding: 5px 10px; */
-  margin-right: 5px;
-  border-radius: 5px;
-  /* color: #1f425d; */
-  color: #081729;
-  background-color: rgba(255, 255, 255, 0.589);
-}
-
-.whiteClass {
-  background-color: white;
-  height: 100%;
-}
-
-.body {
-  margin: 0;
-  background-origin: 0%;
-  padding: 0;
-  bottom: 0% !important;
-}
-
-nav {
-  background-color: #f7f7f700;
-  /* background-color: #183862; */
-  position: relative;
-  z-index: 0;
-  padding: 0px;
-  padding-left: 25%;
-  height: 100%;
-  max-height: 100%;
+.contact-details {
   display: flex;
-  justify-content: space-around;
-  color: white;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
-nav::before {
+.contact-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.contact-value {
+  font-size: 0.875rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(136, 198, 7, 0.3);
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(24, 56, 98, 0.4);
+}
+
+.cta-icon {
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .cta-icon {
+  transform: translateX(4px);
+}
+
+.main-navigation {
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
+  position: relative;
+}
+
+.main-navigation::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(22.5% 50%, 25% 0, 100% 0, 100% 50%, 100% 100%, 30% 100%, 0 100%, 0 50%);
-  z-index: 0;
-  /* background-color: #1f425d; */
-  /* background-color: #081729; */
-  background-color: #183862;
+  right: 0;
+  bottom: 0;
+  background: url('/HomePage/WhyChUs/BackgroundImgB.png') center/cover;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
-nav .a,
-.dropbtn {
-  text-decoration: none;
-  align-items: center;
+.nav-container {
   display: flex;
-  color: white;
-  text-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
   position: relative;
-  /* Add this line */
   z-index: 1;
-  /* Add this line */
 }
 
-.drpBtn {
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1.25rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
   cursor: pointer;
-  width: 100%;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #88c607;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+.nav-link:hover {
+  color: #88c607;
+  transform: translateY(-2px);
 }
 
 .dropdown {
   position: relative;
+}
+
+.dropdown-trigger {
   display: flex;
-  top: 0%;
-  bottom: 0%;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-.dropdown-content {
-  display: none;
+.dropdown-icon {
+  font-size: 0.875rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
   position: absolute;
-  background-color: #ffffff;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
   top: 100%;
-}
-
-.dropText:hover {
-  color: rgb(255, 255, 255) !important;
-  /* background-color: #1f425d; */
-  /* background-color: #081729; */
-  background-color: #183862;
-}
-
-/* a:active{
-      color: red;
-    } */
-
-/* .dropdown:hover .dropdown-content,
-    .dropdown:focus-within .dropdown-content {
-      display: block;
-    } */
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content .a {
-  color: rgb(36, 36, 36);
-  padding: 10px 16px;
-  border-bottom: 1px solid #18386257;
-  display: block;
-  text-decoration: none;
-}
-
-/* .bmLine:hover{
-      border-bottom: 5px solid red !important; 
-    } */
-
-.bmLine {
-  padding: 20px 10px;
-  position: relative;
-  font-size: 16px !important;
-
-}
-
-.bmLine::before {
-  content: '';
-  position: absolute;
   left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 5px;
-  background-color: transparent;
-  transition: 0.3s ease;
+  min-width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 1px solid #e5e7eb;
 }
 
-.bmLine:hover::before {
-  background-color: #88c607;
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-.dropText {
-  font-size: 15px !important;
+.dropdown-item {
+  display: block;
+  padding: 0.875rem 1.25rem;
+  color: #374151;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f3f4f6;
 }
 
-.a {
-  cursor: pointer;
+.dropdown-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 12px 12px;
 }
 
-.Fcn {
+.dropdown-item:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
+  color: white;
+  transform: translateX(8px);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 2rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.Fcn:hover {
-  background-color: white !important;
-  cursor: pointer;
+.social-link:hover {
+  background: #88c607;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(136, 198, 7, 0.4);
 }
 
-.logoClass:hover {
-  background-color: white !important;
-}
-
-.nlink {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  /* background-color: #88c607; */
-}
-
-.nlink:hover {
-  background-color: white;
-}
-
-
-
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-
-  .btn {
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    padding-left: 4.5%;
-    padding-right: 4.5% !important;
-    margin-left: 2%;
-    cursor: pointer;
-    position: relative;
-    display: inline-flex;
-    background: #88c607;
-    color: white;
-    z-index: 1;
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .contact-info {
+    gap: 1rem;
   }
-
-  .outlineClass {
-    font-size: 12px;
-  }
-
-  .iconA {
-    width: 100%;
-    height: 100%;
-
-
-  }
-
-  nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(20% 45%, 25% 0, 100% 0, 100% 45%, 100% 100%, 30% 100%, 0 100%, 0 45%);
-    z-index: 0;
-
-    background-color: #183862;
-  }
-
-
-  .fontFA {
-    font-size: 20px;
-    padding: 5px 5px;
-    /* margin-right: 15px; */
-    border-radius: 5px;
-    /* color: #1f425d; */
-    color: #081729;
-    background-color: rgba(255, 255, 255, 0.589);
-  }
-
-
-  .Fcn {
-    width: 33px;
-    height: 33px;
-
-
-  }
-
-  .faIconList {
-    margin-right: 2.3%;
-    padding: 1%;
-    margin-top: 0.4%;
-  }
-
-  .bmLine {
-    padding: 22px 4px;
-    position: relative;
-    font-size: 13px !important;
-  }
-
-
-  .dropText {
-    font-size: 14px !important;
-  }
-
-
-
-  .LineD {
-    font-size: 14px;
-    margin-left: 1%;
+  
+  .contact-item {
+    padding-right: 1rem;
   }
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-
-  .iconA {
-    width: 100%;
-    height: 100%;
-
+@media (max-width: 1024px) {
+  .top-bar {
+    padding: 0.75rem 1rem;
   }
-
-  .fAIcon {
-    font-size: 25px;
-
+  
+  .nav-container {
+    padding: 0 1rem;
   }
-
-  .Fcn {
-    width: 35px;
-    height: 35px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  
+  .contact-info {
+    gap: 0.75rem;
   }
-
-  .faIconList {
-    margin-right: 3.3%;
-    padding: 1.2%;
-    margin-top: 0.4%;
+  
+  .contact-label,
+  .contact-value {
+    font-size: 0.75rem;
   }
-
-  .bmLine {
-    padding: 20px 10px;
-    position: relative;
-    font-size: 15px !important;
-  }
-
-
-  .dropText {
-    font-size: 15px !important;
-  }
-
-  .LineD {
-    font-size: 15px;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    padding-left: 4.5%;
-    padding-right: 4.5% !important;
-    margin-left: 7%;
+  
+  .social-links {
+    margin-left: 1rem;
   }
 }
 
-@media only screen and (min-width: 1281px) and (max-width: 1366px) {
-  .iconA {
-    width: 100%;
-    height: 100%;
-
-  }
-
-  .fAIcon {
-    font-size: 25px;
-
-  }
-
-  .Fcn {
-    width: 40px;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  .faIconList {
-    margin-right: 3.3%;
-    padding: 1.2%;
-    margin-top: 0.4%;
-  }
-
-  .bmLine {
-    padding: 20px 14px;
-    position: relative;
-    font-size: 14px !important;
-  }
-
-
-  .dropText {
-    font-size: 14px !important;
-  }
-
-  .LineD {
-    font-size: 14px;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    padding-left: 4.5%;
-    padding-right: 4.5% !important;
-    margin-left: 7%;
-  }
-}
-
-@media only screen and (min-width: 1367px) and (max-width: 1440px) {
-  .iconA {
-    width: 100%;
-    height: 100%;
-
-  }
-
-  .fAIcon {
-    font-size: 25px;
-
-  }
-
-  .Fcn {
-    width: 35px;
-    height: 35px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  .faIconList {
-    margin-right: 3.3%;
-    padding: 1.2%;
-    margin-top: 0.4%;
-  }
-
-  .bmLine {
-    padding: 20px 10px;
-    position: relative;
-    font-size: 15px !important;
-  }
-
-
-  .dropText {
-    font-size: 15px !important;
-  }
-
-  .LineD {
-    font-size: 15px;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    padding-left: 4.5%;
-    padding-right: 4.5% !important;
-    margin-left: 7%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-
-  .Desktop {
+@media (max-width: 768px) {
+  .desktop-header {
     display: none;
   }
-
-  .Mobile {
+  
+  .mobile-header {
     display: block;
   }
+}
 
-
-
+@media (max-width: 640px) {
+  .contact-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .contact-item {
+    border-right: none;
+    padding-right: 0;
+  }
 }
 </style>
+</template>
