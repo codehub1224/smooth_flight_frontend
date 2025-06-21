@@ -1,1045 +1,520 @@
 <template>
-    <div class="classM">
+    <div class="welcome-section">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Text Content -->
+                <div class="text-content">
+                    <div class="section-badge">
+                        <span class="badge-icon">✈</span>
+                        Welcome to Excellence
+                    </div>
+                    
+                    <div class="heading-group">
+                        <h1 class="main-title">
+                            <span class="title-line">Hello There and</span>
+                            <span class="title-highlight">Welcome</span>
+                        </h1>
+                        <h2 class="subtitle">Who We Are</h2>
+                    </div>
 
-        <div class="classB">
-            <div class="textClass">
-                <div class="topicM">Hello There and Welcome</div>
-                <div class="topicB">Who We Are.</div>
-                <div class="textP">
-                    Smooth Flight Support, a leading provider of flight support services in Sri Lanka, was
-                    established
-                    in
-                    2019 and is ISO 9001:2015 certified. Since its inception, the company has experienced
-                    significant
-                    growth. We specialize in providing unparalleled support for flight operations, including permit
-                    facilitation, ground handling, and refueling. Our commitment to excellence and professionalism
-                    has
-                    propelled us to the forefront of the industry, making us the preferred choice for aircraft
-                    operators
-                    in
-                    search of reliable and efficient flight support. As your local handling agent, Smooth Flight
-                    Support
-                    takes care of all your flight arrangements, freeing you to concentrate more on your crew,
-                    passengers,
-                    and the flight itself.
-                    <!-- <a href="#">Read More</a> -->
+                    <div class="description">
+                        <p class="lead-text">
+                            Smooth Flight Support, a leading provider of flight support services in Sri Lanka, was established in 2019 and is ISO 9001:2015 certified.
+                        </p>
+                        <p class="body-text">
+                            Since its inception, the company has experienced significant growth. We specialize in providing unparalleled support for flight operations, including permit facilitation, ground handling, and refueling. Our commitment to excellence and professionalism has propelled us to the forefront of the industry, making us the preferred choice for aircraft operators in search of reliable and efficient flight support.
+                        </p>
+                        <p class="body-text">
+                            As your local handling agent, Smooth Flight Support takes care of all your flight arrangements, freeing you to concentrate more on your crew, passengers, and the flight itself.
+                        </p>
+                    </div>
+
+                    <!-- Vision & Mission Cards -->
+                    <div class="value-cards">
+                        <div class="value-card vision-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <font-awesome-icon :icon="['fas', 'eye']" />
+                                </div>
+                                <h3 class="card-title">Our Vision</h3>
+                            </div>
+                            <p class="card-text">
+                                To be the leader in the ground flight support sector while providing our clients exceptional service in every aspect comply with international standards with the cutting-edge technology in Sri Lanka.
+                            </p>
+                        </div>
+
+                        <div class="value-card mission-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <font-awesome-icon :icon="['fas', 'bullseye']" />
+                                </div>
+                                <h3 class="card-title">Our Mission</h3>
+                            </div>
+                            <p class="card-text">
+                                To provide our clients the best solutions in the ground handling services with reliable, safe, fast and effective operation ensuring the best quality service.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="itemCard">
-
-                    <div class="downItem dItemA" style="text-align: center;">
-                        <div>
-                            <div class="TP">Our Vision</div>
-                            <div style="display: flex;">
-                                <font-awesome-icon class="faIcon fIcA" :icon="['fas', 'eye-low-vision']" />
-                                <p class="itemP">To be the leader in the ground flight support
-                                    sector while
-                                    providing our clients exceptional service in every aspect
-                                    comply with the cutting-edge technology in srilanka
-                                </p>
+                <!-- Image Gallery -->
+                <div class="image-gallery">
+                    <div class="gallery-grid">
+                        <div class="image-card main-image">
+                            <img src="/HomePage/RequestQQ/3.jpg" alt="Aviation Services" class="gallery-img">
+                            <div class="image-overlay">
+                                <span class="overlay-text">Professional Service</span>
+                            </div>
+                        </div>
+                        
+                        <div class="image-card secondary-image">
+                            <img src="/HomePage/RequestQQ/2.jpg" alt="Ground Handling" class="gallery-img">
+                            <div class="image-overlay">
+                                <span class="overlay-text">Ground Handling</span>
+                            </div>
+                        </div>
+                        
+                        <div class="image-card secondary-image">
+                            <img src="/HomePage/RequestQQ/1.jpg" alt="Aircraft Support" class="gallery-img">
+                            <div class="image-overlay">
+                                <span class="overlay-text">Aircraft Support</span>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="downItem dItemB" style="text-align: center;">
-                        <div>
-                            <div class="TP">Our Mission</div>
-                            <div style="display: flex;">
-                                <font-awesome-icon class="faIcon fIcB" :icon="['fas', 'people-group']" />
-                                <p class="itemP">To Provide our clients the best solutions in
-                                    the ground handling
-                                    services with reliable , safe ,fast and effective operation
-                                    ensuring the best quality services
-                                </p>
-                            </div>
+                    
+                    <!-- Floating Stats -->
+                    <div class="floating-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-label">Years Experience</div>
                         </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="rightItem">
-                <div class="rItemB">
-                    <div class="rImgClass">
-                        <div class="rImgOutL">
-                            <img class="rImage" src="/HomePage/RequestQQ/3.jpg" alt="Image">
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
                         </div>
-                    </div>
-
-                    <div class="rBImgClass">
-                        <div class="rBImgOutA">
-                            <img class="rBImage" src="/HomePage/RequestQQ/2.jpg" alt="Image">
-                        </div>
-                        <div class="rBImgOutB">
-                            <img class="rBImage" src="/HomePage/RequestQQ/1.jpg" alt="Image">
+                        <div class="stat-item">
+                            <div class="stat-number">ISO</div>
+                            <div class="stat-label">Certified</div>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        
+        <!-- Background Elements -->
+        <div class="bg-elements">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="bg-dots"></div>
         </div>
     </div>
-
 </template>
 
-
 <script>
-
+export default {
+    name: 'WelcomeSection'
+}
 </script>
-
 
 <style scoped>
 @import '../assets/fonts.css';
 
-.faIcon {
-    font-size: 55px;
-    padding-right: 2.5%;
-    margin-top: 15%;
+.welcome-section {
+    position: relative;
+    padding: 120px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    overflow: hidden;
 }
 
-.fIcA {
-    color: white;
-
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.fIcB {
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Text Content Styles */
+.text-content {
+    animation: slideInLeft 1s ease-out;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(136, 198, 7, 0.1);
     color: #88c607;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(136, 198, 7, 0.2);
 }
 
-.TP {
-    color: #ffffff;
-    font-size: 25px;
-    margin-top: 8%;
+.badge-icon {
+    font-size: 1rem;
 }
 
-.itemP {
-    padding: 3%;
-    font-size: 22px;
-    line-height: 1.5;
-
+.heading-group {
+    margin-bottom: 2.5rem;
 }
 
-.itemCard {
+.main-title {
+    font-family: 'Barlow-ExtraBold', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.title-line {
+    display: block;
+    color: #1e293b;
+}
+
+.title-highlight {
+    display: block;
+    background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-family: 'Barlow-Regular', sans-serif;
+    font-size: 1.5rem;
+    color: #64748b;
+    font-weight: 600;
+    margin: 0;
+}
+
+.description {
+    margin-bottom: 3rem;
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.body-text {
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* Value Cards */
+.value-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.value-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.vision-card:hover {
+    border-color: rgba(136, 198, 7, 0.3);
+}
+
+.mission-card:hover {
+    border-color: rgba(24, 56, 98, 0.3);
+}
+
+.card-header {
     display: flex;
     align-items: center;
-    height: 37dvh;
-    /* animation: fade 2s 2s both; */
-
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-.downItem {
-    padding-left: 15px;
-    padding-right: 15px;
-    text-align: justify;
-    color: white;
-    height: 35dvh;
-    justify-content: center;
+.card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
     align-items: center;
-    border-radius: 0%;
-
-
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
 }
 
-.dItemA {
-    background-color: #88c607;
+.vision-card .card-icon {
+    background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
 }
 
-.dItemB {
-    background-color: #183862;
-
+.mission-card .card-icon {
+    background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
 }
 
-p {
-    text-align: justify;
-    padding: 5px;
+.card-title {
+    font-family: 'Barlow-ExtraBold', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
 }
 
-.imgClass {
-    padding-top: 5%;
+.card-text {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
 }
 
-.classM {
+/* Image Gallery */
+.image-gallery {
+    position: relative;
+    animation: slideInRight 1s ease-out;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+    height: 600px;
+}
+
+.image-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.main-image {
+    grid-row: 1 / -1;
+}
+
+.image-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* @keyframes fade {
-    0% {
-        opacity: 0;
-        transform: translate(0, 4rem);
-    }
+.image-card:hover .gallery-img {
+    transform: scale(1.05);
+}
 
-    100% {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
 
-} */
+.image-card:hover .image-overlay {
+    transform: translateY(0);
+}
 
-.classB {
+.overlay-text {
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+/* Floating Stats */
+.floating-stats {
+    position: absolute;
+    top: -40px;
+    right: -40px;
     display: flex;
-    padding-top: 1%;
-    animation: CSSscrollReveal 1s ease-in-out both;
-    animation-range: entry 50% cover 50%;
-    /* Specify animation name, duration, timing function, and fill mode */
+    gap: 1rem;
+    z-index: 10;
 }
 
-@keyframes CSSscrollReveal {
+.stat-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+}
+
+.stat-number {
+    font-family: 'Barlow-ExtraBold', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #88c607;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Background Elements */
+.bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(136, 198, 7, 0.1) 0%, rgba(157, 212, 9, 0.05) 100%);
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -150px;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 20%;
+    right: -100px;
+    background: linear-gradient(135deg, rgba(24, 56, 98, 0.1) 0%, rgba(30, 74, 115, 0.05) 100%);
+}
+
+.bg-dots {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(circle, rgba(136, 198, 7, 0.2) 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+}
+
+/* Animations */
+@keyframes slideInLeft {
     from {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateX(-50px);
     }
-
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
-
-
-.textClass {
-    font-family: 'SourceSansPro-Regular', sans-serif;
-    width: 55%;
-    height: 100%;
-    padding-left: 2.5%;
-}
-
-.rightItem {
-    width: 45%;
-    height: 100%;
-
-}
-
-.topicM {
-    font-family: 'Barlow-ExtraBold';
-    color: #183862;
-    font-size: 50px;
-    font-weight: 900;
-    /* animation: fade 2s 2s both; */
-}
-
-
-
-.topicB {
-    padding-top: 1px;
-    color: #88c607;
-    font-family: 'Barlow-Regular';
-    font-size: 30px;
-    font-weight: 800;
-    /* animation: fade 2s 2s both; */
-
-}
-
-
-
-.textP {
-    font-family: 'SourceSansPro-Regular', sans-serif;
-    color: #183862;
-    font-size: 22px;
-    text-align: justify;
-    /* animation: fade 2s 2s both; */
-}
-
-
-
-.rItemB {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 5%;
-    padding-right: 5%;
-
-
-}
-
-.rImgClass {
-    width: 50%;
-    height: 100%;
-    padding-right: 2.5%;
-    padding-left: 5%;
-}
-
-.rImgOutL {
-    width: 100%;
-    height: 100%;
-    border: 0px solid black;
-    padding-top: 1%;
-    padding-bottom: 1%;
-}
-
-.rImage {
-    width: 17dvw;
-    height: 69dvh;
-    margin-top: 13%;
-    margin-left: 15%;
-    /* animation: fade 2s 2s both; */
-
-}
-
-
-
-.rBImgClass {
-    width: 65%;
-    height: 100%;
-
-}
-
-
-
-.rBImage {
-    width: 98%;
-    height: 98%;
-
-}
-
-.rBImgOutA {
-    width: 21dvw;
-    height: 34.6dvh;
-    border: 0px solid black;
-    margin-top: 11%;
-    margin-left: 10%;
-    /* animation: fade 2s 2s both; */
-}
-
-
-
-.rBImgOutB {
-    width: 21dvw;
-    height: 34.8dvh;
-    border: 0px solid black;
-    margin-bottom: 1%;
-    margin-left: 10%;
-    /* animation: fade 2s 2s both; */
-}
-
-
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-
-
-    .topicM {
-        font-size: 38px;
-        line-height: 1.2;
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
     }
-
-    .topicB {
-        font-size: 25px;
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
+}
 
-    .textClass {
-        width: 58%;
-        height: 100%;
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .content-grid {
+        gap: 60px;
     }
-
-    .faIcon {
-        font-size: 35px;
-        padding-right: 2.5%;
-        margin-top: 15%;
-    }
-
-
-    .rightItem {
-        width: 42%;
-        height: 100%;
-        margin-right: 5%;
-    }
-
-    .textP {
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        color: #183862;
-        font-size: 15px;
-        text-align: justify;
-    }
-
-    .itemCard {
-        display: flex;
-        align-items: center;
-        height: 38dvh;
-
-    }
-
-
-    .downItem {
-        width: 100%;
-        height: 33dvh;
-        align-items: center;
+    
+    .floating-stats {
+        position: static;
         justify-content: center;
-        display: flex;
-        padding: 1%;
-
-    }
-
-
-    .TP {
-        font-size: 18px;
-        margin-top: 0%;
-
-    }
-
-    .itemP {
-        padding: 0%;
-        font-size: 14.5px;
-
-    }
-
-    .rImgOutL {
-        width: 100%;
-        height: 100%;
-
-    }
-
-    .rImage {
-        width: 20.5dvw;
-        height: 76dvh;
-        margin-top: 29%;
-        margin-left: 1%;
-
-    }
-
-    .rBImgClass {
-        width: 60%;
-        height: 100%;
-
-    }
-
-
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        margin-left: 12%;
-        margin-top: 9%;
-    }
-
-    .rBImgOutA {
-        width: 24dvw;
-        height: 38.2dvh;
-        border: 0px solid black;
-        margin-top: 1%;
-        margin-left: 5%;
-
-    }
-
-    .rBImgOutB {
-        width: 24dvw;
-        height: 38.5dvh;
-        border: 0px solid black;
-        margin-bottom: 1%;
-        margin-left: 5%;
-    }
-
-}
-
-@media only screen and (min-width:1025px) and (max-width: 1280px) {
-    .faIcon {
-        font-size: 40px;
-        padding-right: 2.5%;
-        margin-top: 10%;
-    }
-
-    .textClass {
-        width: 55%;
-        height: 100%;
-    }
-
-    .rightItem {
-        width: 45%;
-        height: 100%;
-    }
-
-    .topicM {
-        font-size: 40px;
-    }
-
-    .textP {
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        color: #183862;
-        font-size: 17.5px;
-        text-align: justify;
-    }
-
-    .itemCard {
-        height: 30dvh;
-        padding-top: 5%;
-    }
-
-    .downItem {
-        height: 32dvh;
-    }
-
-    .itemP {
-        font-size: 17px;
-        padding: 2%;
-        margin-top: 2%;
-    }
-
-    .rImage {
-        width: 19dvw;
-        height: 71dvh;
-        margin-top: 18%;
-        margin-left: 1%;
-
-    }
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        margin-left: 1%;
-        margin-top: 6.5%;
-    }
-
-    .rBImgOutA {
-        width: 23dvw;
-        height: 35.5dvh;
-        border: 0px solid black;
-        margin-top: 1%;
-        margin-left: 5%;
-
-    }
-
-    .rBImgOutB {
-        width: 23dvw;
-        height: 36dvh;
-        border: 0px solid black;
-        margin-bottom: 1%;
-        margin-left: 5%;
+        margin-top: 2rem;
     }
 }
 
-@media only screen and (min-width: 1281px) and (max-width: 1366px) {
-    .topicM {
-        font-size: 40px;
+@media (max-width: 768px) {
+    .welcome-section {
+        padding: 80px 0;
     }
-
-    .textClass {
-        width: 52%;
-        height: 100%;
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
-
-    .faIcon {
-        font-size: 47px;
-        padding-right: 2.5%;
-        margin-top: 18%;
+    
+    .value-cards {
+        grid-template-columns: 1fr;
     }
-
-
-    .rightItem {
-        width: 45%;
-        height: 100%;
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 200px);
+        height: auto;
     }
-
-    .textP {
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        color: #183862;
-        font-size: 17px;
-        text-align: justify;
+    
+    .main-image {
+        grid-row: auto;
     }
-
-    .TP {
-        font-size: 20px;
-    }
-
-    .itemCard {
-
-        display: flex;
+    
+    .floating-stats {
+        flex-direction: column;
         align-items: center;
-        height: 37dvh;
-        padding-top: 6%;
     }
-
-    .downItem {
-        width: 100%;
-        height: 39dvh;
-        align-items: center;
-        justify-content: center;
-        display: flex;
+    
+    .stat-item {
+        min-width: 80px;
+        padding: 1rem;
     }
-
-    .itemP {
-        font-size: 18px;
-        padding: 2%;
-        margin-top: 2%;
-    }
-
-    .rImgOutL {
-        width: 100%;
-        height: 100%;
-        border: 0px solid black;
-        padding-top: 1%;
-        padding-bottom: 1%;
-    }
-
-    .rImage {
-        width: 19.8dvw;
-        height: 84dvh;
-        margin-top: 15%;
-        margin-left:0;
-
-
-    }
-
-    .rBImgClass {
-        width: 60%;
-        height: 100%;
-
-    }
-
-
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        margin-left: 2%;
-        margin-top: 5%;
-    }
-
-    .rBImgOutA {
-        width: 25dvw;
-        height: 42.5dvh;
-        border: 0px solid black;
-        margin-top: 1%;
-        margin-left: 7%;
-
-    }
-
-    .rBImgOutB {
-        width: 25dvw;
-        height: 42.5dvh;
-        border: 0px solid black;
-        margin-bottom: 1%;
-        margin-left: 7%;
-    }
-
 }
 
-
-@media only screen and (min-width: 1367px) and (max-width: 1440px) {
-    .topicM {
-        font-size: 40px;
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
     }
-
-    .textClass {
-        width: 55%;
-        height: 100%;
+    
+    .value-card {
+        padding: 1.5rem;
     }
-
-    .faIcon {
-        font-size: 50px;
-        padding-right: 2.5%;
-        margin-top: 15%;
+    
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
     }
-
-
-    .rightItem {
-        width: 40%;
-        height: 100%;
-    }
-
-    .textP {
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        color: #183862;
-        font-size: 18px;
-        text-align: justify;
-    }
-
-    .itemCard {
-
-        display: flex;
-        align-items: center;
-        height: 30dvh;
-        padding-top: 5%;
-    }
-
-    .downItem {
-        width: 100%;
-        height: 30dvh;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-
-    .TP {
-        color: #ffffff;
-        font-size: 25px;
-        margin-top: 2%;
-    }
-
-    .itemP {
-        font-size: 18px;
-        padding: 2%;
-        margin-top: 2%;
-    }
-
-    .rImgOutL {
-        width: 100%;
-        height: 100%;
-        border: 0px solid black;
-        padding-top: 1%;
-        padding-bottom: 1%;
-    }
-
-    .rImage {
-        width: 18dvw;
-        height: 65.5dvh;
-        margin-top: 10%;
-        margin-left: 7%;
-
-
-    }
-
-    .rBImgClass {
-        width: 60%;
-        height: 100%;
-
-    }
-
-
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        margin-left: 10%;
-        margin-top: 3%;
-    }
-
-    .rBImgOutA {
-        width: 23dvw;
-        height: 33dvh;
-        border: 0px solid black;
-        margin-top: 1%;
-        margin-left: 5%;
-
-    }
-
-    .rBImgOutB {
-        width: 23dvw;
-        height: 33dvh;
-        border: 0px solid black;
-        margin-bottom: 1%;
-        margin-left: 5%;
-    }
-
-
-
-}
-
-@media only screen and (min-width: 1441px) and (max-width: 1600px) {
-    .topicM {
-        font-size: 50px;
-    }
-
-    .textClass {
-        width: 50%;
-        height: 100%;
-    }
-
-    .faIcon {
-        font-size: 50px;
-        padding-right: 2.5%;
-        margin-top: 15%;
-    }
-
-
-    .rightItem {
-        width: 50%;
-        height: 100%;
-    }
-
-    .textP {
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        color: #183862;
-        font-size: 20px;
-        text-align: justify;
-    }
-
-    .itemCard {
-        display: flex;
-        align-items: center;
-        height: 38dvh;
-        padding-top: 0%;
-    }
-
-    .downItem {
-        width: 100%;
-        height: 35dvh;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-
-    .TP {
-        margin-top: 8%;
-        font-weight: 500;
-        font-size: 25px;
-    }
-
-    .itemP {
-        font-size: 20px;
-        padding-bottom: 5%;
-
-    }
-
-    .rImgOutL {
-        width: 100%;
-        height: 100%;
-        border: 0px solid black;
-        padding-top: 1%;
-        padding-bottom: 1%;
-    }
-
-    .rImage {
-        width: 20dvw;
-        height: 84.3dvh;
-        margin-top: 5%;
-        margin-left: 8%;
-
-
-    }
-
-    .rBImgClass {
-        width: 60%;
-        height: 100%;
-
-    }
-
-
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        margin-left: 6%;
-        margin-top: 2%;
-    }
-
-    .rBImgOutA {
-        width: 24dvw;
-        height: 42.5dvh;
-        border: 0px solid black;
-        margin-top: 1%;
-        margin-left: 1%;
-
-    }
-
-    .rBImgOutB {
-        width: 24dvw;
-        height: 42.5dvh;
-        border: 0px solid black;
-        margin-bottom: 1%;
-        margin-left: 1%;
-    }
-
-
-}
-
-@media only screen and (min-width: 1601px) and (max-width: 1800px) {
-    .topicM {
-        font-size: 45px;
-    }
-
-    .textClass {
-        width: 55%;
-        height: 100%;
-    }
-
-    .faIcon {
-        font-size: 50px;
-        padding-right: 2.5%;
-        margin-top: 15%;
-    }
-
-
-    .rightItem {
-        width: 45%;
-        height: 100%;
-    }
-
-    .textP {
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        color: #183862;
-        font-size: 20px;
-        text-align: justify;
-    }
-
-    .itemCard {
-
-        display: flex;
-        align-items: center;
-        height: 29.5dvh;
-        padding-top: 4%;
-    }
-
-    .downItem {
-        width: 100%;
-        height: 30dvh;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-
-    .TP {
-        color: #ffffff;
-        font-size: 25px;
-        margin-top: 1%;
-    }
-
-    .itemP {
-        font-size: 22px;
-        /* padding: 2%;
-margin-top: 2%; */
-    }
-
-    .rImgOutL {
-        width: 100%;
-        height: 100%;
-        border: 0px solid black;
-        padding-top: 1%;
-        padding-bottom: 1%;
-    }
-
-    .rImage {
-        width: 18dvw;
-        height: 60dvh;
-        margin-top: 8%;
-        margin-left: 1%;
-
-
-    }
-
-    .rBImgClass {
-        width: 60%;
-        height: 100%;
-
-    }
-
-
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        margin-left: 1%;
-        margin-top: 3%;
-    }
-
-    .rBImgOutA {
-        width: 23dvw;
-        height: 30.3dvh;
-        border: 0px solid black;
-        margin-top: 1%;
-        margin-left: 1%;
-
-    }
-
-    .rBImgOutB {
-        width: 23dvw;
-        height: 30.2dvh;
-        border: 0px solid black;
-        margin-bottom: 1%;
-        margin-left: 1%;
-    }
-
-
-}
-
-@media only screen and (max-width: 500px) {
-    .classB {
-        display: block;
-        padding-top: 2.5%;
-    }
-
-    .textClass {
-        width: 100%;
-        height: 100%;
-        padding: 3%;
-    }
-
-    .topicM {
-        font-size: 30px;
-    }
-
-    .topicB {
-        font-size: 20px;
-    }
-
-    .textP {
-        font-size: 18px;
-        text-align: justify;
-        padding: 2.5%;
-
-    }
-
-    .itemCard {
-        display: block;
-        line-height: 0.01;
-        margin-left: 3%;
-        margin-right: 3%;
-        height: 33dvh;
-
-    }
-
-    .downItem {
-        width: 100%;
-        height: 33dvh;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        margin-top: 3%;
-    }
-
-    .rightItem {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    .rImgOutL {
-        display: none;
-    }
-
-
-
-    .rItemB {
-        display: block;
-        padding: 0%;
-    }
-
-    .itemP {
-        font-size: 16px;
-        margin-top: 4%;
-    }
-
-    .TP {
-        margin-top: 5%;
-        font-size: 20px;
-    }
-
-    .rBImage {
-        width: 100%;
-        height: 98%;
-        /* margin-left: 5.5%; */
-        margin-top: 25%;
-    }
-
-    .rBImgOutA {
-        width: 88dvw;
-        height: 40dvh;
-        margin-top: 70%;
-    }
-
-    .rBImgOutB {
-        width: 88dvw;
-        height: 40dvh;
-        margin-bottom: 35%;
-    }
-
-    .rImage {
-        display: none;
-    }
-
-    .faIcon {
-        font-size: 40px;
-        padding-right: 2.5%;
-
+    
+    .floating-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 }
 </style>
