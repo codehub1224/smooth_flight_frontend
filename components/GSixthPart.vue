@@ -38,13 +38,10 @@
                         
                         <div class="description">
                             <p class="body-text">
-                                Embark on an extraordinary journey with Smooth Flight Support, the premier flight support company in Sri Lanka, where our steadfast dedication to exceptional service and unwavering reliability sets us apart. We redefine your travel experience, ensuring an unmatched standard of comfort and efficiency.
+                                Embark on an extraordinary journey with Smooth Flight Support, the premier flight support company in Sri Lanka, where our steadfast dedication to exceptional service and unwavering reliability sets us apart.
                             </p>
                             <p class="body-text">
-                                Our team of seasoned aviation professionals is committed to delivering top-tier support, tailored to meet the unique needs of each journey. From meticulous flight planning to seamless ground handling, we provide comprehensive solutions that cater to all aspects of your aviation requirements.
-                            </p>
-                            <p class="body-text">
-                                Trust in our expertise to transform your journey into a seamless, luxurious, and unforgettable adventure in the skies.
+                                Our team of seasoned aviation professionals is committed to delivering top-tier support, tailored to meet the unique needs of each journey. From meticulous flight planning to seamless ground handling, we provide comprehensive solutions for all your aviation requirements.
                             </p>
                         </div>
                         
@@ -78,7 +75,7 @@ export default {
 
 .trusted-provider-section {
     position: relative;
-    padding: 120px 0;
+    padding: 80px 0; /* Reduced padding */
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     overflow: hidden;
 }
@@ -92,7 +89,7 @@ export default {
 .content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px; /* Reduced gap */
     align-items: center;
 }
 
@@ -107,7 +104,7 @@ export default {
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    height: 600px;
+    height: 500px; /* Reduced height */
 }
 
 .main-image {
@@ -139,11 +136,11 @@ export default {
 
 .experience-badge {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: -20px;
+    right: -20px;
     background: #88c607;
     color: white;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(136, 198, 7, 0.3);
     text-align: center;
@@ -151,13 +148,13 @@ export default {
 
 .badge-number {
     font-family: 'Barlow-ExtraBold', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 900;
     line-height: 1;
 }
 
 .badge-text {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 600;
@@ -166,26 +163,26 @@ export default {
 .certification-badge {
     position: absolute;
     bottom: 30px;
-    left: -30px;
+    left: -20px;
     background: white;
-    padding: 1.25rem;
+    padding: 1rem;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .badge-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: #f1f5f9;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #183862;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 }
 
 /* Text Content */
@@ -200,60 +197,60 @@ export default {
 }
 
 .heading-group {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem; /* Reduced margin */
 }
 
 .section-title {
     font-family: 'Barlow-ExtraBold', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 3vw, 2.5rem); /* Reduced font size */
     font-weight: 900;
     line-height: 1.2;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Reduced margin */
 }
 
 .title-line {
     display: block;
     color: #1e293b;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Reduced margin */
 }
 
 .title-highlight {
     display: block;
     color: #88c607;
     font-size: 1.2em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Reduced margin */
 }
 
 .description {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* Reduced margin */
 }
 
 .body-text {
     font-family: 'SourceSansPro-Regular', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1rem; /* Reduced font size */
     color: #64748b;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 1rem; /* Reduced margin */
     text-align: justify;
 }
 
 /* CTA Section */
 .cta-section {
-    margin-top: 2rem;
+    margin-top: 1.5rem; /* Reduced margin */
 }
 
 .cta-button {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 1.25rem 2.5rem;
+    padding: 1rem 2rem; /* Reduced padding */
     background: #88c607;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-family: 'SourceSansPro-Regular', sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduced font size */
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(136, 198, 7, 0.2);
     position: relative;
@@ -346,22 +343,22 @@ export default {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .content-grid {
-        gap: 60px;
+        gap: 40px;
     }
     
     .main-image-container {
-        height: 500px;
+        height: 450px;
     }
 }
 
 @media (max-width: 992px) {
     .trusted-provider-section {
-        padding: 80px 0;
+        padding: 60px 0;
     }
     
     .content-grid {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
     }
     
     .text-content {
@@ -383,35 +380,35 @@ export default {
     }
     
     .main-image-container {
-        height: 400px;
+        height: 350px;
     }
     
     .experience-badge {
-        top: -20px;
-        right: -20px;
-        padding: 1rem;
+        top: -15px;
+        right: -15px;
+        padding: 0.75rem;
     }
     
     .certification-badge {
-        bottom: 20px;
-        left: -20px;
-        padding: 1rem;
+        bottom: 15px;
+        left: -15px;
+        padding: 0.75rem;
     }
     
     .badge-number {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
     
     .badge-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.875rem;
     }
 }
 
 @media (max-width: 480px) {
     .trusted-provider-section {
-        padding: 60px 0;
+        padding: 40px 0;
     }
     
     .container {
@@ -419,21 +416,21 @@ export default {
     }
     
     .main-image-container {
-        height: 300px;
+        height: 250px;
     }
     
     .section-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
     
     .body-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .cta-button {
         width: 100%;
         justify-content: center;
-        padding: 1rem 2rem;
+        padding: 0.875rem 1.5rem;
     }
 }
 </style>
