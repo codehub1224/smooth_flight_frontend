@@ -1,557 +1,439 @@
 <template>
-    <div class="classM">
-        <div class="imgOut">
-            <img class="imgB" src="HomePage/SmoothFS/ManWPlane.jpg" alt="">
-        </div>
-
-        <div class="hItem" style="position: relative;">
-            <div class="topicLine">
-
-
-                <div class="topic topicA">Smooth Flight Support is the</div>
-                <div class="topic topicB">Most Trusted Provider</div>
-                <div class="topic topicC">Of Flight Support Services in Sri Lanka</div>
-            </div>
-
-            <div>
-                <div class="paragraph pA">Embark on an extraordinary journey with Smooth Flight Support, the premier
-                    flight
-                    support company in Sri Lanka, where our steadfast dedication to exceptional service and unwavering
-                    reliability sets us apart. We redefine your travel experience, ensuring an unmatched standard of
-                    comfort
-                    and efficiency.Our team of seasoned aviation professionals is committed to delivering top-tier
-                    support,tailored to meet the unique needs of each journey. </div>
-
-                <div class="paragraph pB">From meticulous flight planning to seamless
-                    ground handling, we provide comprehensive solutions that cater to all aspects of your aviation
-                    requirements. Trust in our expertise
-                    to transform your journey into a seamless, luxurious, and unforgettable adventure in the skies</div>
-                <div class="btnClass">
-                    <a href="/company/overview">
-                        <button class="btnSubmit" type="submit"> <span class="mdi">READ MORE<font-awesome-icon
-                                    style="padding-left: 5px; font-size: 13px;"
-                                    :icon="['fas', 'arrow-right-long']" /></span>
-                        </button>
-                    </a>
+    <div class="trusted-provider-section">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Image Section -->
+                <div class="image-section">
+                    <div class="main-image-container">
+                        <img src="/HomePage/SmoothFS/ManWPlane.jpg" alt="Aviation Professional" class="main-image">
+                        <div class="image-overlay"></div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="floating-elements">
+                        <div class="experience-badge">
+                            <div class="badge-number">7+</div>
+                            <div class="badge-text">Years of Excellence</div>
+                        </div>
+                        
+                        <div class="certification-badge">
+                            <div class="badge-icon">
+                                <font-awesome-icon :icon="['fas', 'certificate']" />
+                            </div>
+                            <div class="badge-text">ISO 9001:2015</div>
+                        </div>
+                    </div>
                 </div>
-
-
+                
+                <!-- Text Content -->
+                <div class="text-content">
+                    <div class="content-wrapper">
+                        <div class="heading-group">
+                            <h2 class="section-title">
+                                <span class="title-line">Smooth Flight Support is the</span>
+                                <span class="title-highlight">Most Trusted Provider</span>
+                                <span class="title-line">Of Flight Support Services in Sri Lanka</span>
+                            </h2>
+                        </div>
+                        
+                        <div class="description">
+                            <p class="body-text">
+                                Embark on an extraordinary journey with Smooth Flight Support, the premier flight support company in Sri Lanka, where our steadfast dedication to exceptional service and unwavering reliability sets us apart. We redefine your travel experience, ensuring an unmatched standard of comfort and efficiency.
+                            </p>
+                            <p class="body-text">
+                                Our team of seasoned aviation professionals is committed to delivering top-tier support, tailored to meet the unique needs of each journey. From meticulous flight planning to seamless ground handling, we provide comprehensive solutions that cater to all aspects of your aviation requirements.
+                            </p>
+                            <p class="body-text">
+                                Trust in our expertise to transform your journey into a seamless, luxurious, and unforgettable adventure in the skies.
+                            </p>
+                        </div>
+                        
+                        <div class="cta-section">
+                            <a href="/company/overview" class="cta-button">
+                                <span class="button-text">READ MORE</span>
+                                <font-awesome-icon class="button-icon" :icon="['fas', 'arrow-right-long']" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <img class="BplaneImg" src="HomePage/SmoothFS/BackgroundImgA.png" alt="Image">
-
-
         </div>
-
-
+        
+        <!-- Background Elements -->
+        <div class="bg-elements">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    name: 'TrustedProviderSection'
 }
 </script>
 
 <style scoped>
 @import '../assets/fonts.css';
 
-.classM {
-    width: 100%;
-    height: 84dvh;
-    /* background-color: aqua; */
-    display: flex;
-
-
-
-
-}
-
-.imgOut {
-    width: 50%;
-    height: 100%;
-    /* background-color: blue; */
-}
-
-.imgB {
-    width: 100%;
-    height: 100%;
-    animation: CSSscrollReveal ease-in-out both;
-    animation-timeline: view();
-    animation-range: entry 50% cover 50%;
-}
-
-@keyframes CSSscrollReveal {
-    from {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hItem {
-    width: 50%;
-    height: 100%;
-    background-color: #183862;
-    padding: 2.5%;
-    animation: CSSscrollReveal ease-in-out both;
-    animation-timeline: view();
-    animation-range: entry 50% cover 50%;
-}
-
-@keyframes CSSscrollReveal {
-    from {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-.topicLine {
-    padding-bottom: 5%;
-}
-
-.topic {
-    font-size: 50px;
-    font-weight: 700;
-    font-family: 'SourceSansPro-Regular', sans-serif;
-    line-height: 1.2;
-
-}
-
-.topicA,
-.topicC {
-    color: white;
-    font-size: 45px;
-    text-align: center;
-}
-
-.topicB {
-    color: greenyellow;
-    font-size: 55px;
-    text-align: center;
-}
-
-.paragraph {
-    color: white;
-    text-align: justify;
-    padding-bottom: 5%;
-    font-family: 'SourceSansPro-Regular', sans-serif;
-    font-size: 21px;
-}
-
-.btnClass {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.btnSubmit {
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 18px 50px;
-    cursor: pointer;
+.trusted-provider-section {
     position: relative;
-    display: inline-flex;
+    padding: 120px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Image Section */
+.image-section {
+    position: relative;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.main-image-container {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    height: 600px;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.main-image-container:hover .main-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(24, 56, 98, 0.4), transparent);
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: absolute;
+    z-index: 2;
+}
+
+.experience-badge {
+    position: absolute;
+    top: -30px;
+    right: -30px;
     background: #88c607;
     color: white;
-    z-index: 1;
-    margin-top: 13%;
-
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(136, 198, 7, 0.3);
+    text-align: center;
 }
 
-/* .btnSubmit::after {
-    border-radius: 6px;
+.badge-number {
+    font-family: 'Barlow-ExtraBold', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.badge-text {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.certification-badge {
+    position: absolute;
+    bottom: 30px;
+    left: -30px;
+    background: white;
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.badge-icon {
+    width: 40px;
+    height: 40px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #183862;
+    font-size: 1.25rem;
+}
+
+/* Text Content */
+.text-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInRight 1s ease-out;
+}
+
+.content-wrapper {
+    max-width: 600px;
+}
+
+.heading-group {
+    margin-bottom: 2.5rem;
+}
+
+.section-title {
+    font-family: 'Barlow-ExtraBold', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.title-line {
+    display: block;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.title-highlight {
+    display: block;
+    color: #88c607;
+    font-size: 1.2em;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    margin-bottom: 3rem;
+}
+
+.body-text {
+    font-family: 'SourceSansPro-Regular', sans-serif;
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* CTA Section */
+.cta-section {
+    margin-top: 2rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    background: #88c607;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'SourceSansPro-Regular', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(136, 198, 7, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #183862;
+    background: #183862;
     z-index: -1;
-    transform: scale(0);
-    transform-origin: bottom right;
-    transition: transform 200ms ease-in;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-.btnSubmit:hover::after {
-    transform: scale(1);
-    transform-origin: top left;
-} */
+.cta-button:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
 
+.button-icon {
+    transition: transform 0.3s ease;
+}
 
+.cta-button:hover .button-icon {
+    transform: translateX(4px);
+}
 
-.BplaneImg {
-    width: 200px;
-    height: 150px;
+/* Background Elements */
+.bg-elements {
     position: absolute;
-    left: 75%;
-    bottom: 6%;
-
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
-.btnMA:hover {
-    background-color: white;
-    border-color: #081729;
-    color: #081729;
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
 }
 
-
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-    .classM {
-        width: 100%;
-        height: 84dvh;
-        /* background-color: aqua; */
-        display: flex;
-    }
-
-    .topicA,
-    .topicC {
-        font-size:
-            25px;
-
-    }
-
-    .topicB {
-        font-size: 30px;
-        line-height: 1;
-    }
-
-    .paragraph {
-        font-size: 14px;
-    }
-
-    .btnSubmit {
-        padding: 10px 25px;
-        margin-bottom: 1.5svh;
-        font-size: 12px;
-    }
-
-    .imgB {
-        height: 100%;
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 100px;
-        height: 87px;
-        position: absolute;
-        left: 75%;
-        bottom: 8%;
-
-    }
-
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(136, 198, 7, 0.05) 0%, rgba(136, 198, 7, 0) 70%);
+    top: -200px;
+    right: -200px;
 }
 
-
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-    .classM {
-        width: 100%;
-        height: 80dvh;
-        /* background-color: aqua; */
-        display: flex;
-    }
-
-    .topicLine {
-        padding-top: 5%;
-    }
-
-    .topicA,
-    .topicC {
-        font-size:
-            36px;
-
-    }
-
-    .topicB {
-        font-size: 43px;
-    }
-
-    .paragraph {
-        font-size: 16px;
-    }
-
-    .btnSubmit {
-        padding: 12px 45px;
-        margin-bottom: 1.5svh;
-        font-size: 12px;
-
-    }
-
-    .imgB {
-        height: 100%;
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 150px;
-        height: 100px;
-        position: absolute;
-        left: 75%;
-        bottom: 9%;
-
-    }
-
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(24, 56, 98, 0.05) 0%, rgba(24, 56, 98, 0) 70%);
+    bottom: -150px;
+    left: -150px;
 }
 
-@media only screen and (min-width: 1281px) and (max-width: 1366px) {
-    .classM {
-        width: 100%;
-        height: 90dvh;
-        /* background-color: aqua; */
-        display: flex;
+/* Animations */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
     }
-
-    .topicLine {
-        padding-bottom: 2%;
-    }
-
-    .topicA,
-    .topicC {
-        font-size: 30px;
-
-    }
-
-    .topicB {
-        font-size: 35px;
-        line-height: 1;
-    }
-
-    .paragraph {
-        font-size: 17px;
-    }
-
-    .btnSubmit {
-        padding: 12px 35px;
-        margin-bottom: 1.5svh;
-        font-size: 14px;
-
-    }
-
-    .imgB {
-        height: 100%;
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 150px;
-        height: 100px;
-        position: absolute;
-        left: 75%;
-        bottom: 8%;
-
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
-
-@media only screen and (min-width: 1367px) and (max-width: 1440px) {
-    .classM {
-        width: 100%;
-        height: 75dvh;
-        /* background-color: aqua; */
-        display: flex;
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
     }
-
-
-    .topicA,
-    .topicC {
-        font-size:
-            40px;
-
-    }
-
-    .topicB {
-        font-size: 50px;
-    }
-
-    .paragraph {
-        font-size: 19px;
-    }
-
-    .btnSubmit {
-        padding: 12px 45px;
-        margin-bottom: 1.5svh;
-        font-size: 15px;
-
-    }
-
-    .imgB {
-        height: 100%;
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 150px;
-        height: 100px;
-        position: absolute;
-        left: 75%;
-        bottom: 7%;
-
-    }
-
-}
-
-@media only screen and (min-width: 1441px) and (max-width: 1600px) {
-    .classM {
-        width: 100%;
-        height: 90dvh;
-        display: flex;
-        line-height: 2;
-    }
-
-    .topicA,
-    .topicC {
-        font-size:
-            32px;
-
-    }
-
-    .topicB {
-        font-size: 38px;
-    }
-
-    .paragraph {
-        font-size: 18px;
-    }
-
-    .btnSubmit {
-        padding: 10px 45px;
-        margin-bottom: 1.5svh;
-        font-size: 15px;
-
-    }
-
-    .imgB {
-        height: 100%;
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 175px;
-        height: 130px;
-        position: absolute;
-        left: 75%;
-        bottom: 9%;
-
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
-@media only screen and (min-width: 1601px) and (max-width: 1800px) {
-    .classM {
-        width: 100%;
-        height: 75dvh;
-        display: flex;
-
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .content-grid {
+        gap: 60px;
     }
-
-    .topicLine {
-        margin-top: 3%;
-    }
-
-    .topicA,
-    .topicC {
-        font-size:
-            40px;
-
-    }
-
-    .topicB {
-        font-size: 45px;
-    }
-
-    .paragraph {
-        font-size: 22px;
-    }
-
-    .btnSubmit {
-        padding: 12px 45px;
-        margin-bottom: 1.5svh;
-        font-size: 16px;
-
-    }
-
-    .imgB {
-        height: 100%;
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 175px;
-        height: 130px;
-        position: absolute;
-        left: 75%;
-        bottom: 8%;
-
+    
+    .main-image-container {
+        height: 500px;
     }
 }
 
-@media only screen and (max-width: 500px) {
-
-    .topicA,
-    .topicC {
-        font-size: 20px;
+@media (max-width: 992px) {
+    .trusted-provider-section {
+        padding: 80px 0;
     }
-
-    .topicB {
-        font-size: 24px;
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
     }
-
-    .paragraph {
-
-        font-size: 17px;
-        padding: 2.5%;
+    
+    .text-content {
+        order: 1;
     }
-
-    .btnClass {
-        display: block;
-
+    
+    .image-section {
+        order: 2;
     }
-
-    .btnSubmit {
-        padding: 10px 25px;
-        margin-bottom: 1.5svh;
-        font-size: 12px;
-        margin-left: 35%;
+    
+    .content-wrapper {
+        max-width: 100%;
     }
+}
 
-    .classM {
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .main-image-container {
+        height: 400px;
+    }
+    
+    .experience-badge {
+        top: -20px;
+        right: -20px;
+        padding: 1rem;
+    }
+    
+    .certification-badge {
+        bottom: 20px;
+        left: -20px;
+        padding: 1rem;
+    }
+    
+    .badge-number {
+        font-size: 2rem;
+    }
+    
+    .badge-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trusted-provider-section {
+        padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .main-image-container {
+        height: 300px;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .body-text {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
         width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    .imgOut {
-        width: 100%;
-        height: 50dvh;
-        background-color: #081729;
-    }
-
-    .hItem {
-        width: 100%;
-    }
-
-    .BplaneImg {
-        width: 100px;
-        height: 75px;
-        left: 75%;
-        bottom: 1%;
-    }
-
-    .imgB {
-        width: 100%;
-        height: 100%;
-
+        justify-content: center;
+        padding: 1rem 2rem;
     }
 }
 </style>
