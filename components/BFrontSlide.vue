@@ -6,12 +6,25 @@
           <div class="slide-overlay"></div>
           <div class="slide-content">
             <div class="content-wrapper">
+              <div class="slide-badge">{{ item.badge }}</div>
               <h1 class="slide-title">{{ item.title }}</h1>
               <p class="slide-description">{{ item.description }}</p>
-              <NuxtLink to="/company/overview" class="cta-button">
-                <span class="button-text">Discover More</span>
-                <font-awesome-icon class="button-icon" :icon="['fas', 'arrow-right-long']" />
-              </NuxtLink>
+              <div class="slide-features">
+                <div v-for="(feature, idx) in item.features" :key="idx" class="feature-item">
+                  <span class="feature-icon">✈</span>
+                  <span class="feature-text">{{ feature }}</span>
+                </div>
+              </div>
+              <div class="slide-actions">
+                <NuxtLink to="/company/overview" class="cta-button primary">
+                  <span class="button-text">Discover More</span>
+                  <font-awesome-icon class="button-icon" :icon="['fas', 'arrow-right-long']" />
+                </NuxtLink>
+                <NuxtLink to="/apermit/applypermit" class="cta-button secondary">
+                  <span class="button-text">Apply Permit</span>
+                  <font-awesome-icon class="button-icon" :icon="['fas', 'file-plus']" />
+                </NuxtLink>
+              </div>
             </div>
           </div>
         </div>
@@ -35,7 +48,14 @@
         :class="{ active: currentIndex === index }"
         @click="goToSlide(index)"
         :aria-label="`Go to slide ${index + 1}`"
-      ></button>
+      >
+        <span class="indicator-label">{{ item.shortTitle }}</span>
+      </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress-fill" :style="{ width: `${((currentIndex + 1) / items.length) * 100}%` }"></div>
     </div>
 
     <!-- Mobile Version -->
@@ -43,10 +63,18 @@
       <div v-for="(item, index) in items" :key="index" class="mobile-slide" v-show="currentIndex === index">
         <div class="mobile-image">
           <img :src="item.image" :alt="item.title" />
+          <div class="mobile-overlay"></div>
         </div>
         <div class="mobile-content">
+          <div class="mobile-badge">{{ item.badge }}</div>
           <h2 class="mobile-title">{{ item.title }}</h2>
           <p class="mobile-description">{{ item.description }}</p>
+          <div class="mobile-features">
+            <div v-for="(feature, idx) in item.features.slice(0, 2)" :key="idx" class="mobile-feature">
+              <span class="feature-icon">✈</span>
+              <span>{{ feature }}</span>
+            </div>
+          </div>
           <NuxtLink to="/company/overview" class="mobile-cta">
             Learn More
             <font-awesome-icon :icon="['fas', 'arrow-right']" />
@@ -67,18 +95,39 @@ export default {
       items: [
         {
           image: 'HomePage/Welcome/smooth slider.jpg',
-          title: 'Welcome to Smooth Flight Support',
-          description: 'Your Reliable Partner for Aviation Services in Sri Lanka',
+          badge: 'ISO 9001:2015 Certified',
+          title: 'Premier Aviation Services in Sri Lanka',
+          shortTitle: 'Welcome',
+          description: 'Your trusted partner for comprehensive flight support services, delivering excellence in every aspect of aviation operations across Sri Lanka.',
+          features: [
+            '24/7 Operations Support',
+            'ISO Certified Quality',
+            'Expert Local Knowledge'
+          ]
         },
         {
           image: 'HomePage/Welcome/Slide02.jpg',
-          title: 'Comprehensive Flight Solutions',
-          description: 'Permits | Ground Handling | Supervision | HOTAC | Fueling',
+          badge: 'Comprehensive Solutions',
+          title: 'Complete Flight Support Services',
+          shortTitle: 'Services',
+          description: 'From permits and ground handling to fueling and catering, we provide end-to-end aviation support solutions tailored to your specific needs.',
+          features: [
+            'Permits & Clearances',
+            'Ground Handling',
+            'Aircraft Fueling & Catering'
+          ]
         },
         {
           image: 'HomePage/Welcome/Slide03.jpg',
-          title: 'Excellence in Aviation Industry',
-          description: 'ISO 9001:2015 certified FBO company in Sri Lanka',
+          badge: 'Industry Leadership',
+          title: 'Excellence in Aviation Since 2019',
+          shortTitle: 'Excellence',
+          description: 'Leading the aviation industry in Sri Lanka with innovative solutions, cutting-edge technology, and unwavering commitment to safety and quality.',
+          features: [
+            'Industry Expertise',
+            'Modern Technology',
+            'Safety First Approach'
+          ]
         },
       ],
     };
@@ -105,7 +154,7 @@ export default {
     startAutoplay() {
       this.autoplayInterval = setInterval(() => {
         this.nextSlide();
-      }, 6000);
+      }, 7000);
     },
     stopAutoplay() {
       if (this.autoplayInterval) {
@@ -126,7 +175,7 @@ export default {
 .hero-carousel {
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   background: #000;
 }
@@ -135,7 +184,7 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-slide {
@@ -159,49 +208,94 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(24, 56, 98, 0.8) 0%,
-    rgba(24, 56, 98, 0.6) 50%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
 }
 
 .slide-content {
   position: absolute;
-  bottom: 15%;
-  left: 5%;
-  right: 5%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem 2rem 6rem;
   z-index: 2;
   color: white;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
 }
 
 .content-wrapper {
-  max-width: 800px;
-  animation: slideInUp 1s ease-out;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: slideInUp 1.2s ease-out;
+}
+
+.slide-badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(136, 198, 7, 0.9);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 25px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .slide-title {
   font-family: 'Barlow-ExtraBold', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.02em;
 }
 
 .slide-description {
   font-family: 'SourceSansPro-Regular', sans-serif;
-  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   line-height: 1.6;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  max-width: 600px;
+  max-width: 700px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-features {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-icon {
+  font-size: 1.25rem;
+  color: #88c607;
+}
+
+.feature-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+}
+
+.slide-actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .cta-button {
@@ -209,41 +303,45 @@ export default {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
-  color: white;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 25px rgba(136, 198, 7, 0.4);
   position: relative;
   overflow: hidden;
+  border: 2px solid transparent;
 }
 
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
-  transition: left 0.4s ease;
-  z-index: -1;
+.cta-button.primary {
+  background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(136, 198, 7, 0.4);
 }
 
-.cta-button:hover::before {
-  left: 0;
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .cta-button:hover {
   transform: translateY(-3px) scale(1.05);
+}
+
+.cta-button.primary:hover {
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
   box-shadow: 0 12px 35px rgba(24, 56, 98, 0.4);
 }
 
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #88c607;
+}
+
 .button-icon {
-  font-size: 1rem;
+  font-size: 0.875rem;
   transition: transform 0.3s ease;
 }
 
@@ -258,19 +356,19 @@ export default {
   transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   color: white;
   font-size: 1.25rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   z-index: 3;
 }
 
 .carousel-control:hover {
-  background: rgba(136, 198, 7, 0.8);
+  background: rgba(136, 198, 7, 0.9);
   border-color: #88c607;
   transform: translateY(-50%) scale(1.1);
 }
@@ -295,24 +393,51 @@ export default {
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .indicator.active {
-  background: #88c607;
+  background: rgba(136, 198, 7, 0.9);
   border-color: #88c607;
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 .indicator:hover {
-  border-color: white;
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.indicator-label {
+  white-space: nowrap;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #88c607, #9dd409);
+  transition: width 0.3s ease;
 }
 
 /* Mobile Carousel */
@@ -324,7 +449,7 @@ export default {
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(60px);
+    transform: translateY(80px);
   }
   to {
     opacity: 1;
@@ -335,13 +460,19 @@ export default {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero-carousel {
-    height: 80vh;
+    height: 85vh;
   }
   
   .slide-content {
-    bottom: 10%;
-    left: 3%;
-    right: 3%;
+    padding: 3rem 1.5rem 5rem;
+  }
+  
+  .slide-features {
+    gap: 1rem;
+  }
+  
+  .feature-item {
+    padding: 0.5rem 1rem;
   }
   
   .carousel-control {
@@ -357,6 +488,15 @@ export default {
   .carousel-control.next {
     right: 1rem;
   }
+  
+  .slide-actions {
+    gap: 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -371,7 +511,8 @@ export default {
   }
   
   .carousel-control,
-  .slide-indicators {
+  .slide-indicators,
+  .progress-bar {
     display: none;
   }
   
@@ -380,12 +521,14 @@ export default {
   }
   
   .mobile-slide {
+    position: relative;
     background: white;
   }
   
   .mobile-image {
+    position: relative;
     width: 100%;
-    height: 250px;
+    height: 300px;
     overflow: hidden;
   }
   
@@ -395,11 +538,31 @@ export default {
     object-fit: cover;
   }
   
+  .mobile-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
   .mobile-content {
     padding: 2rem 1.5rem;
     background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
     color: white;
     text-align: center;
+  }
+  
+  .mobile-badge {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: rgba(136, 198, 7, 0.9);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 1rem;
   }
   
   .mobile-title {
@@ -417,11 +580,26 @@ export default {
     opacity: 0.9;
   }
   
+  .mobile-features {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .mobile-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
   .mobile-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
+    padding: 1rem 2rem;
     background: #88c607;
     color: white;
     text-decoration: none;
@@ -446,7 +624,22 @@ export default {
   }
   
   .mobile-description {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-features {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cta-button {
+    padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
+  }
+  
+  .slide-actions {
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
