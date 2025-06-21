@@ -1,68 +1,53 @@
 <template>
-    <div>
-  
-      <div style="margin: 0%;">
-        <AFrontHeader />
-      </div>
-
-      <div>
-        <div class="Desktop">
-          <BPermit />
-        </div>
-      </div>
-
-      <div>
-        <div class="Mobile">
-          <MBPermit />
-        </div>
-      </div>
-
-      <div>
-        <ZFooter />
-      </div>
-      
-  
-  
+  <div>
+    <div style="margin: 0%;">
+      <AFrontHeader />
     </div>
-    
-  </template>
-  
-  <script>
-  // import AFrontHeader from '~/components/AFrontHeader.vue'
-  import BPermit from '~/components/Services/BPermits/BPermit.vue'
-  import MBPermit from '~/components/Services/BPermits/MBPermit.vue'
 
-  export default {
-    name: 'Services',
-    components: {
-      // AFrontHeader,
-      BPermit,
-      MBPermit,
-    },
-    
+    <div>
+      <PermitsPageContent />
+    </div>
+
+    <div>
+      <ZFooter />
+    </div>
+  </div>
+</template>
+
+<script>
+import PermitsPageContent from '~/components/Services/BPermits/PermitsPageContent.vue'
+
+export default {
+  name: 'PermitsPage',
+  components: {
+    PermitsPageContent,
+  },
+  head() {
+    return {
+      title: 'Flight Permits & Aviation Clearances',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Expert flight permit facilitation and aviation clearances for global destinations. Fast turnaround times for landing permits, overflight clearances, and regulatory compliance in Sri Lanka and worldwide.'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'flight permits, aviation clearances, landing permits, overflight permits, aircraft permits sri lanka, flight permit services, aviation regulatory compliance, permit facilitation, flight clearances'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Flight Permits & Aviation Clearances | Smooth Flight Support'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Expert flight permit facilitation and aviation clearances for global destinations. Fast turnaround times for landing permits and regulatory compliance.'
+        }
+      ]
+    }
   }
-  </script>
-  <style>
-.Desktop{
-  display: block;
 }
-
-.Mobile{
-  display: none;
-}
-
-
-@media only screen and (max-width: 500px) {
-
-.Desktop{
-  display: none;
-}
-
-.Mobile{
-  display: block;
-}
-
-}
-
-</style>
-  
+</script>
