@@ -26,7 +26,7 @@
     </div>
 
     <div v-if="showSection7" class="page-header">
-      <FTTopicLine />
+      <HotelTransportationHeader />
     </div>
 
     <!-- Main Content -->
@@ -86,7 +86,7 @@
                     <ESImage />
                   </div>
                   <div v-if="showSection7" class="image-wrapper">
-                    <FTImage />
+                    <HotelTransportationImage />
                   </div>
                 </div>
 
@@ -108,7 +108,7 @@
                     <ESParaLine />
                   </div>
                   <div v-if="showSection7" class="description-content">
-                    <FTParaLine />
+                    <HotelTransportationDescription />
                   </div>
                 </div>
               </div>
@@ -144,9 +144,9 @@ import ESTopicLine from '~/components/Services/ECPService/SubES/ESTopicLine.vue'
 import ESParaLine from '~/components/Services/ECPService/SubES/ESParaLine.vue'
 import ESImage from '~/components/Services/ECPService/SubES/ESImage.vue'
 
-import FTTopicLine from '~/components/Services/FHRTransportation/SubFT/FTTopicLine.vue'
-import FTParaLine from '~/components/Services/FHRTransportation/SubFT/FTParaLine.vue'
-import FTImage from '~/components/Services/FHRTransportation/SubFT/FTImage.vue'
+import HotelTransportationHeader from '~/components/Services/FHRTransportation/SubFT/HotelTransportationHeader.vue'
+import HotelTransportationDescription from '~/components/Services/FHRTransportation/SubFT/HotelTransportationDescription.vue'
+import HotelTransportationImage from '~/components/Services/FHRTransportation/SubFT/HotelTransportationImage.vue'
 
 export default {
   components: {
@@ -167,9 +167,9 @@ export default {
     ESTopicLine,
     ESParaLine,
     ESImage,
-    FTTopicLine,
-    FTParaLine,
-    FTImage,
+    HotelTransportationHeader,
+    HotelTransportationDescription,
+    HotelTransportationImage
   },
   data: () => ({
     sections: [
