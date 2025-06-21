@@ -17,15 +17,29 @@
                         </p>
                     </div>
 
-                    <!-- Features Grid -->
+                    <!-- Features Grid - Now in 2 columns -->
                     <div class="features-grid">
-                        <div class="feature-item" v-for="(feature, index) in features" :key="index">
-                            <div class="feature-icon">
-                                <font-awesome-icon :icon="['fas', 'check']" />
+                        <div class="features-column">
+                            <div class="feature-item" v-for="(feature, index) in features.slice(0, Math.ceil(features.length/2))" :key="index">
+                                <div class="feature-icon">
+                                    <font-awesome-icon :icon="['fas', 'check']" />
+                                </div>
+                                <div class="feature-content">
+                                    <h3 class="feature-title">{{ feature.title }}</h3>
+                                    <p class="feature-description">{{ feature.description }}</p>
+                                </div>
                             </div>
-                            <div class="feature-content">
-                                <h3 class="feature-title">{{ feature.title }}</h3>
-                                <p class="feature-description">{{ feature.description }}</p>
+                        </div>
+                        
+                        <div class="features-column">
+                            <div class="feature-item" v-for="(feature, index) in features.slice(Math.ceil(features.length/2))" :key="index + Math.ceil(features.length/2)">
+                                <div class="feature-icon">
+                                    <font-awesome-icon :icon="['fas', 'check']" />
+                                </div>
+                                <div class="feature-content">
+                                    <h3 class="feature-title">{{ feature.title }}</h3>
+                                    <p class="feature-description">{{ feature.description }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,7 +140,7 @@ export default {
 
 .why-choose-section {
     position: relative;
-    padding: 80px 0;
+    padding: 60px 0; /* Reduced padding */
     background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
     overflow: hidden;
 }
@@ -140,7 +154,7 @@ export default {
 .content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px; /* Reduced gap */
     align-items: center;
 }
 
@@ -162,7 +176,7 @@ export default {
     font-family: 'SourceSansPro-Regular', sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
 }
@@ -173,7 +187,7 @@ export default {
 
 .section-title {
     font-family: 'Barlow-ExtraBold', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 900;
     color: white;
     margin-bottom: 1.5rem;
@@ -181,51 +195,57 @@ export default {
 }
 
 .intro-text {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .intro-text p {
     font-family: 'SourceSansPro-Regular', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
     text-align: justify;
 }
 
-/* Features Grid */
+/* Features Grid - Now in 2 columns */
 .features-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.features-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .feature-item {
     display: flex;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: 1rem;
     transition: all 0.3s ease;
-    padding: 1rem;
-    border-radius: 16px;
+    padding: 0.75rem;
+    border-radius: 12px;
 }
 
 .feature-item:hover {
     background: rgba(255, 255, 255, 0.05);
-    transform: translateX(8px);
+    transform: translateX(5px);
 }
 
 .feature-icon {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background: #88c607;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1rem;
+    font-size: 0.875rem;
     flex-shrink: 0;
-    box-shadow: 0 8px 20px rgba(136, 198, 7, 0.3);
+    box-shadow: 0 6px 15px rgba(136, 198, 7, 0.3);
 }
 
 .feature-content {
@@ -237,21 +257,20 @@ export default {
     font-size: 1.125rem;
     font-weight: 700;
     color: white;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.25rem;
 }
 
 .feature-description {
     font-family: 'SourceSansPro-Regular', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     margin: 0;
-    text-align: justify;
 }
 
 /* CTA Section */
 .cta-section {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .cta-button {
@@ -289,11 +308,13 @@ export default {
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    height: 450px; /* Reduced height */
 }
 
 .main-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
 }
@@ -409,27 +430,31 @@ export default {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .content-grid {
-        gap: 60px;
+        gap: 40px;
+    }
+    
+    .main-image-container {
+        height: 400px;
     }
     
     .achievement-cards {
         position: static;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
 }
 
 @media (max-width: 992px) {
     .why-choose-section {
-        padding: 60px 0;
+        padding: 50px 0;
     }
     
     .content-grid {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
     }
     
     .features-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
     
     .achievement-cards {
@@ -443,13 +468,13 @@ export default {
     }
     
     .feature-item {
-        padding: 0.75rem;
+        padding: 0.5rem;
     }
     
     .feature-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 0.875rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
     }
     
     .feature-title {
@@ -457,16 +482,16 @@ export default {
     }
     
     .feature-description {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
     }
     
     .achievement-cards {
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .why-choose-section {
         padding: 40px 0;
     }
@@ -483,16 +508,28 @@ export default {
         font-size: 1rem;
     }
     
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .feature-item {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
-        gap: 0.75rem;
     }
     
     .cta-button {
         width: 100%;
         justify-content: center;
-        padding: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .main-image-container {
+        height: 300px;
+    }
+    
+    .achievement-cards {
+        flex-direction: column;
+        align-items: center;
     }
 }
 </style>
