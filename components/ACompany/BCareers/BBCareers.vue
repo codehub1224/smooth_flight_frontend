@@ -91,7 +91,7 @@
           <div class="application-form">
             <div class="form-group">
               <label for="fileInput" class="file-label">
-                <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="upload-icon" />
+                <font-awesome-icon :icon="['fas', 'upload']" class="upload-icon" />
                 <span class="label-text">Upload Your CV & Cover Letter</span>
                 <span class="file-hint">PDF, DOC, or DOCX format (Max 5MB)</span>
               </label>

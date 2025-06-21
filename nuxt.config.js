@@ -196,37 +196,15 @@ export default {
     },
   },
 
-  // Generate configuration for static site
-  generate: {
-    fallback: true,
-    routes: [
-      '/',
-      '/company/overview',
-      '/company/careers',
-      '/services/allServices',
-      '/services/permitsA',
-      '/services/groundHandling',
-      '/services/aircraftFueling',
-      '/services/catering',
-      '/services/crewpassengerservice',
-      '/services/hotelReservationTransportation',
-      '/apermit/applypermit',
-      '/eServices/getTripCostEstimate',
-      '/contactUs',
-      '/privacypolicy'
-    ]
-  },
-
-  // Router configuration
-  router: {
-    base: '/',
-    extendRoutes(routes, resolve) {
-      // Add custom routes or modify existing ones if needed
-    }
-  },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // Transpile the fontawesome SVG core
+    transpile: [
+      '@fortawesome/fontawesome-svg-core',
+      '@fortawesome/free-solid-svg-icons',
+      '@fortawesome/free-brands-svg-icons',
+      '@fortawesome/vue-fontawesome'
+    ],
     // Optimize build for production
     extractCSS: true,
     optimization: {
