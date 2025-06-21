@@ -15,16 +15,6 @@
                   <span class="feature-text">{{ feature }}</span>
                 </div>
               </div>
-              <div class="slide-actions">
-                <NuxtLink to="/company/overview" class="cta-button primary">
-                  <span class="button-text">Discover More</span>
-                  <font-awesome-icon class="button-icon" :icon="['fas', 'arrow-right-long']" />
-                </NuxtLink>
-                <NuxtLink to="/apermit/applypermit" class="cta-button secondary">
-                  <span class="button-text">Apply Permit</span>
-                  <font-awesome-icon class="button-icon" :icon="['fas', 'file-plus']" />
-                </NuxtLink>
-              </div>
             </div>
           </div>
         </div>
@@ -75,10 +65,6 @@
               <span>{{ feature }}</span>
             </div>
           </div>
-          <NuxtLink to="/company/overview" class="mobile-cta">
-            Learn More
-            <font-awesome-icon :icon="['fas', 'arrow-right']" />
-          </NuxtLink>
         </div>
       </div>
     </div>
@@ -292,63 +278,6 @@ export default {
   color: white;
 }
 
-.slide-actions {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
-}
-
-.cta-button.primary {
-  background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
-  color: white;
-  box-shadow: 0 8px 25px rgba(136, 198, 7, 0.4);
-}
-
-.cta-button.secondary {
-  background: transparent;
-  color: white;
-  border-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.cta-button:hover {
-  transform: translateY(-3px) scale(1.05);
-}
-
-.cta-button.primary:hover {
-  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
-  box-shadow: 0 12px 35px rgba(24, 56, 98, 0.4);
-}
-
-.cta-button.secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #88c607;
-}
-
-.button-icon {
-  font-size: 0.875rem;
-  transition: transform 0.3s ease;
-}
-
-.cta-button:hover .button-icon {
-  transform: translateX(6px);
-}
-
 /* Navigation Controls */
 .carousel-control {
   position: absolute;
@@ -488,15 +417,6 @@ export default {
   .carousel-control.next {
     right: 1rem;
   }
-  
-  .slide-actions {
-    gap: 1rem;
-  }
-  
-  .cta-button {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9rem;
-  }
 }
 
 @media (max-width: 768px) {
@@ -594,24 +514,6 @@ export default {
     gap: 0.5rem;
     font-size: 0.875rem;
   }
-  
-  .mobile-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: #88c607;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-  
-  .mobile-cta:hover {
-    background: #9dd409;
-    transform: translateY(-2px);
-  }
 }
 
 @media (max-width: 480px) {
@@ -630,16 +532,6 @@ export default {
   .mobile-features {
     flex-direction: column;
     gap: 0.75rem;
-  }
-  
-  .cta-button {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
-  }
-  
-  .slide-actions {
-    flex-direction: column;
-    align-items: center;
   }
 }
 </style>
