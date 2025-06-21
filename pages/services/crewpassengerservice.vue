@@ -1,70 +1,53 @@
 <template>
-    <div>
-  
-      <div style="margin: 0%;">
-        <AFrontHeader />
-      </div>
-      
-      <div>
-        <div class="Desktop">
-          <BECPService />
-        </div>
-      </div>
-
-      <div>
-        <div class="Mobile">
-          <MBECPService />
-        </div>
-      </div>
-
-      <div>
-        <ZFooter />
-      </div>
-      
-  
-  
+  <div>
+    <div style="margin: 0%;">
+      <AFrontHeader />
     </div>
-    
-  </template>
-  
-  <script>
-  // import AFrontHeader from '~/components/AFrontHeader.vue'
-  import BECPService from '~/components/Services/ECPService/BECPService.vue'
-  import MBECPService from '~/components/Services/ECPService/MBECPService.vue'
 
-  export default {
-    name: 'Services',
-    components: {
-      // AFrontHeader,
-      BECPService,
-      MBECPService,
-    },
-    
+    <div>
+      <CrewPassengerServicePageContent />
+    </div>
+
+    <div>
+      <ZFooter />
+    </div>
+  </div>
+</template>
+
+<script>
+import CrewPassengerServicePageContent from '~/components/Services/ECPService/CrewPassengerServicePageContent.vue'
+
+export default {
+  name: 'CrewPassengerServicePage',
+  components: {
+    CrewPassengerServicePageContent,
+  },
+  head() {
+    return {
+      title: 'Crew & Passenger Services',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Professional crew and passenger assistance services in Sri Lanka ensuring comfortable layovers with VIP transportation and dedicated support for all your aviation needs.'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'crew services, passenger services, VIP transportation, aviation crew support, passenger assistance, flight crew services, VIP aviation services'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Crew & Passenger Services | Smooth Flight Support'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Professional crew and passenger assistance services ensuring comfortable layovers with VIP transportation and dedicated support.'
+        }
+      ]
+    }
   }
-  </script>
-
-
-<style>
-.Desktop{
-  display: block;
 }
-
-.Mobile{
-  display: none;
-}
-
-
-@media only screen and (max-width: 500px) {
-
-.Desktop{
-  display: none;
-}
-
-.Mobile{
-  display: block;
-}
-
-}
-
-</style>
-  
+</script>
