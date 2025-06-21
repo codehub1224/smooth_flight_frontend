@@ -1,545 +1,764 @@
 <template>
-  <div class="classM">
-
-    <form class="trip-estimate-form" @submit.prevent="submitForm">
-      <div v-if="currentStep === 1" class="form-step">
-        <h2>General Details of Aircraft Movement</h2>
-        <div class="form-group">
-          <label for="purpose">a. Purpose of Flight</label>
-
-          <select id="port" v-model="port" placeholder="enter here" style="font-weight:500;">
-            <option value="VIP">VIP</option>
-            <option value="Private">Private</option>
-            <option value="Tourist">Tourist</option>
-            <option value="Cargo">Cargo</option>
-            <option value="Ambulance">Ambulance</option>
-            <option value="Relief">Relief</option>
-            <option value="Technical Stop">Technical Stop</option>
-          </select>
-
-          <br>
-          <br>
-          <div class="form-group">
-            <label for="purpose">b. Whether overflying Colombo Flight Information Region (FIR) or Landing in Sri
-              Lanka</label>
-            <input v-model="overflyingOrLanding" class="inputClass" type="text" placeholder="Enter Here" />
+  <div class="apply-permit-section">
+    <div class="container">
+      <div class="form-container">
+        <div class="form-intro">
+          <div class="intro-badge">
+            <font-awesome-icon :icon="['fas', 'file-alt']" class="badge-icon" />
+            <span>Flight Permit Application</span>
           </div>
-
-          <div>
-            <label for="purpose">c. Date of Operation:</label>
-            <label for="dateOfOperation" class="input"><input v-model="dateOfOperation" id="dateOfOperation"
-                class="date" type="date"></label>
-          </div>
-          <br>
-
-          <div class="form-group">
-            <label for="purpose">d. If landing in Sri Lanka
-              <input id="landingAirport" v-model="landingAirport" class="inputClass" type="text"
-                placeholder="Landing Airport" />
-
-              <label for="dateOfOperation" class="input">Expected Date Arrival<input v-model="expectedDateArrival"
-                  id="dateOfOperation" class="dateA" type="date"></label>
-
-
-                 
-  <v-dialog
-    ref="dialogArrivalTime"
-    v-model="arrivalTimeModal"
-    :return-value.sync="expectedTimeArrival"
-    persistent
-    width="290px"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <input
-        v-model="expectedTimeArrival"
-         :rules="[(v) => !!v || 'Arrival time is required']"
-        label="Expected Time Arrival"
-        placeholder="Expected Time Arrival"
-        outlined
-        dense
-        hide-details="auto"
-        readonly
-        v-bind="attrs"
-        v-on="on" class="input"
-      />
-    </template>
-    <v-time-picker v-if="arrivalTimeModal" v-model="expectedTimeArrival" format="24hr" full-width>
-      <v-spacer></v-spacer>
-      <v-btn @click="arrivalTimeModal = false">
-        Cancel
-      </v-btn>
-      <v-btn @click="$refs.dialogArrivalTime.save(expectedTimeArrival)">
-        OK
-      </v-btn>
-    </v-time-picker>
-  </v-dialog>
-
-
-              <label for="dateOfOperation" class="input">Expected Date Departure<input v-model="expectedDateDeparture"
-                  id="dateOfOperation" class="dateC" type="date"></label>
-
-                  
-  <v-dialog
-    ref="dialogDepartureTime"
-    v-model="departureTimeModal"
-    :return-value.sync="expectedTimeDeparture"
-    persistent
-    width="290px"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <input
-        v-model="expectedTimeDeparture"
-        :rules="[(v) => !!v || 'Departure time is required']"
-        label="Expected Time Departure"
-        placeholder="Expected Time Departure"
-        outlined
-        dense
-        hide-details="auto"
-        :error-messages="errors.departure_time[0]"
-        readonly
-        v-bind="attrs"
-        v-on="on" class="input"
-      />
-    </template>
-    <v-time-picker v-if="departureTimeModal" v-model="expectedTimeDeparture" format="24hr" full-width>
-      <v-spacer></v-spacer>
-      <v-btn @click="departureTimeModal = false">
-        Cancel
-      </v-btn>
-      <v-btn  @click="$refs.dialogDepartureTime.save(expectedTimeDeparture)">
-        OK
-      </v-btn>
-    </v-time-picker>
-  </v-dialog>
-            </label>
-
-          </div>
-
-         
-
-            <label for="purpose"> e. Inbound/Outbound ATS route itinerary including<br><input v-model="entrypoint"
-                class="input" type="text" placeholder="Entry point" />
-
-             
-                
-  <v-dialog
-    ref="dialogExpectetime"
-    v-model="expectetimeModal"
-    :return-value.sync="expectetime"
-    persistent
-    width="290px"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <input
-        v-model="expectetime"
-        :rules="[(v) => !!v || 'Expected time is required']"
-        label="Expected Time"
-        placeholder="Expected Time"
-        outlined
-        dense
-        hide-details="auto"
-        :error-messages="errors.expectetime[0]"
-        readonly
-        v-bind="attrs"
-        v-on="on" class="input"
-      />
-    </template>
-    <v-time-picker v-if="expectetimeModal" v-model="expectetime" format="24hr" full-width>
-      <v-spacer></v-spacer>
-      <v-btn @click="expectetimeModal = false">
-        Cancel
-      </v-btn>
-      <v-btn @click="$refs.dialogExpectetime.save(expectetime)">
-        OK
-      </v-btn>
-    </v-time-picker>
-  </v-dialog>
-
-              <input v-model="exitpoint" class="input" type="text" placeholder="Exit point" /><br>
-
-              
-    
-    <v-dialog
-      ref="dialogExpectetime2"
-      v-model="expectetime2Modal"
-      :return-value.sync="expectetime2"
-      persistent
-      width="290px"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <!-- Text field that triggers the dialog -->
-        <input 
-          v-model="expectetime2"
-          :rules="[(v) => !!v || 'Expected time is required']"
-          label="Expected Time"
-          placeholder="Expected Time"
-          outlined
-          dense
-          hide-details="auto"
-          :error-messages="errors.expectetime2[0]"
-          readonly
-          v-bind="attrs"
-          v-on="on" class="input"
-      />
-      </template>
-    
-      <v-time-picker v-if="expectetime2Modal" v-model="expectetime2" format="24hr" full-width>
-        <v-spacer></v-spacer>
-        <v-btn @click="expectetime2Modal = false">
-          Cancel
-        </v-btn>
-        <v-btn @click="$refs.dialogExpectetime2.save(expectetime2)">
-          OK
-        </v-btn>
-      </v-time-picker>
-    </v-dialog>
-    
-            </label>
-
-         
-          <br>
-
-
-          <div class="form-group">
-            <label for="purpose">f. Point of Origin of the flight</label>
-            <input v-model="pointOfOrigin" class="inputClass" type="text" placeholder="Enter Here" />
-
-          </div>
-
-
-          <div class="form-group">
-            <label for="purpose">
-              g. Places of intended landing prior to arrival in Sri Lanka or fly over Colombo FIR</label>
-            <input v-model="arrival" class="inputClass" type="text" placeholder="Enter Here" />
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">
-              h. Place of immediate landing after departure form Sri Lanka or fly over Colombo FIR</label>
-            <input v-model="departure" class="inputClass" type="text" placeholder="Enter Here" />
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">i. Final Destination</label>
-            <input v-model="destination" class="inputClass" type="text" placeholder="Enter Here" />
-          </div>
-
-
-          <div class="form-group">
-            <label for="purpose">j. Services/Facilities required at the Airport/s of Sri Lanka</label>
-            <input v-model="servicesFacilities" class="inputClass" type="text" placeholder="Enter Here" />
-          </div>
-
-          <div class="form-group">
-            <label for="purpose" class="para">k. Whether the Operator has previously operated in to an Airport in Sri
-              Lanka or over Colombo FIR (within the preceding three years) and if so,the last date of operation,
-              type of aircraft and registration number</label>
-
-            <input v-model="operator" class="inputClass" type="text" placeholder="Enter Here" />
-          </div>
-
-
-          <div class="button-groupA">
-            <button class="NBtn" @click.prevent="nextStep">Next</button>
-          </div>
+          <h2 class="intro-title">Submit Your Permit Request</h2>
+          <p class="intro-description">
+            Complete the form below to apply for flight permits. Our team will process your request promptly and efficiently.
+          </p>
         </div>
-      </div>
-
-
-      <div>
-        <div v-if="currentStep === 2" class="form-step">
-          <h2>Aircraft Operator</h2>
-          <div class="form-group">
-            <label for="purpose">a. Name
-              <input v-model="name" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">b. Nationality
-              <input v-model="nationality" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">c. Postal Address
-              <input v-model="address" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose"> d. Telephone Number
-              <input v-model="teleNumber" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">e. Fax Number
-              <input v-model="fax" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-
-          <div class="form-group">
-            <label for="purpose">f. E-mail
-              <input v-model="email" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">g. Aeronautical Fixed Service (AFS) Address, if any
-              <input v-model="afs" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">h. Aircraft Operator’s Certificate/Permit Number, if any
-              <input v-model="permitNumber" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">i. Details of Operator (if any changes to above) for Billing purposes
-              <input v-model="detailsofOperator" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-          <div class="button-groupB">
-            <button class="PBtn" @click.prevent="prevStep">Previous</button>
-            <button class="NBtn" @click.prevent="nextStep">Next</button>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div v-if="currentStep === 3" class="form-step">
-          <h2>Aircraft Details</h2>
-          <div class="form-group">
-            <label for="purpose">a. Pilot-in-Command
-              <br>
-              <input v-model="name2" class="input2" type="text" placeholder="Name" />
-              <input v-model="nationality2" class="input2" type="text" placeholder="Nationality" /><br>
-            </label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">b. Type of Aircraft with Maximum Take-off Weight (MTOW)
-              <input v-model="mtow" class="inputClass" type="text" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">c. State of Registry/Nationality
-              <input v-model="registry" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">d. Registration Number
-              <input v-model="registrationNumber" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">e. Aircraft Call sign /Flight Number
-              <input v-model="flightNumber" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-
-          <div class="form-group">
-            <label for="purpose">f. Whether the Aircraft is Capable of Air Dropping
-              <input v-model="airDropping" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">g. Maximum Passenger Seating Capacity
-              <input v-model="seatingCapacity" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose"> h. Maximum Payload Capacity
-              <input v-model="payloadCapacity" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="form-group">
-            <label for="purpose">i. Communication Equipment Available
-              <input v-model="communicationEquipment" class="inputClass" type="text" placeholder="Enter Here" /></label>
-          </div>
-
-          <div class="button-groupB">
-            <button class="PBtn" @click.prevent="prevStep">Previous</button>
-            <button class="NBtn" @click.prevent="nextStep">Next</button>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="currentStep === 4" class="form-step">
-        <h2>On-Board Details</h2>
-
-
-        <div class="form-group">
-          <label for="purpose">a. Number of Crew</label>
-          <input v-model="numberOfCrew" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <div class="form-group">
-          <label for="purpose" class="para">b. Number of Passengers, VIPs if any with Passenger Manifest (Not
-            applicable for over flights (Passenger Manifest with passport number and the nationality should be forwarded
-            to
-            Director General of Civil Aviation (DGCA) at least 72 hours before forwarding the Flight Plan except
-            Ambulance
-            Flights.Passenger Manifest of Ambulance Flights should be forwarded with the Non-schedule
-            Application))</label>
-          <input v-model="numberOfPassengers" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <div class="form-group">
-          <label for="purpose">c. General description of the goods carried, if any (such as garments, printed material
-            etc.)</label>
-          <input v-model="generalDescription" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <div class="form-group">
-          <label for="purpose" class="para">d. Any arms, ammunitions, explosives, radioactive material, war equipment
-            or
-            dangerous
-            goods
-            carried? If so, attach a copy of Dangerous Goods Regulations (DGR) license issued by the respective
-            Aviation
-            Authority</label>
-          <input v-model="dgr" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <div class="form-group">
-          <label for="purpose">e. If Dangerous Goods on-board, UN number/ICAO Class and Division, Quantity should be
-            indicated</label>
-          <input v-model="indicated" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <div class="form-group">
-
-          <label for="purpose">e.1. Details of Consignor(optional):
-            <br>
-            <input v-model="nameofConsignor" class="input2" type="text" placeholder="a. Name of Consignor" />
-            <input v-model="postalAddress" class="input2" type="text" placeholder="b. Postal Address" /><br>
-            <input v-model="telephoneNumber" class="input2" type="text" placeholder="c. Telephone Number" />
-            <input v-model="faxNumber" class="input2" type="text" placeholder="d. Fax Number" /><br>
-            <input v-model="emailConsignor" class="input2" type="text" placeholder="e. E-mail" />
-            <input v-model="afsAddress" class="input2" type="text" placeholder="f. AFS Address(if any)" /></label>
-          <br>
-          <label for="purpose">e.2. Details of Consignor(optional):
-            <br>
-            <input v-model="nameofConsignor1" class="input2" type="text" placeholder="a. Name of Consignor" />
-            <input v-model="postalAddress1" class="input2" type="text" placeholder="b. Postal Address" /><br>
-            <input v-model="telephoneNumber1" class="input2" type="text" placeholder="c. Telephone Number" />
-            <input v-model="faxNumber1" class="input2" type="text" placeholder="d. Fax Number" /><br>
-            <input v-model="email1" class="input2" type="text" placeholder="e. E-mail" />
-            <input v-model="afsAddress1" class="input2" type="text" placeholder="f. AFS Address(if any)" /></label>
-        </div>
-
-        <div class="form-group">
-          <label for="purpose" class="para">f. Any special equipment such as aerial photography, remote sensing
-            cameras, night vision cameras on board?If so, attach a copy of the permit issued by the relevant Director
-            General of Civil Aviation (DGCA)</label>
-          <input v-model="dgca" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <div class="form-group">
-          <label for="purpose" class="para">g.
-            Number of passengers with passenger manifest or tonnages and type of cargo to be uplifted from and
-            set-down in Sri Lanka (Passenger Manifest with passport number and the nationality should be forwarded to
-            the Director General Civil Aviation (DGCA) at least 72 hours before forwarding the Flight Plan except
-            Ambulance Flights. Passenger Manifest of Ambulance Flights should beforwardedwith the Non-schedule
-            Clearance Application)</label>
-          <input v-model="passengers" class="inputClass" type="text" placeholder="Enter Here" />
-        </div>
-
-        <v-container>
-    <!-- Icon that triggers the dialog -->
-    <label for="purpose" class="para">
-      h.Please attach the aircraft documents  
-      <i class="icon" @click="dialog = true" 
-         style="margin-left: 1%; font-size: 11px; border-radius: 50%; cursor: pointer;">
-        ?
-      </i>
-    </label>
-
-    <!-- Dialog Box -->
-    <v-dialog v-model="dialog" max-width="800px">
-      <v-card>
-        <v-card-title class="headline">
-          <span style="color:#183862;font-size: 18px;font-weight: 550;">REQUIRED DOCUMENTS FOR LANDING PERMIT IN SRI LANKA</span>
-          <v-spacer></v-spacer>
-          <!-- <span class="close" @click="dialog = false">&times;</span> -->
-          <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn class="icon2" @click="dialog = false" icon>
-    <v-icon>mdi-close</v-icon>
-  </v-btn>
-        </v-card-actions>
-        </v-card-title>
         
-        <v-card-text>
-          <v-divider></v-divider>
-
-          <!-- Scrollable content container -->
-          <div class="scrollable-content">
-            <h4><u>Commercial Charter Flights</u></h4>
-            <p>1. Duly completed application<br>
-               2. AOC and Operations Specifications<br>
-               3. Airworthiness Certificates and latest Airworthiness Review Certificate<br>
-               4. Insurance Certificates<br>
-               5. Aircraft Registration Certificate<br>
-               6. Radio License<br>
-               7. Capt. Authorization letter to release the aircraft<br>
-               8. General Declaration (inbound / outbound)
-            </p>
-
-            <h4><u>The following AVSEC requirements are to be fulfilled by Commercial Charter / Ad hoc Operators,</u></h4>
-            <p>1. Conduct Aircraft Security Checks after the passengers are disembarked in Sri Lanka <br>
-               2. Access Control to aircraft when the Aircraft is in Service <br>
-               3. Protection of aircraft when the Aircraft is not in Service <br>
-               4. Conduct aircraft security check and search for the originating flight from Sri Lanka
-            </p>
-
-            <h4><u>If the operator is not willing to get any of the above security services from an Aviation Security Service Provider in Sri Lanka,</u></h4>
-            <p>The details of security measures and procedures with the responsibility of implementation, to be executed in Sri Lanka for the provision of following Aviation Security Functions according to the approved Air Operator Security Programmed (AOSP) of the operator - References with evidences as page/s from the AOSP are required.</p>
-
-            <h4><u>If the operator is willing to get any of the above security services from an Aviation Security Service Provider in Sri Lanka,</u></h4>
-            <p>It shall be clearly mentioned with any evidence or related correspondence of the security service provider in Sri Lanka with their confirmation.</p>
-
-            <h4><u>Technical stop and Crew Rest</u></h4>
-            <p>1. Duly completed application<br>
-               2. Aircraft Registration Certificate<br>
-               3. General Declaration (inbound / outbound)<br>
-               4. Parking confirmation
-            </p>
-
-            <h4>Note</h4>
-            <p>• If the owner of the aircraft is onboard, required documents remain as above</p>
+        <div class="form-progress">
+          <div class="progress-steps">
+            <div 
+              v-for="step in 4" 
+              :key="step" 
+              class="progress-step" 
+              :class="{ 'active': currentStep >= step, 'completed': currentStep > step }"
+            >
+              <div class="step-number">{{ step }}</div>
+              <div class="step-label">{{ getStepLabel(step) }}</div>
+            </div>
           </div>
-        </v-card-text>
-
-       
-      </v-card>
-    </v-dialog>
-  </v-container>
-
-
-
-
-        <div class="form-group">
-       
-          <input type="file" ref="fileInput" class="fileInput" @change="handleFileUpload" />
-          <ul class="file-list">
-            <dt v-for="(file, index) in files" :key="index" class="file-item">
-              <span class="file-name">{{ file.name }}</span>
-              <button @click="removeFile(index)" class="btnattach">Remove</button>
-            </dt>
-          </ul>
+          <div class="progress-bar">
+            <div class="progress-fill" :style="{ width: `${(currentStep - 1) * 33.33}%` }"></div>
+          </div>
         </div>
-
-
-        <div class="button-groupC">
-          <button class="PBtn" @click.prevent="prevStep">Previous</button>
-          <button class="PBtn" type="submit">Submit</button>
-
-        </div>
-
+        
+        <form class="permit-form" @submit.prevent="submitForm">
+          <!-- Step 1: General Details -->
+          <div v-if="currentStep === 1" class="form-step">
+            <h3 class="step-title">General Details of Aircraft Movement</h3>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="purpose">Purpose of Flight</label>
+                <select id="purpose" v-model="port" class="form-select">
+                  <option value="" disabled>Select purpose</option>
+                  <option value="VIP">VIP</option>
+                  <option value="Private">Private</option>
+                  <option value="Tourist">Tourist</option>
+                  <option value="Cargo">Cargo</option>
+                  <option value="Ambulance">Ambulance</option>
+                  <option value="Relief">Relief</option>
+                  <option value="Technical Stop">Technical Stop</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="overflyingOrLanding">Overflying or Landing in Sri Lanka</label>
+                <input 
+                  id="overflyingOrLanding" 
+                  v-model="overflyingOrLanding" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter details"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="dateOfOperation">Date of Operation</label>
+                <input 
+                  id="dateOfOperation" 
+                  v-model="dateOfOperation" 
+                  type="date" 
+                  class="form-input"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="landingAirport">Landing Airport (if landing in Sri Lanka)</label>
+                <input 
+                  id="landingAirport" 
+                  v-model="landingAirport" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter airport code"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="expectedDateArrival">Expected Date of Arrival</label>
+                <input 
+                  id="expectedDateArrival" 
+                  v-model="expectedDateArrival" 
+                  type="date" 
+                  class="form-input"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="expectedTimeArrival">Expected Time of Arrival</label>
+                <v-dialog
+                  ref="dialogArrivalTime"
+                  v-model="arrivalTimeModal"
+                  :return-value.sync="expectedTimeArrival"
+                  persistent
+                  width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <input
+                      id="expectedTimeArrival"
+                      v-model="expectedTimeArrival"
+                      class="form-input time-input"
+                      placeholder="Select time"
+                      readonly
+                      v-bind="attrs"
+                      v-on="on"
+                    />
+                  </template>
+                  <v-time-picker v-if="arrivalTimeModal" v-model="expectedTimeArrival" format="24hr" full-width>
+                    <div class="time-picker-actions">
+                      <button type="button" class="time-picker-btn cancel" @click="arrivalTimeModal = false">
+                        Cancel
+                      </button>
+                      <button type="button" class="time-picker-btn confirm" @click="$refs.dialogArrivalTime.save(expectedTimeArrival)">
+                        OK
+                      </button>
+                    </div>
+                  </v-time-picker>
+                </v-dialog>
+              </div>
+              
+              <div class="form-group">
+                <label for="expectedDateDeparture">Expected Date of Departure</label>
+                <input 
+                  id="expectedDateDeparture" 
+                  v-model="expectedDateDeparture" 
+                  type="date" 
+                  class="form-input"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="expectedTimeDeparture">Expected Time of Departure</label>
+                <v-dialog
+                  ref="dialogDepartureTime"
+                  v-model="departureTimeModal"
+                  :return-value.sync="expectedTimeDeparture"
+                  persistent
+                  width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <input
+                      id="expectedTimeDeparture"
+                      v-model="expectedTimeDeparture"
+                      class="form-input time-input"
+                      placeholder="Select time"
+                      readonly
+                      v-bind="attrs"
+                      v-on="on"
+                    />
+                  </template>
+                  <v-time-picker v-if="departureTimeModal" v-model="expectedTimeDeparture" format="24hr" full-width>
+                    <div class="time-picker-actions">
+                      <button type="button" class="time-picker-btn cancel" @click="departureTimeModal = false">
+                        Cancel
+                      </button>
+                      <button type="button" class="time-picker-btn confirm" @click="$refs.dialogDepartureTime.save(expectedTimeDeparture)">
+                        OK
+                      </button>
+                    </div>
+                  </v-time-picker>
+                </v-dialog>
+              </div>
+            </div>
+            
+            <div class="form-divider"></div>
+            
+            <div class="form-group">
+              <label>Inbound/Outbound ATS route itinerary</label>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="entrypoint" class="sub-label">Entry point</label>
+                  <input 
+                    id="entrypoint" 
+                    v-model="entrypoint" 
+                    type="text" 
+                    class="form-input" 
+                    placeholder="Enter entry point"
+                  />
+                </div>
+                
+                <div class="form-group">
+                  <label for="expectetime" class="sub-label">Expected Time</label>
+                  <v-dialog
+                    ref="dialogExpectetime"
+                    v-model="expectetimeModal"
+                    :return-value.sync="expectetime"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <input
+                        id="expectetime"
+                        v-model="expectetime"
+                        class="form-input time-input"
+                        placeholder="Select time"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      />
+                    </template>
+                    <v-time-picker v-if="expectetimeModal" v-model="expectetime" format="24hr" full-width>
+                      <div class="time-picker-actions">
+                        <button type="button" class="time-picker-btn cancel" @click="expectetimeModal = false">
+                          Cancel
+                        </button>
+                        <button type="button" class="time-picker-btn confirm" @click="$refs.dialogExpectetime.save(expectetime)">
+                          OK
+                        </button>
+                      </div>
+                    </v-time-picker>
+                  </v-dialog>
+                </div>
+                
+                <div class="form-group">
+                  <label for="exitpoint" class="sub-label">Exit point</label>
+                  <input 
+                    id="exitpoint" 
+                    v-model="exitpoint" 
+                    type="text" 
+                    class="form-input" 
+                    placeholder="Enter exit point"
+                  />
+                </div>
+                
+                <div class="form-group">
+                  <label for="expectetime2" class="sub-label">Expected Time</label>
+                  <v-dialog
+                    ref="dialogExpectetime2"
+                    v-model="expectetime2Modal"
+                    :return-value.sync="expectetime2"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <input
+                        id="expectetime2"
+                        v-model="expectetime2"
+                        class="form-input time-input"
+                        placeholder="Select time"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      />
+                    </template>
+                    <v-time-picker v-if="expectetime2Modal" v-model="expectetime2" format="24hr" full-width>
+                      <div class="time-picker-actions">
+                        <button type="button" class="time-picker-btn cancel" @click="expectetime2Modal = false">
+                          Cancel
+                        </button>
+                        <button type="button" class="time-picker-btn confirm" @click="$refs.dialogExpectetime2.save(expectetime2)">
+                          OK
+                        </button>
+                      </div>
+                    </v-time-picker>
+                  </v-dialog>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-divider"></div>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="pointOfOrigin">Point of Origin of the flight</label>
+                <input 
+                  id="pointOfOrigin" 
+                  v-model="pointOfOrigin" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter point of origin"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="arrival">Places of intended landing prior to arrival in Sri Lanka</label>
+                <input 
+                  id="arrival" 
+                  v-model="arrival" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter details"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="departure">Place of immediate landing after departure from Sri Lanka</label>
+                <input 
+                  id="departure" 
+                  v-model="departure" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter details"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="destination">Final Destination</label>
+                <input 
+                  id="destination" 
+                  v-model="destination" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter final destination"
+                />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="servicesFacilities">Services/Facilities required at the Airport/s of Sri Lanka</label>
+                <input 
+                  id="servicesFacilities" 
+                  v-model="servicesFacilities" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter required services/facilities"
+                />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="operator">Previous operations in Sri Lanka (if any in the last 3 years)</label>
+                <textarea 
+                  id="operator" 
+                  v-model="operator" 
+                  class="form-textarea" 
+                  placeholder="Include date, aircraft type, and registration number if applicable"
+                ></textarea>
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="form-button next" @click="nextStep">
+                <span>Next Step</span>
+                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+              </button>
+            </div>
+          </div>
+          
+          <!-- Step 2: Aircraft Operator -->
+          <div v-if="currentStep === 2" class="form-step">
+            <h3 class="step-title">Aircraft Operator</h3>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input 
+                  id="name" 
+                  v-model="name" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter operator name"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <input 
+                  id="nationality" 
+                  v-model="nationality" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter nationality"
+                />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="address">Postal Address</label>
+                <textarea 
+                  id="address" 
+                  v-model="address" 
+                  class="form-textarea" 
+                  placeholder="Enter postal address"
+                ></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="teleNumber">Telephone Number</label>
+                <input 
+                  id="teleNumber" 
+                  v-model="teleNumber" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter telephone number"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="fax">Fax Number</label>
+                <input 
+                  id="fax" 
+                  v-model="fax" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter fax number"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input 
+                  id="email" 
+                  v-model="email" 
+                  type="email" 
+                  class="form-input" 
+                  placeholder="Enter email address"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="afs">Aeronautical Fixed Service (AFS) Address</label>
+                <input 
+                  id="afs" 
+                  v-model="afs" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter AFS address (if any)"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="permitNumber">Aircraft Operator's Certificate/Permit Number</label>
+                <input 
+                  id="permitNumber" 
+                  v-model="permitNumber" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter certificate/permit number (if any)"
+                />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="detailsofOperator">Details of Operator for Billing purposes (if different from above)</label>
+                <textarea 
+                  id="detailsofOperator" 
+                  v-model="detailsofOperator" 
+                  class="form-textarea" 
+                  placeholder="Enter billing details if different"
+                ></textarea>
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="form-button prev" @click="prevStep">
+                <font-awesome-icon :icon="['fas', 'arrow-left']" />
+                <span>Previous</span>
+              </button>
+              <button type="button" class="form-button next" @click="nextStep">
+                <span>Next Step</span>
+                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+              </button>
+            </div>
+          </div>
+          
+          <!-- Step 3: Aircraft Details -->
+          <div v-if="currentStep === 3" class="form-step">
+            <h3 class="step-title">Aircraft Details</h3>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name2">Pilot-in-Command Name</label>
+                <input 
+                  id="name2" 
+                  v-model="name2" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter pilot name"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="nationality2">Pilot-in-Command Nationality</label>
+                <input 
+                  id="nationality2" 
+                  v-model="nationality2" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter pilot nationality"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="mtow">Type of Aircraft with Maximum Take-off Weight (MTOW)</label>
+                <input 
+                  id="mtow" 
+                  v-model="mtow" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter aircraft type and MTOW"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="registry">State of Registry/Nationality</label>
+                <input 
+                  id="registry" 
+                  v-model="registry" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter state of registry"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="registrationNumber">Registration Number</label>
+                <input 
+                  id="registrationNumber" 
+                  v-model="registrationNumber" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter registration number"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="flightNumber">Aircraft Call sign/Flight Number</label>
+                <input 
+                  id="flightNumber" 
+                  v-model="flightNumber" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter call sign/flight number"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="airDropping">Whether the Aircraft is Capable of Air Dropping</label>
+                <input 
+                  id="airDropping" 
+                  v-model="airDropping" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter Yes/No and details if applicable"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="seatingCapacity">Maximum Passenger Seating Capacity</label>
+                <input 
+                  id="seatingCapacity" 
+                  v-model="seatingCapacity" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter seating capacity"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="payloadCapacity">Maximum Payload Capacity</label>
+                <input 
+                  id="payloadCapacity" 
+                  v-model="payloadCapacity" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter payload capacity"
+                />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="communicationEquipment">Communication Equipment Available</label>
+                <input 
+                  id="communicationEquipment" 
+                  v-model="communicationEquipment" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter communication equipment details"
+                />
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="form-button prev" @click="prevStep">
+                <font-awesome-icon :icon="['fas', 'arrow-left']" />
+                <span>Previous</span>
+              </button>
+              <button type="button" class="form-button next" @click="nextStep">
+                <span>Next Step</span>
+                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+              </button>
+            </div>
+          </div>
+          
+          <!-- Step 4: On-Board Details -->
+          <div v-if="currentStep === 4" class="form-step">
+            <h3 class="step-title">On-Board Details</h3>
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="numberOfCrew">Number of Crew</label>
+                <input 
+                  id="numberOfCrew" 
+                  v-model="numberOfCrew" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter number of crew"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="numberOfPassengers">Number of Passengers</label>
+                <input 
+                  id="numberOfPassengers" 
+                  v-model="numberOfPassengers" 
+                  type="text" 
+                  class="form-input" 
+                  placeholder="Enter number of passengers"
+                />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="generalDescription">General description of the goods carried</label>
+                <textarea 
+                  id="generalDescription" 
+                  v-model="generalDescription" 
+                  class="form-textarea" 
+                  placeholder="Enter description of goods carried"
+                ></textarea>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="dgr">Any arms, ammunitions, explosives, radioactive material, war equipment or dangerous goods carried?</label>
+                <textarea 
+                  id="dgr" 
+                  v-model="dgr" 
+                  class="form-textarea" 
+                  placeholder="Enter details if applicable"
+                ></textarea>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="indicated">If Dangerous Goods on-board, UN number/ICAO Class and Division, Quantity</label>
+                <textarea 
+                  id="indicated" 
+                  v-model="indicated" 
+                  class="form-textarea" 
+                  placeholder="Enter details if applicable"
+                ></textarea>
+              </div>
+            </div>
+            
+            <div class="form-divider"></div>
+            
+            <h4 class="subsection-title">Required Documents</h4>
+            <div class="info-box">
+              <div class="info-icon">
+                <font-awesome-icon :icon="['fas', 'info-circle']" />
+              </div>
+              <div class="info-content">
+                <p class="info-text">
+                  Please attach the required documents for your permit application. These may include aircraft registration, airworthiness certificates, insurance documents, and other relevant permits.
+                </p>
+                <button type="button" class="info-button" @click="dialog = true">
+                  View Required Documents
+                </button>
+              </div>
+            </div>
+            
+            <div class="form-group file-upload-group">
+              <label for="fileInput" class="file-upload-label">
+                <font-awesome-icon :icon="['fas', 'upload']" class="upload-icon" />
+                <span class="upload-text">Upload Documents</span>
+                <span class="upload-hint">PDF, DOC, or DOCX format (Max 5MB)</span>
+              </label>
+              <input 
+                type="file" 
+                id="fileInput" 
+                ref="fileInput" 
+                class="file-input" 
+                @change="handleFileUpload" 
+                multiple
+              />
+              
+              <ul v-if="files.length > 0" class="file-list">
+                <li v-for="(file, index) in files" :key="index" class="file-item">
+                  <div class="file-info">
+                    <font-awesome-icon :icon="['fas', 'file-alt']" class="file-icon" />
+                    <span class="file-name">{{ file.name }}</span>
+                  </div>
+                  <button type="button" @click="removeFile(index)" class="file-remove-button">
+                    <font-awesome-icon :icon="['fas', 'times']" />
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="form-button prev" @click="prevStep">
+                <font-awesome-icon :icon="['fas', 'arrow-left']" />
+                <span>Previous</span>
+              </button>
+              <button type="submit" class="form-button submit">
+                <span>Submit Application</span>
+                <font-awesome-icon :icon="['fas', 'paper-plane']" />
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-
-
-    </form>
+      
+      <!-- Required Documents Dialog -->
+      <v-dialog v-model="dialog" max-width="800px" class="documents-dialog">
+        <v-card>
+          <v-card-title class="dialog-title">
+            <span>Required Documents for Landing Permit in Sri Lanka</span>
+            <v-btn class="close-button" @click="dialog = false" icon>
+              <font-awesome-icon :icon="['fas', 'times']" />
+            </v-btn>
+          </v-card-title>
+          
+          <v-card-text class="dialog-content">
+            <div class="scrollable-content">
+              <h4 class="document-section-title">Commercial Charter Flights</h4>
+              <ol class="document-list">
+                <li>Duly completed application</li>
+                <li>AOC and Operations Specifications</li>
+                <li>Airworthiness Certificates and latest Airworthiness Review Certificate</li>
+                <li>Insurance Certificates</li>
+                <li>Aircraft Registration Certificate</li>
+                <li>Radio License</li>
+                <li>Capt. Authorization letter to release the aircraft</li>
+                <li>General Declaration (inbound / outbound)</li>
+              </ol>
+              
+              <h4 class="document-section-title">AVSEC Requirements for Commercial Charter / Ad hoc Operators</h4>
+              <ol class="document-list">
+                <li>Conduct Aircraft Security Checks after the passengers are disembarked in Sri Lanka</li>
+                <li>Access Control to aircraft when the Aircraft is in Service</li>
+                <li>Protection of aircraft when the Aircraft is not in Service</li>
+                <li>Conduct aircraft security check and search for the originating flight from Sri Lanka</li>
+              </ol>
+              
+              <h4 class="document-section-title">Security Services from Aviation Security Service Provider</h4>
+              <p class="document-note">
+                If the operator is not willing to get any of the above security services from an Aviation Security Service Provider in Sri Lanka, the details of security measures and procedures with the responsibility of implementation, to be executed in Sri Lanka for the provision of following Aviation Security Functions according to the approved Air Operator Security Programmed (AOSP) of the operator - References with evidences as page/s from the AOSP are required.
+              </p>
+              
+              <p class="document-note">
+                If the operator is willing to get any of the above security services from an Aviation Security Service Provider in Sri Lanka, it shall be clearly mentioned with any evidence or related correspondence of the security service provider in Sri Lanka with their confirmation.
+              </p>
+              
+              <h4 class="document-section-title">Technical stop and Crew Rest</h4>
+              <ol class="document-list">
+                <li>Duly completed application</li>
+                <li>Aircraft Registration Certificate</li>
+                <li>General Declaration (inbound / outbound)</li>
+                <li>Parking confirmation</li>
+              </ol>
+              
+              <p class="document-note">
+                <strong>Note:</strong> If the owner of the aircraft is onboard, required documents remain as above
+              </p>
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+    </div>
   </div>
-
-
 </template>
 
 <script>
@@ -608,11 +827,9 @@ export default {
       dgca: '',
       passengers: '',
       files: [],
-
-     dialog: false,
-
+      dialog: false,
       errors: {
-        departure_time: [] ,
+        departure_time: [],
         arrival_time: [],
         expectetime: [],
         expectetime2: []
@@ -620,11 +837,18 @@ export default {
     };
   },
   methods: {
+    getStepLabel(step) {
+      const labels = {
+        1: 'General Details',
+        2: 'Aircraft Operator',
+        3: 'Aircraft Details',
+        4: 'On-Board Details'
+      };
+      return labels[step] || '';
+    },
     handleFileUpload(event) {
-      const selectedFile = event.target.files[0];
-      if (selectedFile) {
-        this.files.push(selectedFile);
-      }
+      const selectedFiles = Array.from(event.target.files);
+      this.files = [...this.files, ...selectedFiles];
     },
     removeFile(index) {
       this.files.splice(index, 1);
@@ -632,8 +856,8 @@ export default {
     async submitForm() {
       const formData = new FormData();
       this.files.forEach((file, index) => {
-      formData.append(`pdf[${index}]`, file); 
-});
+        formData.append(`pdf[${index}]`, file); 
+      });
 
       formData.append('port', this.port);
       formData.append('overflyingOrLanding', this.overflyingOrLanding);
@@ -698,1166 +922,776 @@ export default {
           body: formData
         });
         console.log(response.data);
-        alert('Thank you! Your request has been successfully submitted');
-
-        // Clear Form
-        this.currentStep = 1;
-        this.port = '';
-        this.overflyingOrLanding = '';
-        this.dateOfOperation = '';
-        this.landingAirport = '';
-        this.expectedDateArrival = '';
-        this.expectedTimeArrival = '';
-        this.expectedDateDeparture = '';
-        this.expectedTimeDeparture = '';
-        this.entrypoint = '';
-        this.expectetime = '';
-        this.exitpoint = '';
-        this.expectetime2 = '';
-        this.pointOfOrigin = '';
-        this.arrival = '';
-        this.departure = '';
-        this.destination = '';
-        this.servicesFacilities = '';
-        this.operator = '';
-        this.name = '';
-        this.nationality = '';
-        this.address = '';
-        this.teleNumber = '';
-        this.fax = '';
-        this.email = '';
-        this.afs = '';
-        this.permitNumber = '';
-        this.detailsofOperator = '';
-        this.name2 = '';
-        this.nationality2 = '';
-        this.mtow = '';
-        this.registry = '';
-        this.registrationNumber = '';
-        this.flightNumber = '';
-        this.airDropping = '';
-        this.seatingCapacity = '';
-        this.payloadCapacity = '';
-        this.communicationEquipment = '';
-        this.numberOfCrew = '';
-        this.numberOfPassengers = '';
-        this.generalDescription = '';
-        this.dgr = '';
-        this.indicated = '';
-        this.nameofConsignor = '';
-        this.postalAddress = '';
-        this.telephoneNumber = '';
-        this.faxNumber = '';
-        this.emailConsignor = '';
-        this.afsAddress = '';
-        this.nameofConsignor1 = '';
-        this.postalAddress1 = '';
-        this.telephoneNumber1 = '';
-        this.faxNumber1 = '';
-        this.email1 = '';
-        this.afsAddress1 = '';
-        this.dgca = '';
-        this.passengers = '';
-        this.files= '';
-
+        this.showSuccessMessage();
+        this.resetForm();
       } catch (error) {
         console.error('Failed to submit form', error);
-        alert('Failed to submit form');
+        alert('Failed to submit form. Please try again later.');
       }
     },
-
+    showSuccessMessage() {
+      alert('Thank you! Your permit application has been successfully submitted. Our team will contact you shortly.');
+    },
+    resetForm() {
+      this.currentStep = 1;
+      this.port = '';
+      this.overflyingOrLanding = '';
+      this.dateOfOperation = '';
+      this.landingAirport = '';
+      this.expectedDateArrival = '';
+      this.expectedTimeArrival = '';
+      this.expectedDateDeparture = '';
+      this.expectedTimeDeparture = '';
+      this.entrypoint = '';
+      this.expectetime = '';
+      this.exitpoint = '';
+      this.expectetime2 = '';
+      this.pointOfOrigin = '';
+      this.arrival = '';
+      this.departure = '';
+      this.destination = '';
+      this.servicesFacilities = '';
+      this.operator = '';
+      this.name = '';
+      this.nationality = '';
+      this.address = '';
+      this.teleNumber = '';
+      this.fax = '';
+      this.email = '';
+      this.afs = '';
+      this.permitNumber = '';
+      this.detailsofOperator = '';
+      this.name2 = '';
+      this.nationality2 = '';
+      this.mtow = '';
+      this.registry = '';
+      this.registrationNumber = '';
+      this.flightNumber = '';
+      this.airDropping = '';
+      this.seatingCapacity = '';
+      this.payloadCapacity = '';
+      this.communicationEquipment = '';
+      this.numberOfCrew = '';
+      this.numberOfPassengers = '';
+      this.generalDescription = '';
+      this.dgr = '';
+      this.indicated = '';
+      this.nameofConsignor = '';
+      this.postalAddress = '';
+      this.telephoneNumber = '';
+      this.faxNumber = '';
+      this.emailConsignor = '';
+      this.afsAddress = '';
+      this.nameofConsignor1 = '';
+      this.postalAddress1 = '';
+      this.telephoneNumber1 = '';
+      this.faxNumber1 = '';
+      this.email1 = '';
+      this.afsAddress1 = '';
+      this.dgca = '';
+      this.passengers = '';
+      this.files = [];
+    },
     nextStep() {
-      this.currentStep++;
+      if (this.currentStep < 4) {
+        this.currentStep++;
+        window.scrollTo(0, 0);
+      }
     },
     prevStep() {
-      this.currentStep--;
-    },
-
-    formatTime(timeField) {
-      const timeValue = this[timeField];
-      if (timeValue) {
-        const [hours, minutes] = timeValue.split(':');
-        const formattedHours = hours.padStart(2, '0');
-        const formattedMinutes = minutes.padStart(2, '0');
-        this[timeField] = `${formattedHours}:${formattedMinutes}`;
+      if (this.currentStep > 1) {
+        this.currentStep--;
+        window.scrollTo(0, 0);
       }
-    },
-
-    togglePopup() {
-      this.isPopupVisible = !this.isPopupVisible;
     }
-  },
+  }
 };
 </script>
 
 <style scoped>
-.button-groupA {
-  width: 100%;
-  padding: 5%;
-  display: flex;
-  justify-content: flex-end;
+@import '../../assets/fonts.css';
 
-}
-.icon2{
-  color: #183862;background-color: #f8f9fa;
-
-}
-.button-groupB {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 5%;
-}
-.scrollable-content {
-  max-height: 60vh; 
-  overflow-y: auto; 
-  padding-right: 15px;
-}
-.icon {
-  cursor: pointer;
-
-  
-}
-.button-groupC {
-  width: 100%;
-  padding: 5%;
-  display: flex;
-  justify-content: space-between;
+.apply-permit-section {
+  background-color: #f8fafc;
+  padding: 60px 0;
+  min-height: 100vh;
 }
 
-h2 {
-  margin-top: 5%;
-  font-weight: 900;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-  color: #183862;
-  margin-bottom: 5%;
-}
-
-
-
-.para {
-  text-align: justify;
-}
-
-
-.PBtn {
-  left: 0%;
-  width: 150px;
-  background-color: #88c607;
-
-
-}
-
-.radio-buttons {
-  display: block;
-
-}
-
-.radio-buttons input[type="radio"],
-.radio-buttons label {
-  display: block;
-  margin-left: 10%;
-}
-
-.radio-buttons label {
-  margin-right: 10px;
-
-}
-
-.date {
-  margin-left: 70%;
-
-}
-
-.dateA {
-  margin-left: 35%;
-}
-
-.dateB {
-  margin-left: 46%;
-}
-
-.dateC {
-  margin-left: 29%;
-}
-
-.DateD {
-  margin-left: 46%;
-
-}
-
-.NBtn {
-  right: 0%;
-  width: 150px;
-  background-color: #88c607;
-}
-
-
-
-.classM {
-  width: 100%;
-  height: 100%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  animation: fade 1.5s 1.5s both;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: translate(0, 4rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-
-
-}
-
-.trip-estimate-form {
-  max-width: 65%;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2px 2px 2px 2px !important;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-
+  padding: 0 2rem;
 }
 
-.form-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* padding: 20px; */
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding-left: 15%;
-  padding-right: 15%;
+.form-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-out;
 }
 
-
-
-.form-group {
-  margin-bottom: 20px;
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-family: 'SourceSansPro-Regular', sans-serif;
-}
-
-img {
-  height: 35px;
-  width: auto;
-}
-
-
-
-.CDIClass {
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  height: 45px;
-  margin-top: 5px;
-  padding-left: 5px;
-
-}
-
-.Phone {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-
-
-.codeDial {
-  width: 100% !important;
-  font-size: 16px;
-}
-
-.Phone {
-  width: 20dvw !important;
-}
-
-.inputClass,
-select,
-textarea {
-  width: 44.5dvw !important;
-  padding: 10px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-button {
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 16px 50px;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  background: #88c607;
+/* Form Intro */
+.form-intro {
+  background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
+  padding: 40px;
   color: white;
-  z-index: 1;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-button::after {
-  border-radius: 6px;
+.form-intro::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #183862;
-  z-index: -1;
-  transform: scale(0);
-  transform-origin: bottom right;
-  transition: transform 200ms ease-in;
+  right: 0;
+  bottom: 0;
+  background-image: url('/HomePage/WhyChUs/BackgroundImgB.png');
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
-button:hover::after {
-  transform: scale(1);
-  transform-origin: top left;
+.intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(136, 198, 7, 0.2);
+  color: #88c607;
+  border-radius: 50px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(136, 198, 7, 0.3);
+  position: relative;
 }
 
-.add {
-  padding: 15px 50px;
-  margin-left: 25%;
-  background: #183862;
-  text-decoration: none;
+.badge-icon {
+  font-size: 1rem;
 }
 
-.input {
-
-  width: 23dvw !important;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 700;
-
+.intro-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.input2 {
-  width: 22dvw !important;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 700;
+.intro-description {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.time {
-  width: 23dvw !important;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 16px;
+/* Progress Steps */
+.form-progress {
+  padding: 30px 40px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.checkbox-group {
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.progress-step {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
 }
 
-.checkbox-group label {
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e2e8f0;
+  z-index: 1;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
-.checkbox-group input {
-  margin-right: 5px;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.fileInput {
-  width: 44.5dvw !important;
-  padding: 7px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 16px;
+.step-label {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.875rem;
+  color: #64748b;
   font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+  background: #88c607;
+  color: white;
+}
+
+.progress-step.active .step-label {
+  color: #183862;
+  font-weight: 600;
+}
+
+.progress-step.completed .step-number {
+  background: #183862;
+  color: white;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #88c607;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Form Styles */
+.permit-form {
+  padding: 40px;
+}
+
+.form-step {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.step-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #183862;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.step-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #88c607;
+  border-radius: 2px;
+}
+
+.subsection-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #183862;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+label {
+  display: block;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.sub-label {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 1rem;
+  color: #334155;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #88c607;
+  box-shadow: 0 0 0 3px rgba(136, 198, 7, 0.1);
+  background: white;
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.time-input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+.form-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 30px 0;
+  grid-column: span 2;
+}
+
+/* File Upload */
+.file-upload-group {
+  margin-top: 30px;
+}
+
+.file-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+  border-color: #88c607;
+  background: rgba(136, 198, 7, 0.05);
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  color: #88c607;
+  margin-bottom: 15px;
+}
+
+.upload-text {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #183862;
+  margin-bottom: 8px;
+}
+
+.upload-hint {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .file-list {
-  list-style-type: none;
+  margin-top: 20px;
+  list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .file-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-left: 2%;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-icon {
+  color: #183862;
+  font-size: 1.25rem;
 }
 
 .file-name {
-  flex: 1;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #334155;
 }
 
-.btnattach {
-  width: 100px;
-  text-align: center;
-  background-color: #183862;
-  border: 1px solid #ccc;
-  padding: 5px 20px;
-  cursor: pointer;
-  font-size: 14px;
-  color: white;
-  margin-right: 35%;
-}
-
-.icon {
-  border: 1px solid  black; /* Border style */
-  padding: 5px; /* Optional: Add padding to the icon */
- 
-}
-
-.popup {
-  position: fixed;
-  left: 0;
-  top: 15%;
-  width: 78%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+.file-remove-button {
+  width: 32px;
+  height: 32px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: none;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
- 
-  margin-left: 10%;
-}
-
-.popup-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   cursor: pointer;
-  font-size: 18px;
+  transition: all 0.3s ease;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+.file-remove-button:hover {
+  background: #ef4444;
+  color: white;
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
+/* Info Box */
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(136, 198, 7, 0.05);
+  border: 1px solid rgba(136, 198, 7, 0.2);
+  border-radius: 12px;
+  margin-bottom: 30px;
 }
-p{
-  text-align: justify;
+
+.info-icon {
+  font-size: 1.5rem;
+  color: #88c607;
+  flex-shrink: 0;
 }
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
 
-  .inputClass,
-  select,
-  textarea {
-    width: 54dvw !important;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
+.info-content {
+  flex: 1;
+}
+
+.info-text {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 15px;
+}
+
+.info-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #88c607;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.info-button:hover {
+  background: #183862;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.form-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-button.next,
+.form-button.submit {
+  background: #88c607;
+  color: white;
+}
+
+.form-button.prev {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.form-button:hover {
+  transform: translateY(-3px);
+}
+
+.form-button.next:hover,
+.form-button.submit:hover {
+  background: #183862;
+}
+
+.form-button.prev:hover {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+/* Time Picker Styles */
+.time-picker-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.time-picker-btn {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.time-picker-btn.cancel {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.time-picker-btn.confirm {
+  background: #88c607;
+  color: white;
+}
+
+.time-picker-btn:hover {
+  opacity: 0.9;
+}
+
+/* Dialog Styles */
+.dialog-title {
+  background: #183862;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  color: white;
+}
+
+.dialog-content {
+  padding: 0;
+}
+
+.scrollable-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.document-section-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #183862;
+  margin: 20px 0 10px;
+  text-decoration: underline;
+}
+
+.document-section-title:first-child {
+  margin-top: 0;
+}
+
+.document-list {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.document-list li {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.document-note {
+  font-family: 'SourceSansPro-Regular', sans-serif;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid #88c607;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .apply-permit-section {
+    padding: 40px 0;
   }
-
-  .input {
-
-    width: 40dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-
-  .input2 {
-    width: 26.1dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
+  
+  .form-group.full-width {
+    grid-column: span 1;
   }
-
-  .date {
-    margin-left: 67%;
+  
+  .intro-title {
+    font-size: 2rem;
   }
-
-  .dateA {
-    margin-left: 30%;
+  
+  .step-title {
+    font-size: 1.5rem;
   }
-
-  .dateB {
-    margin-left: 42%;
+  
+  .progress-steps {
+    display: none;
   }
+}
 
-  .dateC {
-    margin-left: 23%;
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
   }
-
-  .DateD {
-    margin-left: 42%;
-
+  
+  .form-intro,
+  .permit-form {
+    padding: 30px;
   }
-
-  .time {
-    width: 40dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
+  
+  .form-progress {
+    padding: 20px 30px;
   }
-
-
-
-  .trip-estimate-form {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 2px 2px 2px 2px !important;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .form-step {
-    display: flex;
+  
+  .form-actions {
     flex-direction: column;
-    align-items: center;
-    /* padding: 20px; */
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-left: 20%;
-    padding-right: 20%;
+    gap: 15px;
   }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-
-  .inputClass,
-  select,
-  textarea {
-    width: 65dvw !important;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .input {
-    width: 30dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .input2 {
-    width: 30dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .date {
-    margin-left: 65%;
-  }
-
-  .dateA {
-    margin-left: 25%;
-  }
-
-  .dateB {
-    margin-left: 36%;
-  }
-
-  .dateC {
-    margin-left: 17%;
-  }
-
-  .dateD {
-    margin-left: 32%;
-  }
-
-
-
-  .trip-estimate-form {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 2px 2px 2px 2px !important;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .time {
-    width: 30vw !important;
-    /* Corrected unit to vw */
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-
-}
-
-
-@media only screen and (min-width: 1281px) and (max-width: 1366px) {
-  .date {
-    margin-left: 60%;
-  }
-
-  .dateA {
-    margin-left: 15%;
-  }
-
-  .dateB {
-    margin-left: 30%;
-  }
-
-  .dateC {
-    margin-left: 7%;
-  }
-
-  .DateD {
-    margin-left: 30%;
-
-  }
-
-  .input {
-
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .input2 {
-    width: 21.9dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .time {
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  /* .para {
-    text-align: justify;
-    font-size: 13px;
-  } */
-
-  .trip-estimate-form {
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 2px 2px 2px 2px !important;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .form-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 20px; */
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-left: 20%;
-    padding-right: 20%;
-  }
-}
-
-
-@media only screen and (min-width: 1367px) and (max-width: 1440px) {
-
-  .inputClass,
-  select,
-  textarea {
-    width: 48dvw !important;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .input {
-
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .input2 {
-    width: 23.3dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .date {
-    margin-left: 62%;
-  }
-
-  .dateA {
-    margin-left: 20%;
-  }
-
-  .dateB {
-    margin-left: 30%;
-  }
-
-  .dateC {
-    margin-left: 12%;
-  }
-
-  .DateD {
-    margin-left: 52%;
-
-  }
-
-  .time {
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .trip-estimate-form {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 2px 2px 2px 2px !important;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .form-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 20px; */
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-left: 20%;
-    padding-right: 20%;
-  }
-
-
-}
-
-@media only screen and (min-width: 1441px) and (max-width: 1600px) {
-
-  .date {
-    margin-left: 63%;
-  }
-
-  .dateA {
-    margin-left: 28%;
-  }
-
-  .dateB {
-    margin-left: 40%;
-  }
-
-  .dateC {
-    margin-left: 22%;
-  }
-
-  .DateD {
-    margin-left: 40%;
-
-  }
-
-  .input {
-
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .time {
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .form-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 20px; */
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-left: 20%;
-    padding-right: 20%;
-  }
-
-  .trip-estimate-form {
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 2px 2px 2px 2px !important;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-
-
-}
-
-@media only screen and (min-width: 1601px) and (max-width: 1800px) {
-  .date {
-    margin-left: 67%;
-  }
-
-  .dateA {
-    margin-left: 32%;
-  }
-
-  .dateB {
-    margin-left: 45%;
-  }
-
-  .dateC {
-    margin-left: 25%;
-  }
-
-  .DateD {
-    margin-left: 40%;
-
-  }
-
-  .input {
-
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .time {
-    width: 25dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .form-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 20px; */
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-left: 20%;
-    padding-right: 20%;
-  }
-
-  .trip-estimate-form {
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 2px 2px 2px 2px !important;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-
-
-}
-
-@media only screen and (max-width: 500px) {
-  .classM {
-    display: block;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-family: 'SourceSansPro-Regular', sans-serif;
-    margin-left: 5%
-  }
-
-  .trip-estimate-form {
-    max-width: 100%;
-    padding-right: 2%;
-  }
-
-
-  img {
-    height: 15px;
-    width: auto;
-  }
-
-  h2 {
-    font-size: 15px;
-  }
-
-  .CDIClass {
-    width: 15svw;
-    display: flex;
+  
+  .form-button {
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    height: 45px;
-    margin-top: 5px;
-    padding-left: 5px;
-
   }
+}
 
-
-  .Phone {
-    width: 50svw !important;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 12px;
-    margin-left: 10px;
+@media (max-width: 576px) {
+  .apply-permit-section {
+    padding: 30px 0;
   }
-
-
-  .codeDial {
-    width: 10svw !important;
-    font-size: 12px;
+  
+  .container {
+    padding: 0 1rem;
   }
-
-  .inputClass,
-  select,
-  textarea {
-    width: 65svw !important;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 12px;
-    margin-left: 5%;
+  
+  .form-intro,
+  .permit-form {
+    padding: 20px;
   }
-
-  .radio-buttons {
-    display: block;
-    flex-direction: row;
-    align-items: center;
-
+  
+  .form-progress {
+    padding: 15px 20px;
   }
-
-  .radio-buttons input[type="radio"],
-  .radio-buttons label {
-    margin-right: 10px;
-    margin-bottom: 0;
-
+  
+  .intro-title {
+    font-size: 1.75rem;
   }
-
-  .input {
-
-    width: 65dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    color: rgb(126, 125, 125);
-    border-radius: 4px;
-    font-size: 11px;
+  
+  .intro-description {
+    font-size: 1rem;
   }
-
-  .input2 {
-    width: 65dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-size: 16px;
-
+  
+  .step-title {
+    font-size: 1.35rem;
   }
-
-  .time {
-    width: 65dvw !important;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    color: rgb(126, 125, 125);
-    border-radius: 4px;
-    font-size: 16px;
-    margin-left: 5%;
+  
+  .file-upload-label {
+    padding: 30px 20px;
   }
-
-  .date {
-    margin-left: 45%;
-    color: rgb(126, 125, 125);
-
+  
+  .upload-icon {
+    font-size: 2rem;
   }
-
-  .dateA {
-    margin-left: 1%;
-    color: rgb(126, 125, 125);
-  }
-
-  .dateB {
-    margin-left: 15%;
-    color: rgb(126, 125, 125);
-  }
-
-  .dateC {
-    margin-left: 0%;
-    color: rgb(126, 125, 125);
-  }
-
-  .DateD {
-    margin-left: 15%;
-    color: rgb(126, 125, 125);
-
-  }
-
-  .button-groupA,
-  .button-groupB,
-  .button-groupC {
-    padding: 6%;
-
-  }
-
-
-  .PBtn {
-    width: 110px;
-    padding-right: 8%;
-
-  }
-
-  .NBtn {
-    width: 110px;
-  }
-
-  button {
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 10px 25px;
-    cursor: pointer;
-    position: relative;
-    display: inline-flex;
-    background: #88c607;
-    color: white;
-    z-index: 1;
-    text-align: center;
-  }
-
-  .sButton {
-    width: 110px;
-  }
-
-  .para {
-    padding-right: 2%;
+  
+  .upload-text {
+    font-size: 1.125rem;
   }
 }
 </style>
