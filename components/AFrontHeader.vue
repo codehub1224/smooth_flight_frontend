@@ -408,26 +408,10 @@ export default {
   border-bottom: none;
 }
 
-.dropdown-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.dropdown-item:hover::before {
-  left: 0;
-}
-
 .dropdown-item:hover {
-  color: white;
+  color: #374151;
   transform: translateX(8px);
-  background: transparent;
+  background: #f8fafc;
 }
 
 .dropdown-item .dropdown-icon {
@@ -438,7 +422,7 @@ export default {
 }
 
 .dropdown-item:hover .dropdown-icon {
-  color: white;
+  color: #88c607;
   transform: scale(1.1);
 }
 
