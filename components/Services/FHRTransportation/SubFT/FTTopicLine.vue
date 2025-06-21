@@ -1,136 +1,145 @@
 <template>
-  <div style="width:100%; height:100%">
-    <h1 class="Topic">Hotel Reservation & Transportation</h1>
-
-    <div class="ScLine">
-      <ul class="stepper">
-        <li class="step active">Smooth Flight Support</li>
-        <li class="step" style="font-weight: 600;">Services</li>
-        <li class="step">Hotel Reservation & Transportation</li>
-      </ul>
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Hotel & Transportation</h1>
+      <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item active">Smooth Flight Support</li>
+          <li class="breadcrumb-item">Services</li>
+          <li class="breadcrumb-item">Hotel & Transportation</li>
+        </ul>
+      </div>
     </div>
-
+    <div class="header-background"></div>
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'HotelTransportationHeader'
 }
 </script>
 
 <style scoped>
-.ScLine {
+.page-header {
+  position: relative;
   width: 100%;
-  height: 100%;
-  /* padding: 5px; */
-  display: flex;
-  align-items: center;
-  /* background-color: rgb(168, 168, 168); */
-  border: 1px solid #ccc;
+  overflow: hidden;
 }
 
-.Topic {
-  width: 100%;
-  top: 0;
-  z-index: 1;
-  padding-left: 5%;
-  padding-top: 35px;
-  padding-bottom: 35px;
-  font-size: 45px;
+.header-content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 5% 40px;
+}
+
+.page-title {
+  font-family: 'Barlow-ExtraBold', sans-serif;
+  font-size: 3.5rem;
   font-weight: 800;
-  background-color: #f0f0f0;
+  color: #183862;
+  margin-bottom: 20px;
   text-transform: uppercase;
-  display: flex;
-  justify-items: center;
-
+  position: relative;
 }
 
-.stepper {
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: #88c607;
+  border-radius: 2px;
+}
+
+.breadcrumb-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 0;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb {
   display: flex;
   list-style-type: none;
   padding: 0;
-  background-color: #fff;
-  border-radius: 2.5px;
+  margin: 0;
   overflow: hidden;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
-.step {
-  color: #081729;
-  flex: 1;
-  text-align: center;
+.breadcrumb-item {
+  color: #183862;
   position: relative;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  transition: background-color 0.3s;
-  text-wrap: nowrap;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
 }
 
-.step:not(:last-child)::after {
+.breadcrumb-item:not(:last-child)::after {
   content: '';
   position: absolute;
   top: 50%;
-  left: 100%;
+  right: 0;
   transform: translateY(-50%);
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent #ccc;
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent #e5e7eb;
 }
 
-.step.active {
-  background-color: white;
-  color: #081729;
+.breadcrumb-item.active {
   font-weight: 600;
 }
 
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f0f0f0;
+  z-index: 1;
+}
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-  .Topic {
-    font-size: 30px;
+@media only screen and (max-width: 1024px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .header-content {
+    padding: 60px 5% 30px;
   }
 }
 
-
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-  .Topic {
-    font-size: 30px;
+@media only screen and (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
   }
-}
-
-@media only screen and (min-width:1281px) and (max-width: 1366px){
-  .Topic {
-    font-size: 35px;
+  
+  .breadcrumb-item {
+    padding: 10px 15px;
+    font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width: 500px) {
-
-.ScLine {
-  display: none;
-}
-
-.Topic {
-  font-size: 25px;
-  font-weight: 800;
-}
-
-.step {
-  font-size: 12px;
-  text-wrap: wrap;
-  text-align: left;
-  padding-left: 7.5%;
-
-}
-
-.stepper {
-  justify-content: center !important;
-  align-items: center !important;
-  display: flex;
-
-}
-
+  .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .header-content {
+    padding: 40px 5% 20px;
+  }
+  
+  .breadcrumb-container {
+    display: none;
+  }
 }
 </style>
