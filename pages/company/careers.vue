@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <div style="margin: 0%;">
+    <div>
       <AFrontHeader />
     </div>
 
@@ -11,31 +10,35 @@
 
     <div>
       <BBCareers />
-      
     </div>
 
     <div>
       <ZFooter />
     </div>
-    
-
-
   </div>
-  
 </template>
 
 <script>
-// import AFrontHeader from '~/components/AFrontHeader.vue'
 import ABCareers from '~/components/ACompany/BCareers/ABCareers.vue'
 import BBCareers from '~/components/ACompany/BCareers/BBCareers.vue'
 
 export default {
-  name: 'Careers',
+  name: 'CareersPage',
   components: {
-    // AFrontHeader,
     ABCareers,
     BBCareers,
   },
-  
+  head() {
+    return {
+      title: 'Careers',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Join our team at Smooth Flight Support. Explore career opportunities with Sri Lanka\'s premier aviation services company and be part of our journey to excellence.'
+        }
+      ]
+    }
+  }
 }
 </script>
