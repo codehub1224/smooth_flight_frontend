@@ -48,7 +48,6 @@ import {
 import {
   faFacebookF,
   faTwitter,
-  faXTwitter,
   faInstagram,
   faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons'
@@ -74,7 +73,6 @@ library.add(
   faChevronDown,
   faFacebookF,
   faTwitter,
-  faXTwitter,
   faInstagram,
   faLinkedinIn,
   faBuilding,
