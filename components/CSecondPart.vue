@@ -164,15 +164,16 @@ export default {
 }
 
 .lead-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #334155;
-    line-height: 1.6;
+    font-family: 'SourceSansPro-Regular', sans-serif;
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.7;
     margin-bottom: 1.5rem;
     text-align: justify;
 }
 
 .body-text {
+    font-family: 'SourceSansPro-Regular', sans-serif;
     font-size: 1.125rem;
     color: #64748b;
     line-height: 1.7;
