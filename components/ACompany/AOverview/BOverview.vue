@@ -118,7 +118,7 @@
                   <h3 class="card-title">Our Mission</h3>
                 </div>
                 <p class="card-text">
-                  To provide our clients the best solutions in the ground handling services with reliable, safe, fast, and effective operation ensuring the best quality service.
+                  To provide our clients the best solutions in the ground handling services with reliable, safe, fast and effective operation ensuring the best quality service.
                 </p>
               </div>
             </div>
@@ -502,6 +502,7 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  color: white;
 }
 
 .vision-card .card-icon {

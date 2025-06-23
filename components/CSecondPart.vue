@@ -14,7 +14,6 @@
                             <span class="title-line">Hello There and</span>
                             <span class="title-highlight">Welcome</span>
                         </h1>
-                        <h2 class="subtitle">Who We Are</h2>
                     </div>
 
                     <div class="description">
@@ -27,33 +26,6 @@
                         <p class="body-text">
                             As your local handling agent, Smooth Flight Support takes care of all your flight arrangements, freeing you to concentrate more on your crew, passengers, and the flight itself.
                         </p>
-                    </div>
-
-                    <!-- Vision & Mission Cards -->
-                    <div class="value-cards">
-                        <div class="value-card vision-card">
-                            <div class="card-header">
-                                <div class="card-icon">
-                                    <font-awesome-icon :icon="['fas', 'eye']" />
-                                </div>
-                                <h3 class="card-title">Our Vision</h3>
-                            </div>
-                            <p class="card-text">
-                                To be the leader in the ground flight support sector while providing our clients exceptional service in every aspect comply with international standards with the cutting-edge technology in Sri Lanka.
-                            </p>
-                        </div>
-
-                        <div class="value-card mission-card">
-                            <div class="card-header">
-                                <div class="card-icon">
-                                    <font-awesome-icon :icon="['fas', 'bullseye']" />
-                                </div>
-                                <h3 class="card-title">Our Mission</h3>
-                            </div>
-                            <p class="card-text">
-                                To provide our clients the best solutions in the ground handling services with reliable, safe, fast and effective operation ensuring the best quality service.
-                            </p>
-                        </div>
                     </div>
                 </div>
 
@@ -187,14 +159,6 @@ export default {
     background-clip: text;
 }
 
-.subtitle {
-    font-family: 'Barlow-Regular', sans-serif;
-    font-size: 1.5rem;
-    color: #64748b;
-    font-weight: 600;
-    margin: 0;
-}
-
 .description {
     margin-bottom: 3rem;
 }
@@ -205,6 +169,7 @@ export default {
     color: #334155;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
 .body-text {
@@ -212,75 +177,7 @@ export default {
     color: #64748b;
     line-height: 1.7;
     margin-bottom: 1.5rem;
-}
-
-/* Value Cards */
-.value-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.value-card {
-    padding: 2rem;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.value-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-.vision-card:hover {
-    border-color: rgba(136, 198, 7, 0.3);
-}
-
-.mission-card:hover {
-    border-color: rgba(24, 56, 98, 0.3);
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.card-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    color: white;
-}
-
-.vision-card .card-icon {
-    background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
-}
-
-.mission-card .card-icon {
-    background: linear-gradient(135deg, #183862 0%, #1e4a73 100%);
-}
-
-.card-title {
-    font-family: 'Barlow-ExtraBold', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin: 0;
-}
-
-.card-text {
-    color: #64748b;
-    line-height: 1.6;
-    margin: 0;
+    text-align: justify;
 }
 
 /* Image Gallery */
@@ -471,10 +368,6 @@ export default {
         gap: 40px;
     }
     
-    .value-cards {
-        grid-template-columns: 1fr;
-    }
-    
     .gallery-grid {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, 200px);
@@ -499,16 +392,6 @@ export default {
 @media (max-width: 480px) {
     .container {
         padding: 0 1rem;
-    }
-    
-    .value-card {
-        padding: 1.5rem;
-    }
-    
-    .card-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
     }
     
     .floating-stats {
