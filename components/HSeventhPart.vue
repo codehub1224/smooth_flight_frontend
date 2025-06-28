@@ -53,15 +53,20 @@
                                     />
                                 </div>
                                 
-                                <div class="form-group">
+                                <div class="form-group subject-button-group">
                                     <input 
                                         type="text" 
                                         id="subject" 
                                         v-model="formData.subject" 
-                                        class="form-input" 
+                                        class="form-input subject-input" 
                                         placeholder="Subject" 
                                         required
                                     />
+                                    
+                                    <button type="submit" class="submit-button">
+                                        <span>Submit Request</span>
+                                        <font-awesome-icon :icon="['fas', 'arrow-right']" />
+                                    </button>
                                 </div>
                             </div>
                             
@@ -75,11 +80,6 @@
                                         rows="5"
                                     ></textarea>
                                 </div>
-                                
-                                <button type="submit" class="submit-button">
-                                    <span>Submit Request</span>
-                                    <font-awesome-icon :icon="['fas', 'arrow-right']" />
-                                </button>
                             </div>
                         </div>
                     </form>
@@ -238,6 +238,17 @@ export default {
     margin-bottom: 1.5rem;
 }
 
+.subject-button-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.subject-input {
+    flex: 1;
+}
+
 .form-input,
 .form-textarea {
     width: 100%;
@@ -266,7 +277,7 @@ export default {
 }
 
 .message-group {
-    height: calc(100% - 70px);
+    height: 100%;
 }
 
 .submit-button {
@@ -274,8 +285,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    width: 100%;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background: linear-gradient(135deg, #88c607 0%, #9dd409 100%);
     color: white;
     border: none;
@@ -289,6 +299,7 @@ export default {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    white-space: nowrap;
 }
 
 .submit-button::after {
@@ -487,6 +498,16 @@ export default {
     
     .form-textarea {
         min-height: 120px;
+    }
+    
+    .subject-button-group {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .submit-button {
+        width: 100%;
     }
 }
 
