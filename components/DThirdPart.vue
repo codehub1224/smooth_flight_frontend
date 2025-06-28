@@ -276,6 +276,7 @@ export default {
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .service-link:hover {
