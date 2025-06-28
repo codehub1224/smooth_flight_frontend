@@ -114,10 +114,6 @@ export default {
                     description: "We are responsible for our actions and deliver on our promises with complete transparency and integrity."
                 },
                 {
-                    title: "Safety, Hospitality & Fast",
-                    description: "We prioritize safety and customer service, and we are always willing to go the extra mile for our clients."
-                },
-                {
                     title: "Priority on Service",
                     description: "We are dedicated to meeting your needs and exceeding your expectations with personalized attention."
                 },
