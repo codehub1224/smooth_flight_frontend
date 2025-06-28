@@ -23,10 +23,10 @@
             <div class="service-content">
               <h3 class="service-title">{{ service.title }}</h3>
               <p class="service-description">{{ service.description }}</p>
-              <a :href="service.link" class="service-link">
+              <NuxtLink :to="service.link" class="service-link">
                 <span>Learn More</span>
                 <font-awesome-icon :icon="['fas', 'arrow-right']" class="link-icon" />
-              </a>
+              </NuxtLink>
             </div>
             <div class="card-overlay"></div>
           </div>
